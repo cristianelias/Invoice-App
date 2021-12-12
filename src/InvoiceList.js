@@ -3,15 +3,16 @@ import { useState, useEffect } from "react";
 import InvoiceFilterList from "./InvoiceFilterList";
 import Invoice from "./Invoice";
 
-import initialData from "./data";
+import invoiceClient from "./clients/invoiceClient";
 
 const InvoiceList = () => {
   const [invoices, setInvoices] = useState([]);
   const [filteredInvoices, setFilteredInvoices] = useState([]);
 
   useEffect(() => {
-    setInvoices(initialData);
-    setFilteredInvoices(initialData);
+    const invoices = invoiceClient.fetchInvoices();
+    setInvoices(invoices);
+    setFilteredInvoices(invoices);
   }, []);
 
   return (

@@ -1,0 +1,229 @@
+@import "@fontsource/spartan/500.css";
+@import "@fontsource/spartan/700.css";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Spartan", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+.ninja {
+  display: none;
+}
+
+/* Add variables for theme management purposes */
+
+/* <Header> */
+#header ul {
+  margin: 0;
+  padding: 0;
+  background-color: #373b53;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.logo-container {
+  background-color: #7c5dfa;
+  height: 80px;
+  width: 80px;
+  position: relative;
+  border-top-right-radius: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+}
+
+.logo-container,
+.theme-switch-container,
+.avatar-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch-container {
+  padding-right: 32px;
+}
+
+.avatar-container {
+  padding: 0 32px 0 32px;
+  border-left: 1px solid #494e6e;
+}
+
+.logo-background {
+  background-color: #9277ff;
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  border-top-left-radius: 20px;
+}
+
+#logo {
+  height: 29px;
+  width: 31px;
+  z-index: 2;
+}
+
+#avatar {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+}
+
+/* <Header /> */
+
+/* <InvoiceList> */
+.invoice-list {
+  margin: 32px 24px 0 24px;
+}
+
+.invoice-list-header {
+  margin: 0 0 32px 0;
+}
+
+.invoice-list-primary-heading {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.625px;
+  text-align: left;
+}
+
+.invoice-list-secondary-heading {
+  margin: 0;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  text-align: left;
+  color: #888eb0;
+}
+
+.invoice-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+}
+
+.invoice-list-headings-container {
+  margin-right: auto;
+}
+
+.invoice-filter-label {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  text-align: right;
+  margin-right: 12px;
+}
+
+/* Add variables for animation duration */
+.invoice-filter-arrow-down {
+  transform: rotate(0deg);
+  transition: transform 0.1s ease-in-out;
+}
+
+.invoice-filter-arrow-up {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
+}
+
+.new-invoice {
+  color: white;
+  background-color: #7c5dfa;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  padding: 6px 0 6px 6px;
+  margin: 0 0 0 18px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  border: none;
+  border-radius: 24px;
+}
+
+.new-invoice-icon-wrapper {
+  background-color: white;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-invoice-icon-wrapper img {
+  height: 10px;
+  width: 10px;
+  color: #7c5dfa;
+}
+
+.new-invoice-text {
+  margin: 0 14px 0 8px;
+}
+
+.invoice-filter-list-container {
+  position: relative;
+}
+
+.invoice-filter-list-inner-container {
+  position: absolute;
+  top: 40px;
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  border-radius: 8px;
+  padding: 24px 24px 14px 24px;
+  min-width: 157px;
+}
+
+.invoice-filter-list-inner-container div {
+  margin-bottom: 10px;
+}
+
+.invoice-filter-list-inner-container label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  margin-left: 13px;
+}
+
+.invoice-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+/* <InvoiceList/> */

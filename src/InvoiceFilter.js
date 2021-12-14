@@ -1,5 +1,5 @@
 const InvoiceFilter = (props) => {
-  const { status, active, updaterFn, filterInvoices } = props;
+  const { status, active, updaterFn, filterInvoices, text } = props;
 
   function onChangeHandler() {
     const toggledChecked = !active;
@@ -15,13 +15,13 @@ const InvoiceFilter = (props) => {
   return (
     <div>
       <label htmlFor={`filter-${status}`}>
-        Filter {status}
         <input
           id={`filter-${status}`}
           type="checkbox"
           checked={active}
           onChange={onChangeHandler}
         />
+        {text}
       </label>
     </div>
   );

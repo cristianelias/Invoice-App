@@ -1,13 +1,15 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
-import Sidebar from "./Sidebar";
+import Header from "./Header";
 import InvoiceList from "./InvoiceList";
+import NewInvoice from "./NewInvoice";
 
 const App = () => {
   return (
     <div>
-      <Sidebar />
+      <Header />
       <InvoiceList />
+      <NewInvoice />
     </div>
   );
 };

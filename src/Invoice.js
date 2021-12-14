@@ -1,11 +1,11 @@
 const Invoice = (props) => {
   const { id, paymentDue, clientName, total, status } = props;
   return (
-    <article>
-      <span>{id} - </span>
-      <span>{paymentDue} - </span>
-      <span>{clientName} - </span>
-      <span>$ {total} - </span>
+    <article className="invoice-container">
+      <span>{id}</span>
+      <span>{paymentDue}</span>
+      <span>{clientName}</span>
+      <span>$ {total}</span>
       <span>
         {(() => {
           if (status === "paid") {
@@ -18,7 +18,7 @@ const Invoice = (props) => {
         })()}
         {status}
       </span>
-      <span> ➡️ </span>
+      <span>➡️</span>
     </article>
   );
 };

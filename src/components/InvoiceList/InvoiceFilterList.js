@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import iconArrowDown from "../../assets/icon-arrow-down.svg";
 
 import InvoiceFilter from "./InvoiceFilter";
@@ -63,7 +65,7 @@ const InvoiceFilterList = (props) => {
       className="invoice-filter-list-container"
     >
       <legend>
-        <span className="invoice-filter-label">
+        <span className="invoice-filter-trigger">
           {viewportWidth >= resolutionBreakpoint
             ? `Filter by status`
             : `Filter`}
@@ -82,6 +84,11 @@ const InvoiceFilterList = (props) => {
         className={`invoice-filter-list-inner-container ${
           !filtersVisibility ? "ninja" : ""
         }`}
+        onClick={(event) => {
+          // this prevents the event from bubbling up until
+          // triggering it's parent onClick which would hide the menu.
+          event.stopPropagation();
+        }}
       >
         {Object.keys(filtersByStatus).map((status, index) => {
           const currentFilter = filtersByStatus[status];

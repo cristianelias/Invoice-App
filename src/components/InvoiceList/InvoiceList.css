@@ -42,13 +42,18 @@
   margin-right: auto;
 }
 
-.invoice-filter-label {
+.invoice-filter-label,
+.invoice-filter-trigger {
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.25px;
   margin-right: 12px;
+}
+
+.invoice-filter-label {
+  padding: 7px 15px 7px 0;
 }
 
 /* Add variables for animation duration */

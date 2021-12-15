@@ -1,11 +1,13 @@
-import iconPlus from "./assets/icon-plus.svg";
+import iconPlus from "../../assets/icon-plus.svg";
 
 import { useState, useEffect, useLayoutEffect } from "react";
 
 import InvoiceFilterList from "./InvoiceFilterList";
 import Invoice from "./Invoice";
 
-import invoiceClient from "./clients/invoiceClient";
+import invoiceClient from "../../clients/invoiceClient";
+
+import "./InvoiceList.css";
 
 // TODO: Move this to a context, so all components can share it's status
 const TABLET_RESOLUTION_BREAKPOINT = 768;

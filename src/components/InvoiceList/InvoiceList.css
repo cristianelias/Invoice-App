@@ -1,96 +1,3 @@
-@import "@fontsource/spartan/500.css";
-@import "@fontsource/spartan/700.css";
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: "Spartan", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f8fb;
-  padding: 0;
-  margin: 0;
-  font-weight: 500;
-  min-width: 360px;
-}
-
-.ninja {
-  display: none;
-}
-
-/* Add variables for theme management purposes */
-
-/* <Header> */
-#header ul {
-  margin: 0;
-  padding: 0;
-  background-color: #373b53;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  user-select: none;
-}
-
-.logo-container {
-  background-color: #7c5dfa;
-  height: 80px;
-  width: 80px;
-  position: relative;
-  border-top-right-radius: 20px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  margin-right: auto;
-}
-
-.logo-container,
-.theme-switch-container,
-.avatar-container {
-  display: flex;
-  align-items: center;
-}
-
-.theme-switch-container img {
-  padding: 20px 32px;
-}
-
-.avatar-container {
-  padding: 0 32px 0 32px;
-  border-left: 1px solid #494e6e;
-}
-
-.logo-background {
-  background-color: #9277ff;
-  height: 50%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  border-top-left-radius: 20px;
-}
-
-#logo {
-  height: 29px;
-  width: 31px;
-  z-index: 2;
-}
-
-#avatar {
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-}
-
-/* <Header /> */
-
-/* <InvoiceList> */
 .invoice-list {
   margin: 32px 24px 0 24px;
 }
@@ -258,7 +165,7 @@ body {
 /* Checked checkbox style (in this case the background is red) */
 .invoice-filter-checkbox:checked + .invoice-filter-text:before {
   /* NOTE: Replace the url with a path to an SVG of a checkmark to get a checkmark icon */
-  background-image: url("assets/icon-check.svg");
+  background-image: url("../../assets/icon-check.svg");
   background-repeat: no-repeat;
   background-position: center;
   /* The size of the checkmark icon, you may/may not need this */
@@ -297,4 +204,3 @@ body {
   align-items: center;
   align-content: center;
 }
-/* <InvoiceList/> */

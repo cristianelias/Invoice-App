@@ -1,4 +1,4 @@
-import iconArrowDown from "./assets/icon-arrow-down.svg";
+import iconArrowDown from "../../assets/icon-arrow-down.svg";
 
 import InvoiceFilter from "./InvoiceFilter";
 import { useState } from "react";

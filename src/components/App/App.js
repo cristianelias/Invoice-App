@@ -1,8 +1,10 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
-import Header from "./Header";
-import InvoiceList from "./InvoiceList";
-import NewInvoice from "./NewInvoice";
+import Header from "../Header/Header";
+import InvoiceList from "../InvoiceList/InvoiceList";
+import NewInvoice from "../InvoiceList/NewInvoice";
+
+import "./App.css";
 
 const App = () => {
   return (

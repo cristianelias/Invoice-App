@@ -56,12 +56,13 @@ const InvoiceFilterList = (props) => {
   }
 
   return (
-    <div className="invoice-filter-list-container">
-      <legend
-        onClick={() => {
-          setFilterVisibility(!filtersVisibility);
-        }}
-      >
+    <div
+      onClick={() => {
+        setFilterVisibility(!filtersVisibility);
+      }}
+      className="invoice-filter-list-container"
+    >
+      <legend>
         <span className="invoice-filter-label">
           {viewportWidth >= resolutionBreakpoint
             ? `Filter by status`

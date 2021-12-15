@@ -13,15 +13,16 @@ const InvoiceFilter = (props) => {
   }
 
   return (
-    <div>
-      <label htmlFor={`filter-${status}`}>
+    <div className="invoice-filter-container">
+      <label className="invoice-filter-label" htmlFor={`filter-${status}`}>
         <input
+          className="invoice-filter-checkbox"
           id={`filter-${status}`}
           type="checkbox"
           checked={active}
           onChange={onChangeHandler}
         />
-        {text}
+        <span className="invoice-filter-text">{text}</span>
       </label>
     </div>
   );

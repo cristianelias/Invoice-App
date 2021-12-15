@@ -38,13 +38,9 @@ const InvoiceList = () => {
     };
   }, []);
 
-  const displayTotalInvoices = () => {
-    const totalInvoices = invoices.length;
-
-    return viewportWidth >= TABLET_RESOLUTION_BREAKPOINT
-      ? `There are ${totalInvoices} total invoices`
-      : `${totalInvoices} invoices`;
-  };
+  function isTabletOrGreater(viewportWidth) {
+    return viewportWidth >= TABLET_RESOLUTION_BREAKPOINT;
+  }
 
   return (
     <article className="invoice-list">
@@ -54,7 +50,9 @@ const InvoiceList = () => {
             <li className="invoice-list-headings-container">
               <h1 className="invoice-list-primary-heading">Invoices</h1>
               <h2 className="invoice-list-secondary-heading">
-                {displayTotalInvoices()}
+                {isTabletOrGreater(viewportWidth)
+                  ? `There are ${invoices.length} total invoices`
+                  : `${invoices.length} invoices`}
               </h2>
             </li>
             <li>
@@ -75,7 +73,9 @@ const InvoiceList = () => {
                     alt="New invoice button. Click to create a new invoice for you to fill."
                   />
                 </div>
-                <p className="new-invoice-text">New</p>
+                <p className="new-invoice-text">
+                  {isTabletOrGreater(viewportWidth) ? "New Invoice" : "New"}
+                </p>
               </button>
             </li>
           </ul>

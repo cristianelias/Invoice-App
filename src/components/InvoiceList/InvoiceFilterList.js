@@ -57,6 +57,7 @@ const InvoiceFilterList = (props) => {
     setFilteredInvoices(filteredInvoices);
   }
 
+  // TODO: Improve accesibility, follow linter guidelines.
   return (
     <div
       onClick={() => {

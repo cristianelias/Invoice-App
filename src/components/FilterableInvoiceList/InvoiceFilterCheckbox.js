@@ -1,16 +1,11 @@
-const InvoiceFilter = (props) => {
-  const { status, active, updaterFn, filterInvoices, text } = props;
+const InvoiceFilterCheckbox = (props) => {
+  const { status, active, updaterFn, text } = props;
 
-  function onChangeHandler() {
+  const onChangeHandler = () => {
     const toggledChecked = !active;
 
     updaterFn(toggledChecked);
-
-    filterInvoices({
-      status,
-      active: toggledChecked,
-    });
-  }
+  };
 
   return (
     <div className="invoice-filter-container">
@@ -28,4 +23,4 @@ const InvoiceFilter = (props) => {
   );
 };
 
-export default InvoiceFilter;
+export default InvoiceFilterCheckbox;

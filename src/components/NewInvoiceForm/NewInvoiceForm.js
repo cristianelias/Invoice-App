@@ -1,10 +1,12 @@
-const NewInvoice = () => {
+import "./NewInvoiceForm.css";
+
+const NewInvoiceForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="new-invoice-form" onSubmit={handleSubmit}>
       <fieldset>
         <legend>Bill From</legend>
         <label htmlFor="input-street-address">
@@ -130,4 +132,4 @@ const NewInvoice = () => {
   );
 };
 
-export default NewInvoice;
+export default NewInvoiceForm;

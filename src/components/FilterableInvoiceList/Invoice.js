@@ -1,3 +1,4 @@
+import PaymentStatusButton from "./PaymentStatusButton";
 const Invoice = (props) => {
   const { id, paymentDue, clientName, total, status } = props;
   return (
@@ -6,18 +7,7 @@ const Invoice = (props) => {
       <span>{paymentDue}</span>
       <span>{clientName}</span>
       <span>$ {total}</span>
-      <span>
-        {(() => {
-          if (status === "paid") {
-            return "🟢";
-          } else if (status === "draft") {
-            return "⚪️";
-          } else {
-            return "🔴";
-          }
-        })()}
-        {status}
-      </span>
+      <PaymentStatusButton status={status} />
       <span>➡️</span>
     </article>
   );

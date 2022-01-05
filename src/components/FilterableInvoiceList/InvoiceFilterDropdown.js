@@ -15,25 +15,27 @@ const InvoiceFilterDropdown = (props) => {
       onClick={() => {
         setFilterVisibility(!filtersVisibility);
       }}
-      className="invoice-filter-list-container"
+      className="invoice-filter-dropdown"
     >
       <legend>
-        <span className="invoice-filter-trigger">
+        <span className="invoice-filter-dropdown__trigger">
           {showFullInfo ? `Filter by status` : `Filter`}
         </span>
         <img
           className={
             !filtersVisibility
-              ? "invoice-filter-arrow-down"
-              : "invoice-filter-arrow-up"
+              ? "invoice-filter-dropdown__arrow-down"
+              : "invoice-filter-dropdown__arrow-up"
           }
           src={iconArrowDown}
           alt="Arrow icon. Click to display filters."
         />
       </legend>
       <fieldset
-        className={`invoice-filter-list-inner-container ${
-          !filtersVisibility ? "ninja" : ""
+        className={`invoice-filter-dropdown__content ${
+          !filtersVisibility
+            ? "invoice-filter-dropdown__content--invisible"
+            : ""
         }`}
         onClick={(event) => event.stopPropagation()}
       >

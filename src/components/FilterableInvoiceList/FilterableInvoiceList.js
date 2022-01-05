@@ -1,7 +1,6 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import debounce from "lodash.debounce";
 
-import InvoiceListHeader from "./InvoiceListHeader";
 import InvoiceListOverview from "./InvoiceListOverview";
 import NewInvoiceButton from "./NewInvoiceButton";
 import InvoiceFilterDropdown from "./InvoiceFilterDropdown";
@@ -73,7 +72,7 @@ const FilterableInvoiceList = () => {
 
   return (
     <article className="invoice-list">
-      <InvoiceListHeader>
+      <header className="invoice-list__header">
         <InvoiceListOverview
           showFullInfo={showFullInfo}
           totalInvoices={invoices.length}
@@ -94,7 +93,7 @@ const FilterableInvoiceList = () => {
         </InvoiceFilterDropdown>
 
         <NewInvoiceButton showFullInfo={showFullInfo} />
-      </InvoiceListHeader>
+      </header>
 
       <InvoiceList
         invoices={statusFilters

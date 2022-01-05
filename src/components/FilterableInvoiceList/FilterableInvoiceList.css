@@ -2,11 +2,12 @@
   margin: 32px 24px 0 24px;
 }
 
-.invoice-list-header {
+.invoice-list__header {
   margin: 0 0 32px 0;
+  display: flex;
 }
 
-.invoice-list-primary-heading {
+.invoice-list-overview__title {
   margin: 0 0 4px 0;
   font-size: 20px;
   font-style: normal;
@@ -16,7 +17,7 @@
   text-align: left;
 }
 
-.invoice-list-secondary-heading {
+.invoice-list-overview__total {
   margin: 0;
   font-size: 12px;
   font-style: normal;
@@ -38,12 +39,12 @@
   align-items: center;
 }
 
-.invoice-list-headings-container {
+.invoice-list-overview {
   margin-right: auto;
 }
 
 .invoice-filter-label,
-.invoice-filter-trigger {
+.invoice-filter-dropdown__trigger {
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -53,12 +54,12 @@
 }
 
 /* Add variables for animation duration */
-.invoice-filter-arrow-down {
+.invoice-filter-dropdown__arrow-down {
   transform: rotate(0deg);
   transition: transform 0.1s ease-in-out;
 }
 
-.invoice-filter-arrow-up {
+.invoice-filter-dropdown__arrow-up {
   transform: rotate(180deg);
   transition: transform 0.1s ease-in-out;
 }
@@ -103,7 +104,7 @@
   padding-top: 1px;
 }
 
-.invoice-filter-list-container {
+.invoice-filter-dropdown {
   position: relative;
   user-select: none;
   height: 40px;
@@ -113,7 +114,7 @@
   padding: 0px 18px;
 }
 
-.invoice-filter-list-inner-container {
+.invoice-filter-dropdown__content {
   position: absolute;
   top: 53px;
   right: -18px;
@@ -127,8 +128,12 @@
   border: none;
 }
 
-.invoice-filter-list-inner-container :last-child {
+.invoice-filter-dropdown__content :last-child {
   margin-bottom: 0 !important;
+}
+
+.invoice-filter-dropdown__content--invisible {
+  display: none;
 }
 
 .invoice-filter-container {

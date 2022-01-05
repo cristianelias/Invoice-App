@@ -8,16 +8,19 @@ const InvoiceFilterCheckbox = (props) => {
   };
 
   return (
-    <div className="invoice-filter-container">
-      <label className="invoice-filter-label" htmlFor={`filter-${status}`}>
+    <div className="invoice-filter-checkbox">
+      <label
+        className="invoice-filter-checkbox__label"
+        htmlFor={`filter-${status}`}
+      >
         <input
-          className="invoice-filter-checkbox"
+          className="invoice-filter-checkbox__input"
           id={`filter-${status}`}
           type="checkbox"
           checked={active}
           onChange={onChangeHandler}
         />
-        <span className="invoice-filter-text">{text}</span>
+        <span className="invoice-filter-checkbox__filter-name">{text}</span>
       </label>
     </div>
   );

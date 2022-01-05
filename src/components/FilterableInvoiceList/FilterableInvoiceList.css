@@ -43,7 +43,7 @@
   margin-right: auto;
 }
 
-.invoice-filter-label,
+.invoice-filter-checkbox__label,
 .invoice-filter-dropdown__trigger {
   font-size: 12px;
   font-style: normal;
@@ -64,7 +64,7 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.new-invoice {
+.new-invoice-button {
   color: white;
   background-color: #7c5dfa;
   font-size: 12px;
@@ -82,7 +82,7 @@
   user-select: none;
 }
 
-.new-invoice-icon-wrapper {
+.new-invoice-button__icon-wrapper {
   background-color: white;
   height: 32px;
   width: 32px;
@@ -93,13 +93,13 @@
   align-items: center;
 }
 
-.new-invoice-icon-wrapper img {
+.new-invoice-button__icon {
   height: 10px;
   width: 10px;
   color: #7c5dfa;
 }
 
-.new-invoice-text {
+.new-invoice-button__text {
   margin: 0 14px 0 8px;
   padding-top: 1px;
 }
@@ -136,18 +136,18 @@
   display: none;
 }
 
-.invoice-filter-container {
+.invoice-filter-checkbox {
   margin-bottom: 15px;
   height: 16px;
 }
 
-.invoice-filter-checkbox {
+.invoice-filter-checkbox__input {
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
 
-.invoice-filter-label {
+.invoice-filter-checkbox__label {
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -156,7 +156,7 @@
   cursor: pointer;
 }
 
-.invoice-filter-checkbox + .invoice-filter-text:before {
+.invoice-filter-checkbox__input + .invoice-filter-checkbox__filter-name:before {
   content: "";
   border-radius: 3px;
   display: inline-block;
@@ -168,7 +168,8 @@
 }
 
 /* Checked checkbox style (in this case the background is red) */
-.invoice-filter-checkbox:checked + .invoice-filter-text:before {
+.invoice-filter-checkbox__input:checked
+  + .invoice-filter-checkbox__filter-name:before {
   /* NOTE: Replace the url with a path to an SVG of a checkmark to get a checkmark icon */
   background-image: url("../../assets/icon-check.svg");
   background-repeat: no-repeat;
@@ -181,7 +182,8 @@
 }
 
 /* Adding a dotted border around the active tabbed-into checkbox */
-.invoice-filter-checkbox:not(:checked) + .invoice-filter-text:hover:before {
+.invoice-filter-checkbox__input:not(:checked)
+  + .invoice-filter-checkbox__filter-name:hover:before {
   /* Visible in the full-color space */
   box-shadow: 0px 0px 0px 2px #7c5dfa;
 
@@ -196,13 +198,14 @@
 }
 
 /* Disabled checkbox styles */
-.invoice-filter-checkbox:disabled + .invoice-filter-text {
+.invoice-filter-checkbox__input:disabled
+  + .invoice-filter-checkbox__filter-name {
   cursor: default;
   color: black;
   opacity: 0.5;
 }
 
-.invoice-filter-text {
+.invoice-filter-checkbox__filter-name {
   padding: 7px 60px 7px 0px;
   cursor: pointer;
 }

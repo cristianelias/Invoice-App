@@ -3,38 +3,46 @@
   padding: 0;
   background-color: #373b53;
   display: flex;
-  flex-flow: row nowrap;
   justify-content: space-between;
   user-select: none;
+  flex-flow: column wrap;
+  width: 103px;
+  height: 100vh;
+  border-radius: 0 20px 20px 0;
 }
 
 .header__logo-container {
   background-color: #7c5dfa;
-  height: 80px;
-  width: 80px;
+  height: 103px;
+  width: 103px;
   position: relative;
   border-top-right-radius: 20px;
   display: flex;
   align-content: center;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
 }
 
 .header__logo-container,
 .header__theme-container,
 .header__avatar-container {
   display: flex;
-  align-items: center;
+  justify-content: center;
+}
+
+.header__theme-container {
+  padding: 32px 42px 32px 41px;
+  margin-top: auto;
 }
 
 .header__theme {
-  padding: 20px 32px;
+  height: 20px;
+  width: 20px;
 }
 
 .header__avatar-container {
-  padding: 0 32px 0 32px;
-  border-left: 1px solid #494e6e;
+  padding: 24px 32px 24px 31px;
+  border-top: 1px solid #494e6e;
 }
 
 .header__logo-background {
@@ -48,13 +56,13 @@
 }
 
 .header__logo {
-  height: 29px;
-  width: 31px;
+  height: 37.7px;
+  width: 40px;
   z-index: 2;
 }
 
 .header__avatar {
   border-radius: 50%;
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
 }

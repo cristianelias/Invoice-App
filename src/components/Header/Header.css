@@ -7,7 +7,7 @@
   min-height: 350px;
   grid-column: 1/2;
   position: fixed;
-  z-index: 10;
+  z-index: 2;
 }
 
 .header__container {

@@ -1,3 +1,312 @@
-.new-invoice-form {
-  display: none;
+.form {
+  width: 616px;
+  padding: 65px 56px 23px 56px;
+  background: #ffffff;
+  border-radius: 0px 20px 20px 0px;
+  position: absolute;
+  left: 103px;
+  top: 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0c0e16;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+  padding-bottom: 48px;
+}
+
+.h2 {
+  display: block;
+  color: #7c5dfa;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  margin-bottom: 24px;
+}
+
+.section-bill-from {
+  height: 170px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  grid-template-rows: repeat(2, 43%);
+  gap: 14% 5%;
+}
+
+.street {
+  width: 100%;
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
+.input-street {
+  width: 100%;
+}
+
+.city {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.post-code {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.country {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+.item-client {
+  width: 100%;
+}
+
+.input-client {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.flex-container-client {
+  display: grid;
+  margin-bottom: 48px;
+  grid-template-columns: repeat(3, 30%);
+  gap: 0 5%;
+}
+
+.section-invoice-date {
+  width: 100%;
+  display: grid;
+  height: 170px;
+  grid-template-columns: 48% 48%;
+  grid-template-rows: 43% 43%;
+  gap: 14% 4%;
+  margin-bottom: 32px;
+}
+
+.item-invoice-date {
+  width: 100%;
+}
+
+.project-description {
+  width: 100%;
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+
+.item-list {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: -0.375px;
+  color: #777f98;
+  margin-bottom: 16px;
+}
+
+.header-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 42% 9% 20% 9% 7%;
+  gap: 0 3%;
+}
+
+li {
+  list-style: none;
+}
+
+.input-lavel {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+}
+
+.form-input {
+  margin-top: 10px;
+  padding: 17px 0px 16px 20px;
+  border: none;
+  border: solid 1px #dfe3fa;
+  border-radius: 4px;
+  outline: none;
+  font-family: Spartan;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+}
+
+.input-qty {
+  padding: 0;
+  text-align: center;
+}
+
+.input-invoice-date {
+  width: 240px;
+  height: 48px;
+  padding-right: 16px;
+}
+
+.input-small {
+  width: 152px;
+}
+
+.item-name {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  margin-bottom: 16px;
+}
+
+.qty {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+
+.price {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #888eb0;
+  margin: auto 0 34px auto;
+}
+
+.input-number::-webkit-inner-spin-button,
+.input-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-number[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background: #f9fafe;
+  border-radius: 24px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+}
+
+::-webkit-calendar-picker-indicator {
+  width: 16px;
+  height: 16px;
+}
+
+.add-new-item {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 39px;
+}
+
+.footer {
+  display: flex;
+}
+
+.button-discard {
+  width: 96px;
+  height: 48px;
+  margin-right: auto;
+}
+
+.button-draft {
+  width: 133px;
+  height: 48px;
+  background: #373b53;
+  color: #888eb0;
+}
+
+.button-save-send {
+  width: 128px;
+  height: 48px;
+  margin-left: 8px;
+  background: #7c5dfa;
+  color: #ffffff;
+}
+
+.total {
+  font-size: 12px; /*ESTO FUE SOLO PARA DARLE ORDEN AL GRID Y QUE NO SE VEA TAN GRANDE -MODIFICAR-*/
+}
+
+.button-delete-header-list {
+  width: 12.44px;
+  height: 16px;
+  margin: auto 0 34px auto;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.invoice-concept-item {
+  margin-bottom: 19px;
+  margin-top: 0;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  opacity: 0.5;
+  position: fixed;
+}
+
+@media (max-width: 850px) {
+  body {
+    min-height: 100vh;
+  }
+  .form {
+    left: 0;
+    top: 80px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  .add-new-item {
+    margin-bottom: 110px;
+  }
+
+  .footer {
+    width: 616px;
+    height: 110px;
+    background-color: #ffffff;
+    border-radius: 0 20px 20px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 31px 56px;
+  }
+
+  .linear-gradient {
+    width: 616px;
+    height: 141px;
+    position: fixed;
+    bottom: 51px;
+    left: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.0001) 0%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  }
 }

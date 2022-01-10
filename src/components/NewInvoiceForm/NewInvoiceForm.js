@@ -6,129 +6,242 @@ const NewInvoiceForm = () => {
   };
 
   return (
-    <form className="new-invoice-form" onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>Bill From</legend>
-        <label htmlFor="input-street-address">
-          Street Address
-          <input type="text" id="input-street-address" />
-        </label>
-
-        <label htmlFor="input-city">
-          City
-          <input type="text" id="input-city" />
-        </label>
-
-        <label htmlFor="input-post-code">
-          Post Code
-          <input type="text" id="input-post-code" />
-        </label>
-
-        <label htmlFor="input-country">
-          Country
-          <input type="text" id="input-country" />
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Bill To</legend>
-        <label htmlFor="input-client-name">
-          Client&apos;s Name
-          <input type="text" id="input-client-name" />
-        </label>
-
-        <label htmlFor="input-client-email">
-          Client&apos;s Email
-          <input type="email" id="input-client-email" />
-        </label>
-
-        <label htmlFor="input-client-street-address">
-          Street Address
-          <input type="text" id="input-client-street-address" />
-        </label>
-
-        <label htmlFor="input-country">
-          Country
-          <input type="text" id="input-country" />
-        </label>
-
-        <label htmlFor="input-client-city">
-          City
-          <input type="text" id="input-client-city" />
-        </label>
-
-        <label htmlFor="input-client-post-code">
-          Post Code
-          <input type="tel" id="input-client-post-code" />
-        </label>
-
-        <label htmlFor="input-invoice-date">
-          Invoice Date
-          <input
-            type="date"
-            id="input-invoice-date"
-            value="2021-12-11"
-            min="2019-12-11"
-            max="2050-12-11"
-          ></input>
-        </label>
-
-        <label htmlFor="input-payment-terms">
-          Payment Terms
-          <select id="input-payment-terms">
-            <option value="Net 30 Days" selected>
-              Net 30 Days
-            </option>
-            <option value="Net 60 Days">Net 60 Days</option>
-            <option value="Net 90 Days">Net 90 Days</option>
-          </select>
-        </label>
-
-        <label htmlFor="input-project-description">
-          Project Description
-          <input type="text" id="input-project-description" />
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <div>
-          <h4>Item Name</h4>
-          <input type="text" id="input-item-1-name" />
-          <input type="text" id="input-item-2-name" />
-        </div>
-
-        <div>
-          <h4>Qty.</h4>
-          <input type="tel" id="input-item-1-qty" />
-          <input type="tel" id="input-item-2-qty" />
-        </div>
-
-        <div>
-          <h4>Price</h4>
-          <input type="tel" id="input-item-1-price" />
-          <input type="tel" id="input-item-2-price" />
-        </div>
-
-        <div>
-          <h4>Total</h4>
-          <input type="tel" id="input-item-1-price" />
-          <input type="tel" id="input-item-2-price" />
-        </div>
-
-        <div>
-          <span>🗑</span>
-          <span>🗑</span>
-        </div>
-      </fieldset>
-
-      <button>+ Add New Item</button>
-
-      <div>
-        <button>Discard</button>
-        <input type="submit" value="Save as Draft" />
-        <input type="submit" value="Save and Send" />
-      </div>
-    </form>
+    <article>
+      <form className="form">
+        <legend className="title">New invoice</legend>
+        <h2 className="h2">Bill From</h2>
+        <section className="section-bill-from">
+          <label className="street input-lavel">
+            Street Address{" "}
+            <input
+              className="input-street form-input"
+              type="text"
+              name="Street Address"
+              placeholder=""
+            />
+          </label>
+          <label className="city input-lavel">
+            City{" "}
+            <input
+              className="city form-input input-small"
+              type="text"
+              name="City"
+              placeholder=""
+            />
+          </label>
+          <label className="post-code input-lavel">
+            Post Code{" "}
+            <input
+              className="post-code form-input input-small"
+              type="text"
+              name="Post Code"
+              placeholder=""
+            />
+          </label>
+          <label className="country input-lavel">
+            Country{" "}
+            <input
+              className="country form-input input-small"
+              type="text"
+              name="Country"
+              placeholder=""
+            />
+          </label>
+        </section>
+        <section className="section-bill-to">
+          <h2 className="h2">Bill To</h2>
+          <label className="item-client input-lavel">
+            Client's Name{" "}
+            <input
+              className="input-client form-input"
+              type="text"
+              name="Name"
+              placeholder="e.g. email@example.com"
+            />
+          </label>
+          <label className="item-client input-lavel">
+            Client's Email{" "}
+            <input
+              className="input-client form-input"
+              type="email"
+              name="Email"
+              placeholder=""
+            />
+          </label>
+          <label className="item-client input-lavel">
+            Street Address{" "}
+            <input
+              className="input-client form-input"
+              type="text"
+              name="Street Address"
+              placeholder=""
+            />
+          </label>
+          <div className="flex-container-client">
+            <label className="client-city input-lavel">
+              City{" "}
+              <input
+                className="form-input input-small"
+                type="text"
+                name="City"
+                placeholder=""
+              />
+            </label>
+            <label className="client-post-code input-lavel">
+              Post Code{" "}
+              <input
+                className="form-input input-small"
+                type="text"
+                name="Post Code"
+                placeholder=""
+              />
+            </label>
+            <label className="client-country input-lavel">
+              Country{" "}
+              <input
+                className="form-input input-small"
+                type="text"
+                name="Country"
+                placeholder=""
+              />
+            </label>
+          </div>
+        </section>
+        <section className="section-invoice-date">
+          <label className="input-lavel">
+            Invoice Date{" "}
+            <input
+              className="item-invoice-date form-input input-invoice-date"
+              type="date"
+              name="month"
+              placeholder="21 Aug 2021"
+            />
+          </label>
+          <label className="input-lavel">
+            Payment Terms{" "}
+            <input
+              className="item-invoice-date form-input"
+              type="text"
+              name="Payment Terms"
+              placeholder="Net 30 Days"
+            />
+          </label>
+          <label className="project-description input-lavel">
+            Project Description{" "}
+            <input
+              className="item-invoice-date form-input"
+              type="text"
+              name="Project Description"
+              placeholder="e.g. Graphic Design Service"
+            />
+          </label>
+        </section>
+        <section>
+          <h1 className="item-list">Item List</h1>
+          <div>
+            <ul>
+              <li className="header-list">
+                <h2 className="item-header item-name input-lavel">Item Name</h2>
+                <h2 className="item-header qty input-lavel">Qty.</h2>
+                <h2 className="item-header price input-lavel">Price</h2>
+                <h2 className="item-header total input-lavel">Total</h2>
+              </li>
+              <li className="header-list invoice-concept-list">
+                <input
+                  className="invoice-concept-item form-input"
+                  type="text"
+                  name="concept"
+                  placeholder=""
+                />
+                <input
+                  className="invoice-concept-item form-input input-number input-qty"
+                  type="number"
+                  name="qty"
+                  placeholder=""
+                />
+                <input
+                  className="invoice-concept-item form-input input-number"
+                  type="number"
+                  name="price"
+                  placeholder=""
+                />
+                <p className="total">0.00</p>
+                <button
+                  className="button-delete-header-list button-delete"
+                  name="delete"
+                  type="button"
+                >
+                  <img
+                    className="invoice-concept-item"
+                    src="assets/delete.svg"
+                    alt="delete"
+                  ></img>
+                </button>
+              </li>
+              <li className="header-list invoice-concept-list">
+                <input
+                  className="invoice-concept-item form-input"
+                  type="text"
+                  name="concept"
+                  placeholder=""
+                />
+                <input
+                  className="invoice-concept-item form-input input-number input-qty"
+                  type="number"
+                  name="qty"
+                  placeholder=""
+                />
+                <input
+                  className="invoice-concept-item form-input input-number"
+                  type="number"
+                  name="price"
+                  placeholder=""
+                />
+                <p className="total">0.00</p>
+                <button
+                  className="button-delete-header-list button-delete"
+                  name="delete"
+                  type="button"
+                >
+                  <img
+                    className="invoice-concept-item"
+                    src="assets/delete.svg"
+                    alt="delete"
+                  ></img>
+                </button>
+              </li>
+            </ul>
+            <button
+              className="add-new-item button"
+              name="New Item"
+              type="button"
+            >
+              + Add New Item
+            </button>
+          </div>
+        </section>
+        <div className="linear-gradient"></div>
+        <footer className="footer">
+          <button
+            className="button-discard button"
+            name="discard"
+            type="button"
+          >
+            Discard
+          </button>
+          <button className="button-draft button" name="draft" type="button">
+            Save as Draft
+          </button>
+          <button
+            className="button-save-send button"
+            name="save y send"
+            type="button"
+          >
+            Save & Send
+          </button>
+        </footer>
+      </form>
+    </article>
   );
 };
 

@@ -6,6 +6,7 @@
   border-radius: 0 20px 20px 0;
   min-height: 350px;
   grid-column: 1/2;
+  position: fixed;
 }
 
 .header__container {

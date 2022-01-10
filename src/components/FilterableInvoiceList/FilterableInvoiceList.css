@@ -1,9 +1,10 @@
 .invoice-list {
-  margin: 32px 24px 0 24px;
+  grid-column: 3/4;
+  margin-top: 72px;
 }
 
 .invoice-list__header {
-  margin: 0 0 32px 0;
+  margin-bottom: 65px;
   display: flex;
 }
 
@@ -28,40 +29,8 @@
   color: #888eb0;
 }
 
-.invoice-list ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-}
-
 .invoice-list-overview {
   margin-right: auto;
-}
-
-.invoice-filter-checkbox__label,
-.invoice-filter-dropdown__trigger {
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: -0.25px;
-  margin-right: 12px;
-}
-
-/* Add variables for animation duration */
-.invoice-filter-dropdown__arrow-down {
-  transform: rotate(0deg);
-  transition: transform 0.1s ease-in-out;
-}
-
-.invoice-filter-dropdown__arrow-up {
-  transform: rotate(180deg);
-  transition: transform 0.1s ease-in-out;
 }
 
 .new-invoice-button {
@@ -104,116 +73,17 @@
   padding-top: 1px;
 }
 
-.invoice-filter-dropdown {
-  position: relative;
-  user-select: none;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-  padding: 0px 18px;
+@media (max-width: 948px) {
+  .invoice-list {
+    margin-left: 58px;
+    margin-right: 58px;
+    grid-column: 2/3;
+  }
 }
 
-.invoice-filter-dropdown__content {
-  position: absolute;
-  top: 53px;
-  right: -18px;
-  background: #ffffff;
-  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
-  border-radius: 8px;
-  padding: 0;
-  width: 192px;
-  padding: 24px 0 24px 24px;
-  margin: 0;
-  border: none;
-}
-
-.invoice-filter-dropdown__content :last-child {
-  margin-bottom: 0 !important;
-}
-
-.invoice-filter-dropdown__content--invisible {
-  display: none;
-}
-
-.invoice-filter-checkbox {
-  margin-bottom: 15px;
-  height: 16px;
-}
-
-.invoice-filter-checkbox__input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-
-.invoice-filter-checkbox__label {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
-  cursor: pointer;
-}
-
-.invoice-filter-checkbox__input + .invoice-filter-checkbox__filter-name:before {
-  content: "";
-  border-radius: 3px;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 13px;
-  vertical-align: -2px;
-  background-color: #dfe3fa;
-}
-
-/* Checked checkbox style (in this case the background is red) */
-.invoice-filter-checkbox__input:checked
-  + .invoice-filter-checkbox__filter-name:before {
-  /* NOTE: Replace the url with a path to an SVG of a checkmark to get a checkmark icon */
-  background-image: url("../../assets/icon-check.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  /* The size of the checkmark icon, you may/may not need this */
-  background-size: 10px;
-  border-radius: 2px;
-  background-color: #7c5dfa;
-  color: white;
-}
-
-/* Adding a dotted border around the active tabbed-into checkbox */
-.invoice-filter-checkbox__input:not(:checked)
-  + .invoice-filter-checkbox__filter-name:hover:before {
-  /* Visible in the full-color space */
-  box-shadow: 0px 0px 0px 2px #7c5dfa;
-
-  /* Visible in Windows high-contrast themes
-     box-shadow will be hidden in these modes and
-     transparency will not be hidden in high-contrast
-     thus box-shadow will not show but the outline will
-     providing accessibility */
-  outline-color: transparent;
-  outline-width: 2px;
-  outline-style: dotted;
-}
-
-/* Disabled checkbox styles */
-.invoice-filter-checkbox__input:disabled
-  + .invoice-filter-checkbox__filter-name {
-  cursor: default;
-  color: black;
-  opacity: 0.5;
-}
-
-.invoice-filter-checkbox__filter-name {
-  padding: 7px 60px 7px 0px;
-  cursor: pointer;
-}
-
-.invoice-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+@media (max-width: 850px) {
+  .invoice-list {
+    grid-row: 2/3;
+    margin: 56px 0 0 0;
+  }
 }

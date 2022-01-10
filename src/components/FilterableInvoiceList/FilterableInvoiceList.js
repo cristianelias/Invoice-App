@@ -1,12 +1,11 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import debounce from "lodash.debounce";
 
-import InvoiceListOverview from "./InvoiceListOverview";
-import NewInvoiceButton from "./NewInvoiceButton";
-import InvoiceFilterDropdown from "./InvoiceFilterDropdown";
-import InvoiceFilterCheckbox from "./InvoiceFilterCheckbox";
+import InvoiceListOverview from "./InvoiceListOverview/InvoiceListOverview";
+import NewInvoiceButton from "./NewInvoiceButton/NewInvoiceButton";
+import InvoiceFilterDropdown from "./InvoiceFilterDropdown/InvoiceFilterDropdown";
 
-import InvoiceList from "./InvoiceList";
+import InvoiceList from "./InvoiceList/InvoiceList";
 
 import invoiceClient from "../../clients/invoiceClient";
 
@@ -78,19 +77,10 @@ const FilterableInvoiceList = () => {
           totalInvoices={invoices.length}
         />
 
-        <InvoiceFilterDropdown showFullInfo={showFullInfo}>
-          {statusFilters.map((filter) => {
-            return (
-              <InvoiceFilterCheckbox
-                key={filter.status}
-                status={filter.status}
-                text={filter.displayText}
-                active={filter.active}
-                updaterFn={filter.updaterFn}
-              />
-            );
-          })}
-        </InvoiceFilterDropdown>
+        <InvoiceFilterDropdown
+          showFullInfo={showFullInfo}
+          statusFilters={statusFilters}
+        />
 
         <NewInvoiceButton showFullInfo={showFullInfo} />
       </header>

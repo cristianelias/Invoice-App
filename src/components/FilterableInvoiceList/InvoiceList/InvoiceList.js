@@ -1,4 +1,6 @@
-import Invoice from "./Invoice";
+import Invoice from "../Invoice/Invoice";
+
+import "./InvoiceList.css";
 
 const InvoiceList = (props) => {
   const { invoices } = props;
@@ -6,7 +8,7 @@ const InvoiceList = (props) => {
     <section>
       <ul>
         {invoices.map((invoice) => (
-          <li key={invoice.id}>
+          <li className="invoice-list__item" key={invoice.id}>
             <Invoice
               id={invoice.id}
               paymentDue={invoice.paymentDue}

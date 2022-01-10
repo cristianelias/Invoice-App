@@ -1,4 +1,4 @@
-import iconPlus from "../../assets/icon-plus.svg";
+import iconPlus from "../../../assets/icon-plus.svg";
 
 const NewInvoiceButton = (props) => {
   const { showFullInfo } = props;

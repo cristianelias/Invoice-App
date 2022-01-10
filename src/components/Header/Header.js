@@ -12,8 +12,8 @@ import "./Header.css";
 const Header = () => {
   const [darkTheme, setDarkTheme] = useState(false);
   return (
-    <header>
-      <nav className="header">
+    <header className="header">
+      <nav className="header__container">
         <div className="header__logo-container">
           <img
             className="header__logo"

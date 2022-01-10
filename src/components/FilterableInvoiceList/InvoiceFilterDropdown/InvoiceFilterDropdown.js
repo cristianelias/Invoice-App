@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import iconArrowDown from "../../assets/icon-arrow-down.svg";
+import iconArrowDown from "../../../assets/icon-arrow-down.svg";
+import InvoiceFilterCheckbox from "./InvoiceFilterCheckbox";
+import "./InvoiceFilterDropdown.css";
 
 import { useState } from "react";
 
 const InvoiceFilterDropdown = (props) => {
-  const { showFullInfo } = props;
+  const { showFullInfo, statusFilters } = props;
 
   const [filtersVisibility, setFilterVisibility] = useState(false);
 
@@ -39,7 +41,17 @@ const InvoiceFilterDropdown = (props) => {
         }`}
         onClick={(event) => event.stopPropagation()}
       >
-        {props.children}
+        {statusFilters.map((filter) => {
+          return (
+            <InvoiceFilterCheckbox
+              key={filter.status}
+              status={filter.status}
+              text={filter.displayText}
+              active={filter.active}
+              updaterFn={filter.updaterFn}
+            />
+          );
+        })}
       </fieldset>
     </div>
   );

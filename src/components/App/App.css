@@ -1,14 +1,12 @@
 @import "@fontsource/spartan/500.css";
 @import "@fontsource/spartan/700.css";
 
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -18,4 +16,40 @@ body {
   margin: 0;
   font-weight: 500;
   min-width: 360px;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 103px 16% 730px 78%;
+}
+
+@media (max-width: 1225px) {
+  .app-container {
+    grid-template-columns: 103px auto 730px auto;
+  }
+}
+
+@media (max-width: 948px) {
+  .app-container {
+    grid-template-columns: 103px auto;
+  }
+}
+
+@media (max-width: 850px) {
+  .app-container {
+    grid-template-columns: 48px auto 48px;
+    grid-template-rows: 80px auto;
+  }
+}
+
+@media (max-width: 710px) {
+  .app-container {
+    grid-template-columns: auto 424px auto;
+  }
+}
+
+@media (max-width: 484px) {
+  .app-container {
+    grid-template-columns: 24px auto 24px;
+  }
 }

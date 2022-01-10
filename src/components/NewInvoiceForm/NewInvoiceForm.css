@@ -277,12 +277,15 @@ li {
   body {
     min-height: 100vh;
   }
+
   .form {
-    left: 0;
+    width: 616px;
+    padding: 65px 56px 23px 56px;
     top: 80px;
     overflow: hidden;
     overflow-y: scroll;
   }
+
   .add-new-item {
     margin-bottom: 110px;
   }

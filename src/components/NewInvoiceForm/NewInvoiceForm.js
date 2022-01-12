@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+import { Link } from "react-router-dom";
+
 import "./NewInvoiceForm.css";
 
 const NewInvoiceForm = () => {
@@ -227,7 +230,7 @@ const NewInvoiceForm = () => {
             name="discard"
             type="button"
           >
-            Discard
+            <Link to="/">Discard</Link>
           </button>
           <button className="button-draft button" name="draft" type="button">
             Save as Draft

@@ -290,7 +290,7 @@ const NewInvoiceForm = () => {
 
         <button
           className="five-fields-container__add-new-item"
-          name="New Item"
+          name="NewItem"
           type="button"
         >
           + Add New Item
@@ -320,7 +320,7 @@ const NewInvoiceForm = () => {
         </button>
         <button
           className="footer-form__save-send-button"
-          name="save y send"
+          name="SaveAndSend"
           type="button"
         >
           Save & Send

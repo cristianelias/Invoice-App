@@ -1,7 +1,15 @@
+// Layout
+import MainLayout from "../../layouts/MainLayout";
+
+// Components
 import FilterableInvoiceList from "../../components/FilterableInvoiceList/FilterableInvoiceList";
 
-const Home = () => {
-  return <FilterableInvoiceList />;
-};
+import "./Home.css";
+
+const Home = () => (
+  <MainLayout>
+    <FilterableInvoiceList />
+  </MainLayout>
+);
 
 export default Home;

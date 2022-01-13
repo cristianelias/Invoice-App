@@ -1,8 +1,14 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import iconArrowDown from "../../../assets/icon-arrow-down.svg";
+
+// Components
 import InvoiceFilterCheckbox from "./InvoiceFilterCheckbox";
+
+// Assets
+import iconArrowDown from "../../../assets/icon-arrow-down.svg";
+
+// Styles
 import "./InvoiceFilterDropdown.css";
 
 import { useState } from "react";

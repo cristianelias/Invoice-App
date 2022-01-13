@@ -1,5 +1,7 @@
+// Components
 import Invoice from "../Invoice/Invoice";
 
+// Styles
 import "./InvoiceList.css";
 
 const InvoiceList = (props) => {

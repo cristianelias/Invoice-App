@@ -13,8 +13,6 @@ const ViewInvoice = () => {
   return (
     <MainLayout>
       <div className="view-invoice">
-        <h1>ViewInvoice</h1>
-
         <ul>
           <li>
             <button onClick={() => navigate(-1, { replace: true })}>

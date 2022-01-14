@@ -1,7 +1,14 @@
-import iconArrowRight from "../../../assets/icon-arrow-right.svg";
+// Dependencies
+// eslint-disable-next-line
+import { Link } from "react-router-dom";
 
+// Components
 import PaymentStatusLabel from "../PaymentStatusLabel/PaymentStatusLabel";
 
+// Assets
+import iconArrowRight from "../../../assets/icon-arrow-right.svg";
+
+// Styles
 import "./Invoice.css";
 
 // TODO: Currency should be read from backend
@@ -11,21 +18,23 @@ const Invoice = (props) => {
 
   return (
     <article className="invoice">
-      <span className="invoice__id">
-        <span className="invoice__hashtag">#</span>
-        {id}
-      </span>
-      <time className="invoice__date">{paymentDue}</time>
-      <p className="invoice__client-name">{clientName}</p>
-      <p className="invoice__amount">£ {total}</p>
-      <PaymentStatusLabel status={status} />
-      <span className="invoice__arrow-container">
-        <img
-          className="invoice__arrow"
-          src={iconArrowRight}
-          alt="Arrow icon. Click to edit invoice."
-        ></img>
-      </span>
+      <Link to="/view-invoice" className="invoice__container">
+        <span className="invoice__id">
+          <span className="invoice__hashtag">#</span>
+          {id}
+        </span>
+        <time className="invoice__date">{paymentDue}</time>
+        <p className="invoice__client-name">{clientName}</p>
+        <p className="invoice__amount">£ {total}</p>
+        <PaymentStatusLabel status={status} />
+        <span className="invoice__arrow-container">
+          <img
+            className="invoice__arrow"
+            src={iconArrowRight}
+            alt="Arrow icon. Click to edit invoice."
+          ></img>
+        </span>
+      </Link>
     </article>
   );
 };

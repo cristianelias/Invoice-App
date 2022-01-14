@@ -1,26 +1,35 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
-import Header from "../Header/Header";
-import FilterableInvoiceList from "../FilterableInvoiceList/FilterableInvoiceList";
-import NewInvoiceForm from "../NewInvoiceForm/NewInvoiceForm";
-import Overlay from "../Overlay/Overlay";
+/* eslint-disable-next-line */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Pages
+import Home from "../../pages/Home/Home";
+import NewInvoice from "../../pages/NewInvoice/NewInvoice";
+import ViewInvoice from "../../pages/ViewInvoice/ViewInvoice";
+import EditInvoice from "../../pages/EditInvoice/EditInvoice";
+
+// Styles
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="app-container">
-      <Overlay />
-      <Header />
-      <FilterableInvoiceList />
-      <NewInvoiceForm />
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="new-invoice" element={<NewInvoice />} />
+        <Route path="view-invoice" element={<ViewInvoice />} />
+        <Route path="edit-invoice" element={<EditInvoice />} />
+      </Routes>
     </div>
   );
 };
 
 render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
 );

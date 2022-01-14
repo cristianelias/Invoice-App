@@ -1,14 +1,17 @@
+// Dependencies
 import { useState, useEffect, useLayoutEffect } from "react";
 import debounce from "lodash.debounce";
 
+// Components
 import InvoiceListOverview from "./InvoiceListOverview/InvoiceListOverview";
 import NewInvoiceButton from "./NewInvoiceButton/NewInvoiceButton";
 import InvoiceFilterDropdown from "./InvoiceFilterDropdown/InvoiceFilterDropdown";
-
 import InvoiceList from "./InvoiceList/InvoiceList";
 
+// Clients
 import invoiceClient from "../../clients/invoiceClient";
 
+// Styles
 import "./FilterableInvoiceList.css";
 
 const FilterableInvoiceList = () => {

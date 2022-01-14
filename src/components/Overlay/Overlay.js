@@ -1,3 +1,4 @@
+// Styles
 import "./Overlay.css";
 
 const Overlay = () => {

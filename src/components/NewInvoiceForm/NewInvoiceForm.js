@@ -1,3 +1,8 @@
+// Dependencies
+// eslint-disable-next-line
+import { Link } from "react-router-dom";
+
+// Styles
 import "./NewInvoiceForm.css";
 
 const NewInvoiceForm = () => {
@@ -309,21 +314,21 @@ const NewInvoiceForm = () => {
           name="discard"
           type="button"
         >
-          Discard
+          <Link to="/">Discard</Link>
         </button>
         <button
           className="footer-form__draft-button"
           name="draft"
           type="button"
         >
-          Save as Draft
+          <Link to="/">Save as Draft</Link>
         </button>
         <button
           className="footer-form__save-send-button"
           name="SaveAndSend"
           type="button"
         >
-          Save & Send
+          <Link to="/">Save & Send</Link>
         </button>
       </footer>
     </form>

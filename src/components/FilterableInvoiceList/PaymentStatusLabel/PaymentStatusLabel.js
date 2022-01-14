@@ -1,3 +1,4 @@
+// Styles
 import "./PaymentStatusLabel.css";
 
 const PaymentStatusLabel = (props) => {

@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
-import logo from "../../assets/logo.svg";
+// Dependencies
+import { useState } from "react";
+
+// Assets
 import lightThemeImage from "../../assets/icon-sun.svg";
 import darkThemeImage from "../../assets/icon-moon.svg";
 import avatarImage from "../../assets/image-avatar.jpg";
-import { useState } from "react";
+import logo from "../../assets/logo.svg";
 
+// Styles
 import "./Header.css";
 
 const Header = () => {

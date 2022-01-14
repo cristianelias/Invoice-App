@@ -1,6 +1,5 @@
-// eslint-disable-next-line
-
 // Dependencies
+// eslint-disable-next-line
 import { Link } from "react-router-dom";
 
 // Styles
@@ -12,242 +11,327 @@ const NewInvoiceForm = () => {
   };
 
   return (
-    <article>
-      <form className="form">
-        <legend className="title">New invoice</legend>
-        <h2 className="h2">Bill From</h2>
-        <section className="section-bill-from">
-          <label className="street input-lavel">
-            Street Address{" "}
-            <input
-              className="input-street form-input"
-              type="text"
-              name="Street Address"
-              placeholder=""
-            />
+    <form className="form">
+      <legend className="title">New invoice</legend>
+      <h2 className="h2">Bill From</h2>
+
+      <div className="field field--error">
+        <label className="field__label" htmlFor="fromStreetAddress">
+          Street Address
+          <span className="field__validation">
+            This field is required, troesma.
+          </span>
+        </label>
+        <input className="field__input" type="text" name="fromStreetAddress" />
+      </div>
+
+      <section className="three-input-container">
+        <div className="field ">
+          <label className="field__label" htmlFor="fromCity">
+            City
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="city input-lavel">
-            City{" "}
-            <input
-              className="city form-input input-small"
-              type="text"
-              name="City"
-              placeholder=""
-            />
+          <input className="field__input" type="text" name="fromCity" />
+        </div>
+
+        <div className="field ">
+          <label className="field__label" htmlFor="fromPostCode">
+            Post Code
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="post-code input-lavel">
-            Post Code{" "}
-            <input
-              className="post-code form-input input-small"
-              type="text"
-              name="Post Code"
-              placeholder=""
-            />
+          <input className="field__input" type="text" name="fromPostCode" />
+        </div>
+
+        <div className="field ">
+          <label className="field__label" htmlFor="fromCountry">
+            Country
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="country input-lavel">
-            Country{" "}
-            <input
-              className="country form-input input-small"
-              type="text"
-              name="Country"
-              placeholder=""
-            />
+          <input className="field__input" type="text" name="fromCountry" />
+        </div>
+      </section>
+
+      <section>
+        <h2 className="h2">Bill To</h2>
+
+        <div className="field ">
+          <label className="field__label " htmlFor="ClientName">
+            Client's Name
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-        </section>
-        <section className="section-bill-to">
-          <h2 className="h2">Bill To</h2>
-          <label className="item-client input-lavel">
-            Client's Name{" "}
-            <input
-              className="input-client form-input"
-              type="text"
-              name="Name"
-              placeholder="e.g. email@example.com"
-            />
+          <input
+            className="field__input field__input--focus"
+            type="text"
+            name="ClientName"
+          />
+        </div>
+
+        <div className="field ">
+          <label className="field__label" htmlFor="ClientEmail">
+            Client's Email
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="item-client input-lavel">
-            Client's Email{" "}
-            <input
-              className="input-client form-input"
-              type="email"
-              name="Email"
-              placeholder=""
-            />
+          <input
+            className="field__input"
+            type="Email"
+            name="ClientEmail"
+            placeholder="e.g. email@example.com"
+          />
+        </div>
+
+        <div className="field ">
+          <label className="field__label" htmlFor="StreetAddress">
+            Street Address
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="item-client input-lavel">
-            Street Address{" "}
-            <input
-              className="input-client form-input"
-              type="text"
-              name="Street Address"
-              placeholder=""
-            />
-          </label>
-          <div className="flex-container-client">
-            <label className="client-city input-lavel">
-              City{" "}
-              <input
-                className="form-input input-small"
-                type="text"
-                name="City"
-                placeholder=""
-              />
+          <input className="field__input" type="text" name="StreetAddres" />
+        </div>
+
+        <section className="three-input-container">
+          <div className="field ">
+            <label className="field__label" htmlFor="City">
+              City
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
             </label>
-            <label className="client-post-code input-lavel">
-              Post Code{" "}
-              <input
-                className="form-input input-small"
-                type="text"
-                name="Post Code"
-                placeholder=""
-              />
+            <input className="field__input" type="text" name="City" />
+          </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="PostCode">
+              Post Code
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
             </label>
-            <label className="client-country input-lavel">
-              Country{" "}
-              <input
-                className="form-input input-small"
-                type="text"
-                name="Country"
-                placeholder=""
-              />
+            <input className="field__input" type="text" name="PostCode" />
+          </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="Country">
+              Country
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
             </label>
+            <input className="field__input" type="text" name="Country" />
           </div>
         </section>
-        <section className="section-invoice-date">
-          <label className="input-lavel">
-            Invoice Date{" "}
-            <input
-              className="item-invoice-date form-input input-invoice-date"
-              type="date"
-              name="month"
-              placeholder="21 Aug 2021"
-            />
+      </section>
+
+      <section className="two-input-container">
+        <div className="field ">
+          <label className="field__label" htmlFor="InvoiceDate">
+            Invoice Date
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="input-lavel">
-            Payment Terms{" "}
-            <input
-              className="item-invoice-date form-input"
-              type="text"
-              name="Payment Terms"
-              placeholder="Net 30 Days"
-            />
+          <input
+            className="field__input"
+            type="date"
+            name="InvoiceDate"
+            placeholder="21 Aug 2021"
+          />
+        </div>
+
+        <div className="field ">
+          <label className="field__label" htmlFor="PaymentTerms">
+            Payment Terms
+            <span className="field__validation">
+              This field is required, troesma.
+            </span>
           </label>
-          <label className="project-description input-lavel">
-            Project Description{" "}
-            <input
-              className="item-invoice-date form-input"
-              type="text"
-              name="Project Description"
-              placeholder="e.g. Graphic Design Service"
-            />
-          </label>
-        </section>
-        <section>
-          <h1 className="item-list">Item List</h1>
-          <div>
-            <ul>
-              <li className="header-list">
-                <h2 className="item-header item-name input-lavel">Item Name</h2>
-                <h2 className="item-header qty input-lavel">Qty.</h2>
-                <h2 className="item-header price input-lavel">Price</h2>
-                <h2 className="item-header total input-lavel">Total</h2>
-              </li>
-              <li className="header-list invoice-concept-list">
-                <input
-                  className="invoice-concept-item form-input"
-                  type="text"
-                  name="concept"
-                  placeholder=""
-                />
-                <input
-                  className="invoice-concept-item form-input input-number input-qty"
-                  type="number"
-                  name="qty"
-                  placeholder=""
-                />
-                <input
-                  className="invoice-concept-item form-input input-number"
-                  type="number"
-                  name="price"
-                  placeholder=""
-                />
-                <p className="total">0.00</p>
-                <button
-                  className="button-delete-header-list button-delete"
-                  name="delete"
-                  type="button"
-                >
-                  <img
-                    className="invoice-concept-item"
-                    src="assets/delete.svg"
-                    alt="delete"
-                  ></img>
-                </button>
-              </li>
-              <li className="header-list invoice-concept-list">
-                <input
-                  className="invoice-concept-item form-input"
-                  type="text"
-                  name="concept"
-                  placeholder=""
-                />
-                <input
-                  className="invoice-concept-item form-input input-number input-qty"
-                  type="number"
-                  name="qty"
-                  placeholder=""
-                />
-                <input
-                  className="invoice-concept-item form-input input-number"
-                  type="number"
-                  name="price"
-                  placeholder=""
-                />
-                <p className="total">0.00</p>
-                <button
-                  className="button-delete-header-list button-delete"
-                  name="delete"
-                  type="button"
-                >
-                  <img
-                    className="invoice-concept-item"
-                    src="assets/delete.svg"
-                    alt="delete"
-                  ></img>
-                </button>
-              </li>
-            </ul>
-            <button
-              className="add-new-item button"
-              name="New Item"
-              type="button"
-            >
-              + Add New Item
-            </button>
+          <input
+            className="field__input"
+            type="text"
+            name="PaymentTerms"
+            placeholder=""
+          />
+        </div>
+      </section>
+
+      <div className="field ">
+        <label className="field__label" htmlFor="ProjectDescription">
+          Project Description
+          <span className="field__validation">
+            This field is required, troesma.
+          </span>
+        </label>
+        <input
+          className="field__input field__input--no-margin-bottom"
+          type="text"
+          name="ProjectDescription"
+          placeholder="e.g. Graphic Design Service"
+        />
+      </div>
+
+      <section>
+        <h1 className="item-list">Item List</h1>
+
+        <section className="five-fields-container">
+          <div className="field ">
+            <label className="field__label" htmlFor="ItemName">
+              Item Name
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input className="field__input" type="text" name="ItemName" />
           </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="Qty">
+              Qty.
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input
+              className="field__input field__imput--type-number field__input--center"
+              type="number"
+              name="Qty"
+            />
+          </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="Price">
+              Price
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input
+              className="field__input field__imput--type-number"
+              type="number"
+              name="Price"
+            />
+          </div>
+
+          <div className="field__total">
+            <h3 className="field__label">Total</h3>
+            <div>0.00</div>
+          </div>
+
+          <button className="field__button-delete field__button-delete--margin-top">
+            <svg width="13" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
+                fill="#888EB0"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </button>
         </section>
-        <div className="linear-gradient"></div>
-        <footer className="footer">
-          <button
-            className="button-discard button"
-            name="discard"
-            type="button"
-          >
-            <Link to="/">Discard</Link>
+
+        <section className="five-fields-container five-fields-container--hidden-labels">
+          <div className="field ">
+            <label className="field__label" htmlFor="ItemName">
+              Item Name
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input className="field__input" type="text" name="ItemName" />
+          </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="Qty">
+              Qty.
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input
+              className="field__input field__imput--type-number field__input--center"
+              type="number"
+              name="Qty"
+              max="4"
+            />
+          </div>
+
+          <div className="field ">
+            <label className="field__label" htmlFor="Price">
+              Price
+              <span className="field__validation">
+                This field is required, troesma.
+              </span>
+            </label>
+            <input
+              className="field__input field__imput--type-number"
+              type="number"
+              name="Price"
+            />
+          </div>
+
+          <div className="field__total">
+            <h3 className="field__title--hidden">Total</h3>
+            <div>0.00</div>
+          </div>
+
+          <button className="field__button-delete">
+            <svg width="13" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
+                fill="#888EB0"
+                fill-rule="nonzero"
+              />
+            </svg>
           </button>
-          <button className="button-draft button" name="draft" type="button">
-            <Link to="/">Save as Draft</Link>
-          </button>
-          <button
-            className="button-save-send button"
-            name="save y send"
-            type="button"
-          >
-            <Link to="/">Save & Send</Link>
-          </button>
-        </footer>
-      </form>
-    </article>
+        </section>
+
+        <button
+          className="five-fields-container__add-new-item"
+          name="NewItem"
+          type="button"
+        >
+          + Add New Item
+        </button>
+      </section>
+      <p className="field__validation five-fields-container__validation">
+        - All fields must be added
+      </p>
+      <div className="footer-form__gradient"></div>
+
+      <div className="five-fields-container__spacer"></div>
+
+      <footer className="footer-form">
+        <button
+          className="footer-form__discard-button"
+          name="discard"
+          type="button"
+        >
+          <Link to="/">Discard</Link>
+        </button>
+        <button
+          className="footer-form__draft-button"
+          name="draft"
+          type="button"
+        >
+          <Link to="/">Save as Draft</Link>
+        </button>
+        <button
+          className="footer-form__save-send-button"
+          name="SaveAndSend"
+          type="button"
+        >
+          <Link to="/">Save & Send</Link>
+        </button>
+      </footer>
+    </form>
   );
 };
 

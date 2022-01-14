@@ -1,5 +1,6 @@
 .invoice-filter-checkbox__label,
 .invoice-filter-dropdown__trigger {
+  cursor: pointer;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -20,6 +21,7 @@
 }
 
 .invoice-filter-dropdown {
+  cursor: pointer;
   position: relative;
   user-select: none;
   height: 40px;

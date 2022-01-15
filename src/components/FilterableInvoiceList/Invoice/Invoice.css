@@ -1,4 +1,5 @@
 .invoice__container {
+  box-sizing: border-box;
   width: 730px;
   height: 72px;
   padding: 0 32px;
@@ -11,6 +12,10 @@
   align-items: center;
   text-align: left;
   gap: 2%;
+}
+
+.invoice__container:hover {
+  border: solid 1px #7c5dfa;
 }
 
 .invoice__id {
@@ -63,19 +68,19 @@
 }
 
 @media (max-width: 948px) {
-  .invoice {
+  .invoice__container {
     width: 100%;
   }
 }
 
 @media (max-width: 850px) {
-  .invoice {
+  .invoice__container {
     padding: 0 24px;
   }
 }
 
 @media (max-width: 710px) {
-  .invoice {
+  .invoice__container {
     height: 134px;
     padding: 24px;
     margin: 0 auto 16px auto;

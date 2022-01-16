@@ -1,4 +1,4 @@
-import { StrictMode, useState, useEffect } from "react";
+import { StrictMode, useState, useLayoutEffect } from "react";
 import { render } from "react-dom";
 /* eslint-disable-next-line */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,13 +21,9 @@ import "./App.css";
 const App = () => {
   const [invoices, setInvoices] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const invoices = invoiceClient.fetchInvoices();
-    setInvoices(invoices);
-  }, []);
 
-  useEffect(() => {
-    const invoices = invoiceClient.fetchInvoices();
     setInvoices(invoices);
   }, []);
 

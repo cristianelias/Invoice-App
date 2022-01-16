@@ -18,7 +18,7 @@ const EditInvoicePage = (props) => {
     );
 
     setInvoice(currentInvoice[0]);
-  }, []);
+  }, [currentInvoiceId, invoices]);
 
   return (
     <div className="edit-invoice">

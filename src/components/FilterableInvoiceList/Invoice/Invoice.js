@@ -11,8 +11,6 @@ import iconArrowRight from "../../../assets/icon-arrow-right.svg";
 // Styles
 import "./Invoice.css";
 
-// TODO: Currency should be read from backend
-
 const Invoice = (props) => {
   const { id, paymentDue, clientName, total, status } = props;
 

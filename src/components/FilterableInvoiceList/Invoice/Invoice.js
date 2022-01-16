@@ -18,7 +18,7 @@ const Invoice = (props) => {
 
   return (
     <article className="invoice">
-      <Link to="/view-invoice" className="invoice__container">
+      <Link to={`/view-invoice/${id}`} className="invoice__container">
         <span className="invoice__id">
           <span className="invoice__hashtag">#</span>
           {id}

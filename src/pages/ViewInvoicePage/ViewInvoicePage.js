@@ -1,18 +1,28 @@
 // Dependencies
+import { useLayoutEffect, useState } from "react";
 // eslint-disable-next-line
-import { Link, useNavigate } from "react-router-dom";
-
-// Layout
-import MainLayout from "../../layouts/MainLayout";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 // Styles
-import "./ViewInvoice.css";
+import "./ViewInvoicePage.css";
 
-const ViewInvoice = () => {
+const ViewInvoicePage = (props) => {
+  const [invoice, setInvoice] = useState({});
+  const { invoices } = props;
+  const currentInvoiceId = useParams().id;
   const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    const currentInvoice = invoices.filter(
+      (inv) => inv.id === currentInvoiceId
+    );
+
+    setInvoice(currentInvoice[0]);
+  }, []);
+
   return (
-    <MainLayout>
-      <div className="view-invoice">
+    <div className="view-invoice">
+      <div>
         <nav className="page-navigation">
           <svg
             className="page-navigation__svg"
@@ -43,7 +53,10 @@ const ViewInvoice = () => {
           </div>
 
           <div className="invoice-actions">
-            <Link className="invoice-actions__edit" to="/edit-invoice">
+            <Link
+              className="invoice-actions__edit"
+              to={`/view-invoice/${currentInvoiceId}/edit`}
+            >
               Edit
             </Link>
             <Link className="invoice-actions__delete" to="/">
@@ -61,7 +74,7 @@ const ViewInvoice = () => {
                   <span className="billing-two-columns__invoice-hashtag">
                     #
                   </span>
-                  XM914
+                  XM941231
                 </span>
                 <p className="billing-two-columns__project-description">
                   Graphic Design
@@ -69,7 +82,7 @@ const ViewInvoice = () => {
               </div>
 
               <div className="four-texts">
-                <p>19 Union Terrace</p>
+                <p>19 Union</p>
                 <p>London</p>
                 <p>E1 3EZ</p>
                 <p>United Kingdom</p>
@@ -159,8 +172,10 @@ const ViewInvoice = () => {
           </table>
         </section>
       </div>
-    </MainLayout>
+
+      <Outlet />
+    </div>
   );
 };
 
-export default ViewInvoice;
+export default ViewInvoicePage;

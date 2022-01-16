@@ -1,5 +1,5 @@
 // Dependencies
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import debounce from "lodash.debounce";
 
 // Components
@@ -8,24 +8,16 @@ import NewInvoiceButton from "./NewInvoiceButton/NewInvoiceButton";
 import InvoiceFilterDropdown from "./InvoiceFilterDropdown/InvoiceFilterDropdown";
 import InvoiceList from "./InvoiceList/InvoiceList";
 
-// Clients
-import invoiceClient from "../../clients/invoiceClient";
-
 // Styles
 import "./FilterableInvoiceList.css";
 
-const FilterableInvoiceList = () => {
-  const [invoices, setInvoices] = useState([]);
+const FilterableInvoiceList = (props) => {
+  const { invoices } = props;
   const [showFullInfo, setShowFullInfo] = useState(false);
 
   const [filterPaid, setFilterPaid] = useState(true);
   const [filterPending, setFilterPending] = useState(true);
   const [filterDraft, setFilterDraft] = useState(true);
-
-  useEffect(() => {
-    const invoices = invoiceClient.fetchInvoices();
-    setInvoices(invoices);
-  }, []);
 
   // TODO: Put this inside a custom hook or a context component
   useLayoutEffect(() => {
@@ -35,7 +27,7 @@ const FilterableInvoiceList = () => {
       window.innerWidth >= TABLET_MINIMAL_WIDTH
         ? setShowFullInfo(true)
         : setShowFullInfo(false);
-    }, 400);
+    }, 200);
 
     window.addEventListener("resize", updateShowFullInfo);
     updateShowFullInfo();

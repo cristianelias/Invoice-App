@@ -1,4 +1,281 @@
 .view-invoice {
-  margin-top: 32px;
+  margin: 64px 0 54px 0;
   grid-column: 3/4;
+}
+
+.page-navigation {
+  margin-bottom: 22px;
+}
+
+.page-navigation__button {
+  padding: 10px 5px 10px 24px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+}
+
+.modify-invoice {
+  width: 100%;
+  height: 88px;
+  padding: 0 32px 0 32px;
+  background-color: #ffffff;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modify-invoice__payment-status {
+  display: flex;
+}
+
+.modify-invoice__label {
+  color: #858bb2;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  margin-right: 16px;
+}
+
+.invoice-actions {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+
+.invoice-actions__edit {
+  color: #7e88c3;
+  background: #f9fafe;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+  margin-right: 8px;
+}
+
+.invoice-actions__delete {
+  color: #ffffff;
+  background: #ec5757;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+  margin-right: 8px;
+}
+
+.invoice-actions__paid {
+  color: #ffffff;
+  background: #7c5dfa;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+}
+
+.invoice-details {
+  width: 100%;
+  height: 631px;
+  margin-top: 24px;
+  padding: 48px;
+  background-color: #ffffff;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.billing {
+  margin-bottom: 45px;
+}
+
+.billing-two-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+
+.billing-two-columns__invoice-id {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #0c0e16;
+}
+
+.billing-two-columns__invoice-hashtag {
+  color: #888eb0;
+}
+
+.billing-two-columns__project-description {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+  margin-top: 8px;
+}
+
+.four-texts {
+  font-size: 11px;
+  line-height: 18px;
+  text-align: right;
+  letter-spacing: -0.229167px;
+  color: #7e88c3;
+}
+
+.four-texts__left {
+  text-align: left;
+  margin-top: 8px;
+}
+
+.billing-three-columns {
+  display: flex;
+}
+
+.billing-three-columns__first {
+  margin-right: 100px;
+}
+
+.title-and-subtitle--top {
+  margin-bottom: 32px;
+}
+
+.title-and-subtitle__title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+  margin-bottom: 12px;
+}
+
+.title-and-subtitle__subtitle {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.3125px;
+  color: #0c0e16;
+}
+
+.billing-three-columns__second {
+  margin-right: 110px;
+  text-align: left;
+}
+
+.pricing-table {
+  width: 100%;
+  background: #f9fafe;
+  border-radius: 8px 8px 0px 0px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.pricing-table__titles th {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: -0.229167px;
+  color: #7e88c3;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.pricing-table-titles__item-name {
+  width: 222px;
+  padding-left: 32px;
+  text-align: left;
+}
+
+.pricing-table-titles__qty,
+.pricing-table-titles__price,
+.pricing-table-titles__total {
+  width: 29px;
+}
+
+.pricing-table-titles__price {
+  padding-left: 89px;
+  text-align: right;
+}
+
+.pricing-table-titles__total {
+  padding: 0 32px 0 108px;
+  text-align: right;
+}
+
+.pricing-table__row {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+  height: 15px;
+}
+
+.pricing-table__row-item-name {
+  padding: 0 0 32px 32px;
+  height: 15px;
+}
+
+.pricing-table__row-qty,
+.pricing-table__row-price,
+.pricing-table__row-total {
+  padding-bottom: 32px;
+}
+
+.pricing-table__row-qty {
+  text-align: center;
+}
+
+.pricing-table__row-price,
+.pricing-table__row-total {
+  text-align: right;
+}
+
+.pricing-table__row-total {
+  padding-right: 32px;
+}
+
+.pricing-table__row-qty,
+.pricing-table__row-price {
+  color: #7e88c3;
+}
+
+..pricing-table--row-botomm {
+  padding-bottom: 40px;
+}
+
+.pricing-table__footer {
+  height: 80px;
+  background: #373b53;
+  color: #ffffff;
+}
+
+.pricing-table__footer-amount {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: -0.2px;
+  padding-left: 32px;
+  text-align: left;
+}
+
+.pricing-table__footer-final-price {
+  width: 120px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: right;
+  letter-spacing: -0.5px;
+  padding-right: 32px;
+  text-align: right;
+}
+
+/* 
+first child es primer hijo 
+last child es ultimo hijo
+*/
+table tr:last-child th:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
 }

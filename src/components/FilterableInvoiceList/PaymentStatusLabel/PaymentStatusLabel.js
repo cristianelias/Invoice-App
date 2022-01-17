@@ -2,21 +2,30 @@
 import "./PaymentStatusLabel.css";
 
 const PaymentStatusLabel = (props) => {
-  const { status } = props;
+  const { status, fixedSize } = props;
+  const baseClassName = "payment-status-label";
 
-  const modifierPerStatus = {
-    paid: "--paid",
-    pending: "--pending",
-    draft: "--draft",
+  const getModifiers = () => {
+    const spacer = " ";
+    const fixedSizeModifier = `${baseClassName}--fixed-size`;
+
+    const modifierPerStatus = {
+      paid: `${baseClassName}--paid`,
+      pending: `${baseClassName}--pending`,
+      draft: `${baseClassName}--draft`,
+    };
+
+    let modifiers = modifierPerStatus[status];
+
+    if (fixedSize) {
+      modifiers += `${spacer}${fixedSizeModifier}`;
+    }
+
+    return modifiers;
   };
 
-  const currentModifier = modifierPerStatus[status];
-
   return (
-    <span
-      className={`payment-status-label 
-      payment-status-label${currentModifier}`}
-    >
+    <span className={`${baseClassName} ${getModifiers()}`}>
       <div className="payment-status-label__circle"></div>
       <span className="payment-status-label__text">{status}</span>
     </span>

@@ -13,6 +13,10 @@ const ViewInvoicePage = (props) => {
   const currentInvoiceId = useParams().id;
   const navigate = useNavigate();
 
+  if (!invoices || invoices.length === 0) {
+    return null;
+  }
+
   return (
     <div className="view-invoice">
       <div>

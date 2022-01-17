@@ -1,16 +1,16 @@
-.list-page {
+.list-invoices-page {
   grid-column: 3/4;
   margin-top: 72px;
 }
 
 @media (max-width: 948px) {
-  .list-page {
+  .list-invoices-page {
     grid-column: 2/3;
   }
 }
 
 @media (max-width: 850px) {
-  .list-page {
+  .list-invoices-page {
     grid-row: 2/3;
     margin: 56px 0 0 0;
   }

@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import ListPage from "../../pages/ListPage/ListPage";
+import ListInvoicesPage from "../../pages/ListInvoicesPage/ListInvoicesPage";
 import NewInvoicePage from "../../pages/NewInvoicePage/NewInvoicePage";
 import ViewInvoicePage from "../../pages/ViewInvoicePage/ViewInvoicePage";
 import EditInvoicePage from "../../pages/EditInvoicePage/EditInvoicePage";
@@ -31,7 +31,7 @@ const App = () => {
     <div className="main-layout">
       <Header />
       <Routes>
-        <Route path="/" element={<ListPage invoices={invoices} />}>
+        <Route path="/" element={<ListInvoicesPage invoices={invoices} />}>
           <Route
             path="new-invoice"
             element={<NewInvoicePage setInvoices={setInvoices} />}

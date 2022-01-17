@@ -23,7 +23,7 @@ const ViewInvoicePage = (props) => {
   }
 
   return (
-    <div className="view-invoice">
+    <div className="view-invoice-page">
       <div>
         <nav className="page-navigation">
           <svg

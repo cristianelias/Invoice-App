@@ -293,3 +293,15 @@ h3.field__title--hidden {
     left: 0px;
   }
 }
+
+@media (max-width: 616px) {
+  .form {
+    padding: 32px auto 0 auto;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .field--media-wrap {
+    flex-wrap: wrap;
+  }
+}

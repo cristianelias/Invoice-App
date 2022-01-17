@@ -30,6 +30,7 @@
 
 .modify-invoice__payment-status {
   display: flex;
+  align-items: center;
 }
 
 .modify-invoice__label {

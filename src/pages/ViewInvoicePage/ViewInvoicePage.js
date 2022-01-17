@@ -55,6 +55,7 @@ const ViewInvoicePage = (props) => {
             {currentInvoice.status && (
               <PaymentStatusLabel
                 status={currentInvoice && currentInvoice.status}
+                fixedSize={true}
               />
             )}
           </div>

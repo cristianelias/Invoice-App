@@ -50,6 +50,10 @@
   line-height: 1px;
 }
 
+.payment-status-label--fixed-size {
+  padding: 13px 17px 12px 18px;
+}
+
 @media (max-width: 710px) {
   .payment-status-label {
     width: 103px;

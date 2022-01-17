@@ -4,6 +4,7 @@ import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 // Components
 import InvoiceDetails from "../../components/InvoiceDetails/InvoiceDetails";
+import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentStatusLabel/PaymentStatusLabel";
 
 // Styles
 import "./ViewInvoicePage.css";
@@ -12,6 +13,10 @@ const ViewInvoicePage = (props) => {
   const { invoices } = props;
   const currentInvoiceId = useParams().id;
   const navigate = useNavigate();
+
+  const currentInvoice = invoices.find(
+    (invoice) => invoice.id === currentInvoiceId
+  );
 
   if (!invoices || invoices.length === 0) {
     return null;
@@ -47,7 +52,11 @@ const ViewInvoicePage = (props) => {
         <article className="modify-invoice">
           <div className="modify-invoice__payment-status">
             <p className="modify-invoice__label">Status</p>
-            <span>Pending</span>
+            {currentInvoice.status && (
+              <PaymentStatusLabel
+                status={currentInvoice && currentInvoice.status}
+              />
+            )}
           </div>
 
           <div className="invoice-actions">
@@ -65,9 +74,7 @@ const ViewInvoicePage = (props) => {
         </article>
       </div>
 
-      <InvoiceDetails
-        invoice={invoices.find((invoice) => invoice.id === currentInvoiceId)}
-      />
+      <InvoiceDetails invoice={currentInvoice} />
 
       <Outlet />
     </div>

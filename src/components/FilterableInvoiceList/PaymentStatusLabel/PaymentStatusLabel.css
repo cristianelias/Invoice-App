@@ -54,7 +54,7 @@
   padding: 13px 17px 12px 18px;
 }
 
-@media (max-width: 710px) {
+@media (max-width: 650px) {
   .payment-status-label {
     width: 103px;
     height: 40px;

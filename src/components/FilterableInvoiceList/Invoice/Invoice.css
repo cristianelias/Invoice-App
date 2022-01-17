@@ -1,6 +1,5 @@
 .invoice__container {
   box-sizing: border-box;
-  width: 730px;
   height: 72px;
   padding: 0 32px;
   background-color: #ffffff;
@@ -67,22 +66,17 @@
   width: 7px;
 }
 
-@media (max-width: 948px) {
+@media (max-width: 720px) {
   .invoice__container {
-    width: 100%;
+    gap: 1%;
+    grid-template-columns: 15% 17% 20% 22% 18% 3%;
   }
 }
 
-@media (max-width: 850px) {
-  .invoice__container {
-    padding: 0 24px;
-  }
-}
-
-@media (max-width: 710px) {
+@media (max-width: 650px) {
   .invoice__container {
     height: 134px;
-    padding: 24px;
+    padding: 24px 36px;
     margin: 0 auto 16px auto;
     grid-template-columns: 50% 50%;
     grid-template-rows: 30% 40% 30%;

@@ -1,6 +1,12 @@
 .view-invoice-page {
-  margin: 64px 0 54px 0;
+  /* margin: 64px 0 54px 0;
   grid-column: 3/4;
+ */
+
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 18% 730px 26%;
+  margin-top: 72px;
 }
 
 .page-navigation {

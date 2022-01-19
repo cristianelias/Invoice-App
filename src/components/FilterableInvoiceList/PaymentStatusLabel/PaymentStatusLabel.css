@@ -55,10 +55,9 @@
 }
 
 @media (max-width: 650px) {
-  .payment-status-label {
+  .list-invoices-page .payment-status-label {
     width: 103px;
     height: 40px;
-    margin-bottom: 20px;
     grid-column: 2/3;
     grid-row: 3/4;
     justify-self: end;

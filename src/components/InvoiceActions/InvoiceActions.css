@@ -1,0 +1,55 @@
+.invoice-actions {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+
+.invoice-actions__edit {
+  color: #7e88c3;
+  background: #f9fafe;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+  margin-right: 8px;
+}
+
+.invoice-actions__delete {
+  color: #ffffff;
+  background: #ec5757;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+  margin-right: 8px;
+}
+
+.invoice-actions__paid {
+  color: #ffffff;
+  background: #7c5dfa;
+  padding: 17px 24px 16px 24px;
+  border-radius: 24px;
+}
+
+.invoice-action-mobile {
+  display: none;
+  grid-column: 2/3;
+  width: 100%;
+  min-width: 360px;
+  height: 91px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  padding: 21px 24px 22px 24px;
+}
+
+.invoice-action-mobile .invoice-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 670px) {
+  .invoice-action-mobile {
+    display: inline;
+  }
+}

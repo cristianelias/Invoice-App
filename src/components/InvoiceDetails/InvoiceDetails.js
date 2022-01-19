@@ -118,6 +118,39 @@ const InvoiceDetails = (props) => {
             </tr>
           </tfoot>
         </table>
+
+        <div className="pricing-table-mobile">
+          <ul className="pricing-table-mobile__container">
+            <li>
+              <div className="pricing-table-mobile__row">
+                <div className="pricing-table-mobile__container-title-qty-price">
+                  <p className="pricing-table-mobile__title">Banner Design</p>
+                  <div className="pricing-table-mobile__qty-price">
+                    1 x £ 156.00
+                  </div>
+                </div>
+                <div className="pricing-table-mobile__total">£ 156.00</div>
+              </div>
+            </li>
+            <li>
+              <div className="pricing-table-mobile__row">
+                <div className="pricing-table-mobile__container-title-qty-price">
+                  <p className="pricing-table-mobile__title">Email Design</p>
+                  <div className="pricing-table-mobile__qty-price">
+                    2 x £ 200.00
+                  </div>
+                </div>
+                <div className="pricing-table-mobile__total">£ 400.00</div>
+              </div>
+            </li>
+          </ul>
+          <div className="pricing-table-mobile__footer">
+            <p className="pricing-table-mobile__footer-amount">Grand Total</p>
+            <div className="pricing-table-mobile__footer-final-price">
+              £ 556.00
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

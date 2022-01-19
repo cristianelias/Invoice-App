@@ -1,7 +1,6 @@
 .invoice-details {
   grid-column: 2/3;
   width: 100%;
-  height: 631px;
   margin-top: 24px;
   padding: 48px;
   background-color: #ffffff;
@@ -54,11 +53,12 @@
 }
 
 .billing-three-columns {
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 35% auto;
 }
 
 .billing-three-columns__first {
-  margin-right: 100px;
+  grid-column: 1/2;
 }
 
 .title-and-subtitle--top {
@@ -83,8 +83,12 @@
 }
 
 .billing-three-columns__second {
-  margin-right: 110px;
+  grid-column: 2/3;
   text-align: left;
+}
+
+.billing-three-columns__third {
+  grid-column: 3/4;
 }
 
 .pricing-table {
@@ -93,7 +97,6 @@
   border-radius: 8px 8px 0px 0px;
   border-spacing: 0;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
 .pricing-table__titles th {
@@ -107,7 +110,7 @@
 }
 
 .pricing-table-titles__item-name {
-  width: 222px;
+  width: 210px;
   padding-left: 32px;
   text-align: left;
 }
@@ -124,7 +127,7 @@
 }
 
 .pricing-table-titles__total {
-  padding: 0 32px 0 108px;
+  padding: 0 32px 0 117px;
   text-align: right;
 }
 
@@ -202,4 +205,117 @@ table tr:last-child th:first-child {
 
 table tr:last-child td:last-child {
   border-bottom-right-radius: 8px;
+}
+
+.pricing-table-mobile {
+  display: none;
+}
+
+.pricing-table-mobile__container {
+  width: 100%;
+  background: #f9fafe;
+  border-radius: 8px 8px 0px 0px;
+  list-style: none;
+  padding: 24px 24px 0px 24px;
+}
+
+.pricing-table-mobile__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.pricing-table-mobile__title,
+.pricing-table-mobile__total,
+.pricing-table-mobile__qty-price {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+}
+
+.pricing-table-mobile__qty-price {
+  color: #7e88c3;
+  padding-top: 8px;
+}
+
+.pricing-table-mobile__total {
+  text-align: left;
+}
+
+.pricing-table-mobile__footer {
+  height: 80px;
+  background: #373b53;
+  border-radius: 0px 0px 8px 8px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+
+.pricing-table-mobile__footer-amount {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: -0.229167px;
+}
+
+.pricing-table-mobile__footer-final-price {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 32px;
+  text-align: right;
+  letter-spacing: -0.416667px;
+}
+
+@media (max-width: 670px) {
+  .invoice-actions {
+    display: none;
+  }
+  .billing-three-columns {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 130px 47px;
+    gap: 32px 0;
+  }
+
+  .billing-three-columns__third {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  .invoice-details {
+    padding: 24px;
+  }
+
+  .pricing-table {
+    display: none;
+  }
+
+  .pricing-table-mobile {
+    display: inline;
+  }
+}
+
+@media (max-width: 490px) {
+  .billing-two-columns {
+    flex-direction: column;
+  }
+
+  .billing-two-columns .four-texts {
+    text-align: left;
+    padding-top: 30px;
+  }
+
+  .billing-three-columns {
+    margin-top: 31px;
+  }
+}
+
+@media (max-width: 670px) {
+  .invoice-details {
+    margin-bottom: 147px;
+  }
 }

@@ -5,6 +5,8 @@ import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 // Components
 import InvoiceDetails from "../../components/InvoiceDetails/InvoiceDetails";
 import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentStatusLabel/PaymentStatusLabel";
+import InvoiceActions from "../../components/InvoiceActions/InvoiceActions";
+import Gradient from "../../components/Gradient/Gradient";
 
 // Styles
 import "./ViewInvoicePage.css";
@@ -24,7 +26,7 @@ const ViewInvoicePage = (props) => {
 
   return (
     <div className="view-invoice-page">
-      <div>
+      <div className="invoice-details-header">
         <nav className="page-navigation">
           <svg
             className="page-navigation__svg"
@@ -60,22 +62,19 @@ const ViewInvoicePage = (props) => {
             )}
           </div>
 
-          <div className="invoice-actions">
-            <Link
-              className="invoice-actions__edit"
-              to={`/view-invoice/${currentInvoiceId}/edit`}
-            >
-              Edit
-            </Link>
-            <Link className="invoice-actions__delete" to="/">
-              Delete
-            </Link>
-            <button className="invoice-actions__paid">Mark as Paid</button>
-          </div>
+          <InvoiceActions id={currentInvoiceId} />
         </article>
       </div>
 
       <InvoiceDetails invoice={currentInvoice} />
+
+      <div className="view-invoice-page__gradient">
+        <Gradient />
+      </div>
+
+      <div className="invoice-action-mobile">
+        <InvoiceActions id={currentInvoiceId} />
+      </div>
 
       <Outlet />
     </div>

@@ -216,17 +216,15 @@ h3.field__title--hidden {
   color: #ffffff;
 }
 
-.footer-form__gradient {
-  width: 631px;
-  height: 141px;
-  position: fixed;
-  bottom: 51px;
-  left: 103px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.0001) 0%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
+.view-invoice-page__gradient .gradient {
+  display: none;
+  width: 100%;
+}
+
+@media (max-width: 670px) {
+  .view-invoice-page__gradient .gradient {
+    display: inline;
+  }
 }
 
 .field__imput--type-number::-webkit-inner-spin-button,
@@ -283,7 +281,7 @@ h3.field__title--hidden {
     overflow-y: scroll;
   }
 
-  .footer-form__gradient {
+  .gradient {
     width: 616px;
     left: 0px;
   }

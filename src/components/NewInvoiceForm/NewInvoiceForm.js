@@ -2,6 +2,9 @@
 // eslint-disable-next-line
 import { Link } from "react-router-dom";
 
+// Components
+import Gradient from "../../components/Gradient/Gradient";
+
 // Styles
 import "./NewInvoiceForm.css";
 
@@ -304,8 +307,9 @@ const NewInvoiceForm = () => {
       <p className="field__validation five-fields-container__validation">
         - All fields must be added
       </p>
-      <div className="footer-form__gradient"></div>
-
+      <div className="new-invoice-form__gradient">
+        <Gradient />
+      </div>
       <div className="five-fields-container__spacer"></div>
 
       <footer className="footer-form">

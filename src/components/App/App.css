@@ -25,6 +25,7 @@ body {
 }
 
 .main-layout {
+  min-width: 360px;
   display: grid;
   grid-template-columns: 103px auto;
 }

@@ -29,7 +29,7 @@ const NewInvoiceForm = () => {
       </div>
 
       <section className="three-input-container">
-        <div className="field ">
+        <div className="field three-input-container__one">
           <label className="field__label" htmlFor="fromCity">
             City
             <span className="field__validation">
@@ -39,7 +39,7 @@ const NewInvoiceForm = () => {
           <input className="field__input" type="text" name="fromCity" />
         </div>
 
-        <div className="field ">
+        <div className="field three-input-container__two">
           <label className="field__label" htmlFor="fromPostCode">
             Post Code
             <span className="field__validation">
@@ -49,7 +49,7 @@ const NewInvoiceForm = () => {
           <input className="field__input" type="text" name="fromPostCode" />
         </div>
 
-        <div className="field ">
+        <div className="field three-input-container__three">
           <label className="field__label" htmlFor="fromCountry">
             Country
             <span className="field__validation">
@@ -103,7 +103,7 @@ const NewInvoiceForm = () => {
         </div>
 
         <section className="three-input-container">
-          <div className="field ">
+          <div className="field three-input-container__one">
             <label className="field__label" htmlFor="City">
               City
               <span className="field__validation">
@@ -113,7 +113,7 @@ const NewInvoiceForm = () => {
             <input className="field__input" type="text" name="City" />
           </div>
 
-          <div className="field ">
+          <div className="field three-input-container__two">
             <label className="field__label" htmlFor="PostCode">
               Post Code
               <span className="field__validation">
@@ -123,7 +123,7 @@ const NewInvoiceForm = () => {
             <input className="field__input" type="text" name="PostCode" />
           </div>
 
-          <div className="field ">
+          <div className="field three-input-container__three">
             <label className="field__label" htmlFor="Country">
               Country
               <span className="field__validation">
@@ -167,7 +167,7 @@ const NewInvoiceForm = () => {
         </div>
       </section>
 
-      <div className="field ">
+      <div className="field">
         <label className="field__label" htmlFor="ProjectDescription">
           Project Description
           <span className="field__validation">
@@ -186,7 +186,7 @@ const NewInvoiceForm = () => {
         <h1 className="item-list">Item List</h1>
 
         <section className="five-fields-container">
-          <div className="field ">
+          <div className="field five-fields-container__column-item-name">
             <label className="field__label" htmlFor="ItemName">
               Item Name
               <span className="field__validation">
@@ -196,7 +196,7 @@ const NewInvoiceForm = () => {
             <input className="field__input" type="text" name="ItemName" />
           </div>
 
-          <div className="field ">
+          <div className="field five-fields-container__column-qty">
             <label className="field__label" htmlFor="Qty">
               Qty.
               <span className="field__validation">
@@ -210,7 +210,7 @@ const NewInvoiceForm = () => {
             />
           </div>
 
-          <div className="field ">
+          <div className="field five-fields-container__column-price">
             <label className="field__label" htmlFor="Price">
               Price
               <span className="field__validation">
@@ -224,7 +224,7 @@ const NewInvoiceForm = () => {
             />
           </div>
 
-          <div className="field__total">
+          <div className="field__total five-fields-container__column-total">
             <h3 className="field__label">Total</h3>
             <div>0.00</div>
           </div>
@@ -240,8 +240,8 @@ const NewInvoiceForm = () => {
           </button>
         </section>
 
-        <section className="five-fields-container five-fields-container--hidden-labels">
-          <div className="field ">
+        <section className="five-fields-container five-fields-container--hidden-labels ">
+          <div className="field five-fields-container__column-item-name">
             <label className="field__label" htmlFor="ItemName">
               Item Name
               <span className="field__validation">
@@ -251,7 +251,7 @@ const NewInvoiceForm = () => {
             <input className="field__input" type="text" name="ItemName" />
           </div>
 
-          <div className="field ">
+          <div className="field five-fields-container__column-qty">
             <label className="field__label" htmlFor="Qty">
               Qty.
               <span className="field__validation">
@@ -266,7 +266,7 @@ const NewInvoiceForm = () => {
             />
           </div>
 
-          <div className="field ">
+          <div className="field five-fields-container__column-price">
             <label className="field__label" htmlFor="Price">
               Price
               <span className="field__validation">
@@ -280,7 +280,7 @@ const NewInvoiceForm = () => {
             />
           </div>
 
-          <div className="field__total">
+          <div className="field__total five-fields-container__column-total">
             <h3 className="field__title--hidden">Total</h3>
             <div>0.00</div>
           </div>

@@ -12,6 +12,9 @@
   border-radius: 24px;
   margin-right: 8px;
 }
+.invoice-actions__edit:hover {
+  background-color: #dfe3fa;
+}
 
 .invoice-actions__delete {
   color: #ffffff;
@@ -20,12 +23,18 @@
   border-radius: 24px;
   margin-right: 8px;
 }
+.invoice-actions__delete:hover {
+  background-color: #ff9797;
+}
 
 .invoice-actions__paid {
   color: #ffffff;
   background: #7c5dfa;
   padding: 17px 24px 16px 24px;
   border-radius: 24px;
+}
+.invoice-actions__paid:hover {
+  background-color: #9277ff;
 }
 
 .invoice-action-mobile {

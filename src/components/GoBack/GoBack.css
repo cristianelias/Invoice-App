@@ -1,4 +1,8 @@
 .go-back {
+  margin-bottom: 22px;
+}
+
+.go-back__button {
   padding: 10px 5px 10px 24px;
   font-weight: bold;
   font-size: 12px;

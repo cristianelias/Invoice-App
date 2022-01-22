@@ -1,5 +1,7 @@
 // Components
-import NewInvoiceForm from "../../components/NewInvoiceForm/NewInvoiceForm";
+import InvoiceForm from "../../components/InvoiceForm/InvoiceForm";
+import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
+import NewInvoiceFormFooter from "../../components/InvoiceForm/NewInvoiceFormFooter/NewInvoiceFormFooter";
 import Overlay from "../../components/Overlay/Overlay";
 
 // Styles
@@ -9,7 +11,12 @@ const NewInvoicePage = () => {
   return (
     <div>
       <Overlay />
-      <NewInvoiceForm />
+      <div className="new-invoice-page">
+        <InvoiceForm
+          title={<InvoiceFormTitle />}
+          footer={<NewInvoiceFormFooter />}
+        />
+      </div>
     </div>
   );
 };

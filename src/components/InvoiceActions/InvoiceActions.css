@@ -5,29 +5,6 @@
   letter-spacing: -0.25px;
 }
 
-.invoice-actions__edit {
-  color: #7e88c3;
-  background: #f9fafe;
-  padding: 17px 24px 16px 24px;
-  border-radius: 24px;
-  margin-right: 8px;
-}
-
-.invoice-actions__delete {
-  color: #ffffff;
-  background: #ec5757;
-  padding: 17px 24px 16px 24px;
-  border-radius: 24px;
-  margin-right: 8px;
-}
-
-.invoice-actions__paid {
-  color: #ffffff;
-  background: #7c5dfa;
-  padding: 17px 24px 16px 24px;
-  border-radius: 24px;
-}
-
 .invoice-action-mobile {
   display: none;
   grid-column: 2/3;

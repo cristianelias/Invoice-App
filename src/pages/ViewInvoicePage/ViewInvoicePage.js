@@ -1,12 +1,13 @@
 // Dependencies
 // eslint-disable-next-line
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 // Components
 import InvoiceDetails from "../../components/InvoiceDetails/InvoiceDetails";
 import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentStatusLabel/PaymentStatusLabel";
 import InvoiceActions from "../../components/InvoiceActions/InvoiceActions";
 import Gradient from "../../components/Gradient/Gradient";
+import GoBack from "../../components/GoBack/GoBack";
 
 // Styles
 import "./ViewInvoicePage.css";
@@ -14,7 +15,6 @@ import "./ViewInvoicePage.css";
 const ViewInvoicePage = (props) => {
   const { invoices } = props;
   const currentInvoiceId = useParams().id;
-  const navigate = useNavigate();
 
   const currentInvoice = invoices.find(
     (invoice) => invoice.id === currentInvoiceId
@@ -43,12 +43,7 @@ const ViewInvoicePage = (props) => {
               fillRule="evenodd"
             />
           </svg>
-          <button
-            className="page-navigation__button"
-            onClick={() => navigate(-1, { replace: true })}
-          >
-            Go back
-          </button>
+          <GoBack />
         </nav>
 
         <article className="modify-invoice">

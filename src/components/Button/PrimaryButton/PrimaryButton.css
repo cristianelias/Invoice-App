@@ -2,3 +2,7 @@
   background: #7c5dfa;
   color: #ffffff;
 }
+
+.primary-button:hover {
+  background-color: #9277ff;
+}

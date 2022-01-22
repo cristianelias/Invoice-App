@@ -6,3 +6,7 @@
   letter-spacing: -0.25px;
   color: #0c0e16;
 }
+
+.go-back:hover {
+  color: #7e88c3;
+}

@@ -2,3 +2,7 @@
   color: #ffffff;
   background: #ec5757;
 }
+
+.error-button:hover {
+  background-color: #ff9797;
+}

@@ -40,6 +40,11 @@
   margin-right: 16px;
 }
 
+.view-invoice-page__gradient .gradient {
+  display: none;
+  width: 100%;
+}
+
 @media (max-width: 1260px) {
   .view-invoice-page {
     grid-template-columns: auto 730px auto;
@@ -86,5 +91,9 @@
   .modify-invoice__payment-status {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .view-invoice-page__gradient .gradient {
+    display: inline;
   }
 }

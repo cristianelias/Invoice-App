@@ -13,6 +13,10 @@
   user-select: none;
 }
 
+.new-invoice-button:hover {
+  background-color: #9277ff;
+}
+
 .new-invoice-button__container {
   display: flex;
   flex-flow: row wrap;

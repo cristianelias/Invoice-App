@@ -1,3 +1,6 @@
+// Styles
+import "./InvoiceFilterCheckbox.css";
+
 const InvoiceFilterCheckbox = (props) => {
   const { status, active, updaterFn, text } = props;
 

@@ -13,11 +13,7 @@ const GoBack = () => {
 
   return (
     <nav className="go-back">
-      <img
-        className="invoice__arrow"
-        src={iconArrowLeft}
-        alt="Arrow icon. Click to go back."
-      ></img>
+      <img src={iconArrowLeft} alt="Arrow icon. Click to go back."></img>
 
       <button
         className="go-back__button"

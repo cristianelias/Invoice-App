@@ -19,6 +19,7 @@ const InvoiceDetails = (props) => {
               </p>
             </div>
 
+            {/* TODO: COMPONENT */}
             <div className="four-texts">
               <p>{invoice.senderAddress.street}</p>
               <p>{invoice.senderAddress.city}</p>
@@ -49,6 +50,8 @@ const InvoiceDetails = (props) => {
               <p className="title-and-subtitle__subtitle">
                 {invoice.clientName}
               </p>
+
+              {/* TODO: COMPONENT */}
               <div className="four-texts four-texts__left">
                 <p>{invoice.clientAddress.street}</p>
                 <p>{invoice.clientAddress.city}</p>
@@ -76,6 +79,7 @@ const InvoiceDetails = (props) => {
             </tr>
           </thead>
 
+          {/* TODO: COMPONENT, table and row */}
           <tbody>
             <tr className="pricing-table__row">
               <td className="pricing-table__row-item-name">
@@ -91,20 +95,6 @@ const InvoiceDetails = (props) => {
                 £ {invoice.items[0].total}
               </td>
             </tr>
-            {/* <tr className="pricing-table__row">
-          <td className="pricing-table__row-item-name">
-            {invoice.items[1].name}
-          </td>
-          <td className="pricing-table__row-qty">
-            {invoice.items[1].quantity}
-          </td>
-          <td className="pricing-table__row-price">
-            £ {invoice.items[1].price}
-          </td>
-          <td className="pricing-table__row-total">
-            £ {invoice.items[1].total}
-          </td>
-        </tr> */}
           </tbody>
 
           <tfoot>

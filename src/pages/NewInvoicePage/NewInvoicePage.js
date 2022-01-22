@@ -1,7 +1,7 @@
 // Components
 import InvoiceForm from "../../components/InvoiceForm/InvoiceForm";
 import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
-import NewInvoiceFormFooter from "../../components/InvoiceForm/NewInvoiceFormFooter/NewInvoiceFormFooter";
+import NewInvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
 import Overlay from "../../components/Overlay/Overlay";
 
 // Styles

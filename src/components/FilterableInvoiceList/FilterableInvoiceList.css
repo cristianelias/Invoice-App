@@ -29,10 +29,6 @@
   color: #888eb0;
 }
 
-.invoice-list-overview {
-  margin-right: auto;
-}
-
 @media (max-width: 850px) {
   .invoice-list {
     margin: 56px 0 0 0;

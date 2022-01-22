@@ -169,7 +169,7 @@
   color: #7e88c3;
 }
 
-..pricing-table--row-botomm {
+.pricing-table--row-botomm {
   padding-bottom: 40px;
 }
 
@@ -272,9 +272,10 @@ table tr:last-child td:last-child {
 }
 
 @media (max-width: 670px) {
-  .invoice-actions {
+  .invoice-details .invoice-actions {
     display: none;
   }
+
   .billing-three-columns {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 130px 47px;

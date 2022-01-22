@@ -1,3 +1,6 @@
+// Styles
+import "./InvoiceListOverview.css";
+
 const InvoiceListOverview = (props) => {
   const { totalInvoices, showFullInfo } = props;
 

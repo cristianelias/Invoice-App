@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 // Components
-import InvoiceFilterCheckbox from "./InvoiceFilterCheckbox";
+import InvoiceFilterCheckbox from "./InvoiceFilterCheckbox/InvoiceFilterCheckbox";
 
 // Assets
 import iconArrowDown from "../../../assets/icon-arrow-down.svg";

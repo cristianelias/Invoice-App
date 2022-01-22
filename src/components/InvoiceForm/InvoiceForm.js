@@ -11,10 +11,11 @@ const InvoiceForm = (props) => {
   const { title } = props;
 
   return (
-    <div>
-      <form className="invoice-form" action="">
+    <div className="invoice-form">
+      <form className="invoice-form__form" action="">
         {title}
         <h2 className="h2">Bill From</h2>
+        {/* TODO: COMPONENT  */}
         <div className="field field--error">
           <label className="field__label" htmlFor="fromStreetAddress">
             Street Address
@@ -66,7 +67,7 @@ const InvoiceForm = (props) => {
 
           <div className="field ">
             <label className="field__label " htmlFor="ClientName">
-              Client's Name
+              Client&apos;s Name
               <span className="field__validation">
                 This field is required, troesma.
               </span>
@@ -80,7 +81,7 @@ const InvoiceForm = (props) => {
 
           <div className="field ">
             <label className="field__label" htmlFor="ClientEmail">
-              Client's Email
+              Client&apos;s Email
               <span className="field__validation">
                 This field is required, troesma.
               </span>
@@ -281,11 +282,7 @@ const InvoiceForm = (props) => {
             </div>
 
             <button className="field__button-delete">
-              <img
-                className="invoice__arrow"
-                src={iconTrashCan}
-                alt="Trash icon. Click to delete."
-              ></img>
+              <img src={iconTrashCan} alt="Trash icon. Click to delete."></img>
             </button>
           </section>
 
@@ -302,7 +299,7 @@ const InvoiceForm = (props) => {
         </p>
       </form>
 
-      <div className="new-invoice-form__gradient">
+      <div className="invoice-form__gradient">
         <Gradient />
       </div>
     </div>

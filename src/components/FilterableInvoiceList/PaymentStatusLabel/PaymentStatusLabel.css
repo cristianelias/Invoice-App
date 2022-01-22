@@ -53,13 +53,3 @@
 .payment-status-label--fixed-size {
   padding: 13px 17px 12px 18px;
 }
-
-@media (max-width: 650px) {
-  .list-invoices-page .payment-status-label {
-    width: 103px;
-    height: 40px;
-    grid-column: 2/3;
-    grid-row: 3/4;
-    justify-self: end;
-  }
-}

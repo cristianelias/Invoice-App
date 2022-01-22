@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 // Components
 import InvoiceForm from "../../components/InvoiceForm/InvoiceForm";
 import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
-import EditInvoiceFormFooter from "../../components/InvoiceForm/EditInvoiceFormFooter/EditInvoiceFormFooter";
+import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
 
 // Styles
 import "./EditInvoicePage.css";
@@ -28,7 +28,7 @@ const EditInvoicePage = (props) => {
     <div className="edit-invoice-page">
       <InvoiceForm
         title={<InvoiceFormTitle id={currentInvoiceId} edit={true} />}
-        footer={<EditInvoiceFormFooter />}
+        footer={<InvoiceFormFooter isEdit={true} />}
       />
     </div>
   );

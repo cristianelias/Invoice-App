@@ -5,9 +5,9 @@ import Button from "../Button";
 import "./PrimaryButton.css";
 
 const PrimaryButton = (props) => {
-  const { text } = props;
+  const { text, onClick } = props;
 
-  return <Button className="primary-button" text={text} />;
+  return <Button className="primary-button" text={text} onClick={onClick} />;
 };
 
 export default PrimaryButton;

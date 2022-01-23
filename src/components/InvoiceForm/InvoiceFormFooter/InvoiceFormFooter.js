@@ -1,6 +1,6 @@
 // Dependencies
 // eslint-disable-next-line
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
@@ -13,25 +13,39 @@ import "./InvoiceFormFooter";
 const InvoiceFormFooter = (props) => {
   const { isEdit } = props;
   const footerClass = "footer-form";
+  const navigate = useNavigate();
 
   return (
     <div className="invoice-form-footer">
       <div className="invoice-form-footer__spacer"></div>
       {isEdit ? (
         <footer className={footerClass}>
-          <TertiaryButton linkTo="/" text="Discard" />
+          <TertiaryButton
+            onClick={() => navigate(-1, { replace: true })}
+            text="Cancel"
+          />
 
-          <SecondaryButton linkTo="/" text="Save as Draft" />
-
-          <PrimaryButton linkTo="/" text="Save & Send" />
+          <PrimaryButton
+            onClick={() => navigate(-1, { replace: true })}
+            text="Save Changes"
+          />
         </footer>
       ) : (
         <footer className={footerClass}>
-          <TertiaryButton linkTo="/" text="Discard" />
+          <TertiaryButton
+            onClick={() => navigate(-1, { replace: true })}
+            text="Discard"
+          />
 
-          <SecondaryButton linkTo="/" text="Save as Draft" />
+          <SecondaryButton
+            onClick={() => navigate(-1, { replace: true })}
+            text="Save as Draft"
+          />
 
-          <PrimaryButton linkTo="/" text="Save & Send" />
+          <PrimaryButton
+            onClick={() => navigate(-1, { replace: true })}
+            text="Save & Send"
+          />
         </footer>
       )}
     </div>

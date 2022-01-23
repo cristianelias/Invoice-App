@@ -5,9 +5,16 @@ import Button from "../Button";
 import "./TertiaryButton.css";
 
 const TertiaryButton = (props) => {
-  const { linkTo, text } = props;
+  const { linkTo, text, onClick } = props;
 
-  return <Button className="tertiary-button" linkTo={linkTo} text={text} />;
+  return (
+    <Button
+      className="tertiary-button"
+      linkTo={linkTo}
+      onClick={onClick}
+      text={text}
+    />
+  );
 };
 
 export default TertiaryButton;

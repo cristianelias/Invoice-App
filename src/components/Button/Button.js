@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 const Button = (props) => {
-  const { className, linkTo, text } = props;
+  const { className, linkTo, text, onClick } = props;
 
   if (linkTo) {
     return (
@@ -16,7 +16,11 @@ const Button = (props) => {
     );
   }
 
-  return <button className={`${className} button-component`}>{text}</button>;
+  return (
+    <button onClick={onClick} className={`${className} button-component`}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;

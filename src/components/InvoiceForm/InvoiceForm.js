@@ -8,7 +8,7 @@ import "./InvoiceForm.css";
 import iconTrashCan from "../../assets/icon-delete.svg";
 
 const InvoiceForm = (props) => {
-  const { title } = props;
+  const { title, footer } = props;
 
   return (
     <div className="invoice-form">
@@ -287,7 +287,7 @@ const InvoiceForm = (props) => {
           </section>
 
           <button
-            className="five-fields-container__add-new-item"
+            className="five-fields-container__add-new-item button-component tertiary-button "
             name="NewItem"
             type="button"
           >
@@ -299,9 +299,8 @@ const InvoiceForm = (props) => {
         </p>
       </form>
 
-      <div className="invoice-form__gradient">
-        <Gradient />
-      </div>
+      <Gradient />
+      {footer}
     </div>
   );
 };

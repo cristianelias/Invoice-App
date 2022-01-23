@@ -1,3 +1,25 @@
+.invoice-form {
+  width: 719px;
+  min-width: 360px;
+  padding: 65px 56px 110px 159px;
+  background: #ffffff;
+  border-radius: 0px 20px 20px 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  animation: desplazamiento 0.8s ease-out;
+}
+
+@keyframes desplazamiento {
+  0% {
+    left: -719px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
 .five-fields-container__validation {
   padding-bottom: 42px;
 }

@@ -1,3 +1,6 @@
+// Styles
+import "./Field.css";
+
 const Field = (props) => {
   const {
     fieldName,

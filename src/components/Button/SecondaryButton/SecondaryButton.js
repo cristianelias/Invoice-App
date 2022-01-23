@@ -5,9 +5,16 @@ import Button from "../Button";
 import "./SecondaryButton.css";
 
 const SecondaryButton = (props) => {
-  const { linkTo, text } = props;
+  const { linkTo, text, onClick } = props;
 
-  return <Button className="secondary-button" linkTo={linkTo} text={text} />;
+  return (
+    <Button
+      className="secondary-button"
+      onClick={onClick}
+      linkTo={linkTo}
+      text={text}
+    />
+  );
 };
 
 export default SecondaryButton;

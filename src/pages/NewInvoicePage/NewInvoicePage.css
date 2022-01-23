@@ -30,35 +30,6 @@
   margin-bottom: 24px;
 }
 
-.field__label,
-.field__total h3 {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
-  color: #7e88c3;
-  display: flex;
-  justify-content: space-between;
-}
-
-.field__input {
-  width: 100%;
-  height: 48px;
-  margin-top: 10px;
-  margin-bottom: 24px;
-  padding: 17px 0px 16px 20px;
-  border: solid 1px #dfe3fa;
-  border-radius: 4px;
-  outline: none;
-  font-family: Spartan;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
-  color: #0c0e16;
-}
-
 .three-input-container {
   display: grid;
   margin-bottom: 48px;
@@ -83,9 +54,6 @@
 
 .two-input-container .field__validation {
   display: none;
-}
-.field__input--no-margin-bottom {
-  margin-bottom: 0px;
 }
 
 .item-list {
@@ -121,35 +89,6 @@ h3.field__title--hidden {
   margin-bottom: 16px;
 }
 
-.field__input--center {
-  padding-left: 0px;
-  text-align: center;
-}
-
-.field__total div {
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
-  color: #888eb0;
-  padding-top: 17px;
-}
-
-.field__button-delete {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  margin: 16px 0 auto auto;
-}
-
-.field__button-delete--margin-top {
-  margin-top: 47px;
-}
-
 .five-fields-container__add-new-item {
   box-sizing: border-box;
   width: 100%;
@@ -179,53 +118,48 @@ h3.field__title--hidden {
   margin-right: auto;
 }
 
-.five-fields-container__validation {
-  padding-bottom: 42px;
+.view-invoice-page__gradient .gradient {
+  display: none;
+  width: 100%;
 }
 
-.field__imput--type-number::-webkit-inner-spin-button,
-.field__imput--type-number::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.field__imput--type-number[type="number"] {
-  -moz-appearance: textfield;
+.field__input--no-margin-bottom {
+  margin-bottom: 0px;
 }
 
-::-webkit-calendar-picker-indicator {
-  width: 16px;
-  height: 16px;
+.field__input--center {
+  padding-left: 0px;
+  text-align: center;
 }
 
-::placeholder {
-  font-family: Spartan;
-  font-style: normal;
+.field__total div {
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #0c0e16;
-  opacity: 0.4;
+  color: #888eb0;
+  padding-top: 17px;
 }
 
-.field__validation {
-  display: none;
-  color: #ec5757;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 15px;
+.field__button-delete {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin: 16px 0 auto auto;
 }
 
-.field--error .field__label {
-  color: #ec5757;
+.field__button-delete--separation-top {
+  margin-top: 47px;
 }
 
-.field--error .field__input {
-  border: solid 1px #ec5757;
-}
-
-.field__input--focus {
-  border: solid 1px #7c5dfa;
+@media (max-width: 670px) {
+  .view-invoice-page__gradient .gradient {
+    display: inline;
+  }
 }
 
 @media (max-width: 850px) {
@@ -332,7 +266,7 @@ h3.field__title--hidden {
 }
 
 @media (max-width: 500px) {
-  .form {
+  .invoice-form {
     padding: 32px 24px 0 24px;
     margin-top: 0;
     top: 75px;

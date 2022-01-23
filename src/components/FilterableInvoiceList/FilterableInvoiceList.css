@@ -1,6 +1,7 @@
 .invoice-list {
   grid-column: 2/3;
-  min-width: 317px;
+  min-width: 730px;
+  max-width: 1100px;
 }
 
 .invoice-list__header {
@@ -27,6 +28,17 @@
   letter-spacing: -0.25px;
   text-align: left;
   color: #888eb0;
+}
+
+@media (max-width: 1227px) {
+  .invoice-list {
+    min-width: 672px;
+  }
+}
+@media (max-width: 850px) {
+  .invoice-list {
+    min-width: 320px;
+  }
 }
 
 @media (max-width: 850px) {

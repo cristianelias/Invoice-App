@@ -9,6 +9,8 @@ const Field = (props) => {
     placeholder,
     inputType,
     classes,
+    value,
+    onChange,
   } = props;
 
   return (
@@ -18,10 +20,13 @@ const Field = (props) => {
         <span className="field__validation">{validationText}</span>
       </label>
       <input
+        id={fieldName}
         className="field__input"
         type={inputType}
         name={fieldName}
         placeholder={placeholder ? placeholder : ""}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

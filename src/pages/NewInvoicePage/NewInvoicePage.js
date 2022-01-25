@@ -1,8 +1,8 @@
 // Components
 import InvoiceForm from "../../components/InvoiceForm/InvoiceForm";
-import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
-import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
 import Overlay from "../../components/Overlay/Overlay";
+import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
+import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
 
 // Styles
 import "./NewInvoicePage.css";

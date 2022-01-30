@@ -5,7 +5,7 @@ import { Field, useField, ErrorMessage } from "formik";
 import "./InvoiceField.css";
 
 const InvoiceField = (props) => {
-  const { text, name, placeholder, fieldsetId } = props;
+  const { text, name, placeholder } = props;
   const { setTouched } = useField(name)[2];
 
   return (

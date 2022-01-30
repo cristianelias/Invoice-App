@@ -114,7 +114,7 @@ const commonSchemas = {
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
     .required("You need to specify a Post Code"),
   country: Yup.string()
-    .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
+    .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
     .required("You need to specify a Country"),
 };
@@ -127,51 +127,51 @@ const validationSchema = Yup.object().shape({
     country: commonSchemas.country,
   }),
   to: Yup.object().shape({
-    clientName: Yup.string()
-      .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required("You need to specify a Client Name"),
-    clientEmail: Yup.string()
-      .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required("You need to specify an Client E-mail"),
     streetAddress: commonSchemas.streetAddress,
     city: commonSchemas.city,
     postCode: commonSchemas.postCode,
     country: commonSchemas.country,
+    clientName: Yup.string()
+      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
+      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
+      .required("You need to specify a Client Name"),
+    clientEmail: Yup.string()
+      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
+      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
+      .required("You need to specify an Client E-mail"),
   }),
   details: Yup.object().shape({
     invoiceDate: Yup.string()
-      .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
+      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
       .required("You need to specify an Invoice Date"),
     paymentTerms: Yup.string()
-      .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
+      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH)
       .required("You need to choose the desired Payment Terms"),
     projectDescription: Yup.string()
-      .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
+      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
       .required("You need to specify a Project Description"),
-    itemList: Yup.array().of(
-      Yup.object().shape({
-        itemName: Yup.string()
-          .min(STRING_MIN_LENGTH.STRING_MIN_MESASGE)
-          .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-          .required("You need to specify an Item Name"),
-        quantity: Yup.number()
-          .min(NUMBER_MIN_VALUE)
-          .max(QTY_MAX_VALUE)
-          .required("You need to specify a Quantity")
-          .typeError("Quantity must be a number"),
-        price: Yup.number()
-          .min(NUMBER_MIN_VALUE)
-          .max(PRICE_MAX_VALUE)
-          .required("You need to specify a Price")
-          .typeError("Price must be a number"),
-      })
-    ),
   }),
+  charges: Yup.array().of(
+    Yup.object().shape({
+      itemName: Yup.string()
+        .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
+        .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
+        .required("You need to specify an Item Name"),
+      qty: Yup.number()
+        .min(NUMBER_MIN_VALUE)
+        .max(QTY_MAX_VALUE)
+        .required("You need to specify a Quantity")
+        .typeError("Quantity must be a number"),
+      price: Yup.number()
+        .min(NUMBER_MIN_VALUE)
+        .max(PRICE_MAX_VALUE)
+        .required("You need to specify a Price")
+        .typeError("Price must be a number"),
+    })
+  ),
 });
 
 const InvoiceForm = (props) => {
@@ -250,8 +250,12 @@ const InvoiceForm = (props) => {
                           )}
 
                           <button
-                            onClick={() => {
-                              remove(index);
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              if (index > 0) {
+                                remove(index);
+                              }
                             }}
                           >
                             <img
@@ -263,7 +267,11 @@ const InvoiceForm = (props) => {
                       ))}
                       <button
                         className="five-fields-container__add-new-item button-component tertiary-button"
-                        onClick={() => push(chargesValues)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          push(chargesValues);
+                        }}
                       >
                         + Add New Item
                       </button>

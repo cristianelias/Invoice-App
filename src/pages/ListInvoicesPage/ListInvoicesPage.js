@@ -1,5 +1,4 @@
 // Dependencies
-// eslint-disable-next-line
 import { Outlet } from "react-router-dom";
 
 // Components

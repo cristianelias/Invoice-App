@@ -1,6 +1,15 @@
+// Dependencies
+import { Fragment } from "react";
+import { Formik, Form, FieldArray } from "formik";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+
 // Components
-import Field from "./Field/Field";
+import InvoiceField from "./InvoiceField/InvoiceField";
 import Gradient from "../Gradient/Gradient";
+import PrimaryButton from "../Button/PrimaryButton/PrimaryButton";
+import SecondaryButton from "../Button/SecondaryButton/SecondaryButton";
+import TertiaryButton from "../Button/TertiaryButton/TertiaryButton";
 
 // Styles
 import "./InvoiceForm.css";
@@ -8,207 +17,306 @@ import "./InvoiceForm.css";
 // Assets
 import iconTrashCan from "../../assets/icon-delete.svg";
 
+const inputDataByName = {
+  streetAddress: {
+    label: "Street Address",
+    classes: "",
+  },
+  city: {
+    label: "City",
+    classes: "",
+  },
+  postCode: {
+    label: "Post Code",
+    classes: "",
+  },
+  country: {
+    label: "Country",
+    classes: "",
+  },
+  clientName: {
+    label: "Client's Name",
+    classes: "",
+  },
+  clientEmail: {
+    label: "Client's Email",
+    classes: "",
+  },
+  invoiceDate: {
+    label: "Invoice Date",
+    classes: "",
+  },
+  paymentTerms: {
+    label: "Payment Terms",
+    classes: "",
+  },
+  projectDescription: {
+    label: "Project Description",
+    classes: "",
+  },
+  itemName: {
+    label: "Item Name",
+    classes: "",
+  },
+  qty: {
+    label: "Qty.",
+    classes: "",
+  },
+  price: {
+    label: "Price",
+    classes: "",
+  },
+  total: {
+    label: "Total",
+    classes: "",
+    // type: "calculated",
+  },
+};
+
+const chargesValues = {
+  itemName: "",
+  qty: "",
+  price: "",
+  total: "",
+};
+
+const formValues = {
+  from: {
+    streetAddress: "",
+    city: "",
+    postCode: "",
+    country: "",
+  },
+  to: {
+    clientName: "",
+    clientEmail: "",
+    streetAddress: "",
+    city: "",
+    postCode: "",
+    country: "",
+  },
+  details: {
+    invoiceDate: "",
+    paymentTerms: "",
+    projectDescription: "",
+  },
+  charges: [chargesValues],
+};
+
+const STRING_MIN_LENGTH = 4;
+const STRING_MAX_LENGTH = 30;
+const NUMBER_MIN_VALUE = 1;
+const PRICE_MAX_VALUE = 1000000;
+const QTY_MAX_VALUE = 1000;
+
+const commonSchemas = {
+  streetAddress: Yup.string()
+    .min(STRING_MIN_LENGTH)
+    .max(STRING_MAX_LENGTH)
+    .required("You need to specify a Street Address"),
+  city: Yup.string()
+    .min(STRING_MIN_LENGTH)
+    .max(STRING_MAX_LENGTH)
+    .required("You need to specify a City"),
+  postCode: Yup.string()
+    .min(STRING_MIN_LENGTH)
+    .max(STRING_MAX_LENGTH)
+    .required("You need to specify a Post Code"),
+  country: Yup.string()
+    .min(STRING_MIN_LENGTH)
+    .max(STRING_MAX_LENGTH)
+    .required("You need to specify a Country"),
+};
+
+const validationSchema = Yup.object().shape({
+  from: Yup.object().shape({
+    streetAddress: commonSchemas.streetAddress,
+    city: commonSchemas.city,
+    postCode: commonSchemas.postCode,
+    country: commonSchemas.country,
+  }),
+  to: Yup.object().shape({
+    clientName: Yup.string()
+      .min(STRING_MIN_LENGTH)
+      .max(STRING_MAX_LENGTH)
+      .required("You need to specify a Client Name"),
+    clientEmail: Yup.string()
+      .min(STRING_MIN_LENGTH)
+      .max(STRING_MAX_LENGTH)
+      .required("You need to specify an Client E-mail"),
+    streetAddress: commonSchemas.streetAddress,
+    city: commonSchemas.city,
+    postCode: commonSchemas.postCode,
+    country: commonSchemas.country,
+  }),
+  details: Yup.object().shape({
+    invoiceDate: Yup.string()
+      .min(STRING_MIN_LENGTH)
+      .max(STRING_MAX_LENGTH)
+      .required("You need to specify an Invoice Date"),
+    paymentTerms: Yup.string()
+      .min(STRING_MIN_LENGTH)
+      .max(STRING_MAX_LENGTH)
+      .required("You need to choose the desired Payment Terms"),
+    projectDescription: Yup.string()
+      .min(STRING_MIN_LENGTH)
+      .max(STRING_MAX_LENGTH)
+      .required("You need to specify a Project Description"),
+    itemList: Yup.array().of(
+      Yup.object().shape({
+        itemName: Yup.string()
+          .min(STRING_MIN_LENGTH)
+          .max(STRING_MAX_LENGTH)
+          .required("You need to specify an Item Name"),
+        quantity: Yup.number()
+          .min(NUMBER_MIN_VALUE)
+          .max(QTY_MAX_VALUE)
+          .required("You need to specify a Quantity")
+          .typeError("Quantity must be a number"),
+        price: Yup.number()
+          .min(NUMBER_MIN_VALUE)
+          .max(PRICE_MAX_VALUE)
+          .required("You need to specify a Price")
+          .typeError("Price must be a number"),
+      })
+    ),
+  }),
+});
+
 const InvoiceForm = (props) => {
-  const { title, footer } = props;
+  console.log("Exploded here");
+  const { title } = props;
+  const navigate = useNavigate();
+  const submitHandler = (values) =>
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+    }, 500);
 
   return (
-    <div className="invoice-form">
-      <form className="invoice-form__form" action="">
-        {title}
-        <h2 className="h2">Bill From</h2>
+    <Formik
+      initialValues={formValues}
+      validationSchema={validationSchema}
+      onSubmit={submitHandler}
+      validateOnChange={true}
+      validateOnBlur={false}
+    >
+      {({ values }) => (
+        <>
+          <div className="invoice-form">
+            <pre>{JSON.stringify(values, null, 2)}</pre>
 
-        <section className="three-input-container">
-          <Field
-            fieldName="fromStreetAddress"
-            labelText="Street Address"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
+            <Form className="invoice-form__form">
+              {title}
 
-          <Field
-            fieldName="fromCity"
-            labelText="City"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
+              <fieldset>
+                <h2 className="h2">Bill From</h2>
 
-          <Field
-            fieldName="fromPostCode"
-            labelText="Post Code"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
+                {Object.keys(values.from).map((fieldName, index) => (
+                  <InvoiceField
+                    key={index}
+                    name={`from.${fieldName}`}
+                    text={inputDataByName[fieldName].label}
+                    classes={inputDataByName[fieldName].classes}
+                  />
+                ))}
+              </fieldset>
 
-          <Field
-            fieldName="fromCountry"
-            labelText="Country"
-            validationText="This field is required, troesma."
-            inputType=""
-          />
-        </section>
+              <fieldset>
+                <h2 className="h2">Bill To</h2>
 
-        <section>
-          <h2 className="h2">Bill To</h2>
+                {Object.keys(values.to).map((fieldName, index) => (
+                  <InvoiceField
+                    key={index}
+                    name={`to.${fieldName}`}
+                    text={inputDataByName[fieldName].label}
+                    classes={inputDataByName[fieldName].classes}
+                  />
+                ))}
+              </fieldset>
 
-          <Field
-            fieldName="clientName"
-            labelText="Client's Name"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
+              <fieldset>
+                {Object.keys(values.details).map((fieldName, index) => (
+                  <InvoiceField
+                    key={index}
+                    name={`details.${fieldName}`}
+                    text={inputDataByName[fieldName].label}
+                    classes={inputDataByName[fieldName].classes}
+                  />
+                ))}
+              </fieldset>
 
-          <Field
-            fieldName="clientEmail"
-            labelText="Client's Email"
-            validationText="This field is required, troesma."
-            inputType="email"
-          />
+              <fieldset>
+                <FieldArray name="charges">
+                  {({ push, remove }) => (
+                    <div>
+                      {values.charges.map((item, index) => (
+                        <div key={index}>
+                          {Object.keys(item).map((fieldName) => {
+                            const fieldMeta = inputDataByName[fieldName];
 
-          <Field
-            fieldName="toStreetAddress"
-            labelText="Street Address"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
+                            return (
+                              <Fragment key={`${index}x${fieldName}`}>
+                                <InvoiceField
+                                  name={`charges[${index}].${fieldName}`}
+                                  text={fieldMeta.label}
+                                  classes={fieldMeta.classes}
+                                  // type={fieldMeta.type}
+                                />
+                              </Fragment>
+                            );
+                          })}
 
-          <section className="three-input-container">
-            <Field
-              fieldName="toCity"
-              labelText="City"
-              validationText="This field is required, troesma."
-              inputType="text"
+                          <div>
+                            <h3>Total</h3>
+                            <div>
+                              {parseInt(item.price) * parseInt(item.qty)}
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => {
+                              remove(index);
+                            }}
+                          >
+                            <img
+                              src={iconTrashCan}
+                              alt="Trash icon. Click to delete."
+                            ></img>
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        className="five-fields-container__add-new-item button-component tertiary-button"
+                        onClick={() => push(chargesValues)}
+                      >
+                        + Add New Item
+                      </button>
+                    </div>
+                  )}
+                </FieldArray>
+              </fieldset>
+
+              <p className="field__validation five-fields-container__validation">
+                - All fields must be added
+              </p>
+            </Form>
+          </div>
+          <Gradient />
+          <footer className="footer-form">
+            <TertiaryButton
+              onClick={() => navigate(-1, { replace: true })}
+              text="Discard"
             />
 
-            <Field
-              fieldName="toPostCode"
-              labelText="Post Code"
-              validationText="This field is required, troesma."
-              inputType="text"
+            <SecondaryButton
+              onClick={() => navigate(-1, { replace: true })}
+              text="Save as Draft"
             />
 
-            <Field
-              fieldName="toCountry"
-              labelText="Country"
-              validationText="This field is required, troesma."
-              inputType="text"
-            />
-          </section>
-        </section>
-
-        <section className="two-input-container">
-          <Field
-            fieldName="invoiceDate"
-            labelText="Invoice Date"
-            validationText="This field is required, troesma."
-            inputType="date"
-            placeholder="21 Aug 2021"
-          />
-
-          <Field
-            fieldName="paymentTerms"
-            labelText="Payment Terms"
-            validationText="This field is required, troesma."
-            inputType="text"
-          />
-
-          <Field
-            fieldName="projectDescription"
-            labelText="Project Description"
-            validationText="This field is required, troesma."
-            inputType="text"
-            placeholder="e.g. Graphic Design Service"
-          />
-        </section>
-
-        <section>
-          <h1 className="item-list">Item List</h1>
-
-          <section className="five-fields-container">
-            <Field
-              fieldName="itemName"
-              labelText="Item Name"
-              validationText="This field is required, troesma."
-              inputType="text"
-              classes="five-fields-container__column-item-name"
-            />
-
-            <Field
-              fieldName="Qty"
-              labelText="Qty."
-              validationText="This field is required, troesma."
-              inputType="number"
-              classes="five-fields-container__column-qty"
-            />
-
-            <Field
-              fieldName="price"
-              labelText="Price"
-              validationText="This field is required, troesma."
-              inputType="number"
-              classes="five-fields-container__column-price"
-            />
-
-            <div className="field__total five-fields-container__column-total">
-              <h3 className="field__label">Total</h3>
-              <div>0.00</div>
-            </div>
-
-            <button className="field__button-delete field__button-delete--separation-top">
-              <img src={iconTrashCan} alt="Trash icon. Click to delete."></img>
-            </button>
-          </section>
-
-          <section className="five-fields-container five-fields-container--hidden-labels">
-            <Field
-              fieldName="itemName"
-              labelText="Item Name"
-              validationText="This field is required, troesma."
-              inputType="text"
-              classes="five-fields-container__column-item-name"
-            />
-
-            <Field
-              fieldName="qty"
-              labelText="Qty."
-              validationText="This field is required, troesma."
-              inputType="number"
-              classes="five-fields-container__column-qty"
-            />
-
-            <Field
-              fieldName="price"
-              labelText="Price"
-              validationText="This field is required, troesma."
-              inputType="number"
-              classes="five-fields-container__column-price"
-            />
-
-            <div className="field__total five-fields-container__column-total">
-              <h3 className="field__title--hidden">Total</h3>
-              <div>0.00</div>
-            </div>
-
-            <button className="field__button-delete">
-              <img src={iconTrashCan} alt="Trash icon. Click to delete."></img>
-            </button>
-          </section>
-
-          <button
-            className="five-fields-container__add-new-item button-component tertiary-button "
-            name="NewItem"
-            type="button"
-          >
-            + Add New Item
-          </button>
-        </section>
-        <p className="field__validation five-fields-container__validation">
-          - All fields must be added
-        </p>
-      </form>
-
-      <Gradient />
-      {footer}
-    </div>
+            <PrimaryButton onClick={submitHandler} text="Save & Send" />
+          </footer>
+        </>
+      )}
+    </Formik>
   );
 };
 

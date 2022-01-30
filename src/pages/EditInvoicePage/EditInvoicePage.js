@@ -1,6 +1,5 @@
 // Dependencies
-// eslint-disable-next-line
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Components
@@ -12,8 +11,8 @@ import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/In
 import "./EditInvoicePage.css";
 
 const EditInvoicePage = (props) => {
-  const { invoices, setInvoices } = props;
-  const [invoice, setInvoice] = useState({});
+  const { invoices } = props;
+  const [, setInvoice] = useState({});
   const currentInvoiceId = useParams().id;
 
   useEffect(() => {

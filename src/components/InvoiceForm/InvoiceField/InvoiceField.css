@@ -1,9 +1,9 @@
-.field__imput--type-number::-webkit-inner-spin-button,
-.field__imput--type-number::-webkit-outer-spin-button {
+.field__input[type="number"]::-webkit-inner-spin-button,
+.field__input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.field__imput--type-number[type="number"] {
+.field__input[type="number"] {
   -moz-appearance: textfield;
 }
 

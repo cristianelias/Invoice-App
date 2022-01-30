@@ -53,8 +53,7 @@
   display: none;
 }
 
-.five-fields-container--hidden-labels label,
-h3.field__title--hidden {
+.five-fields-container--hidden-labels .field__label {
   display: none;
 }
 
@@ -86,6 +85,7 @@ h3.field__title--hidden {
   display: flex;
   justify-content: flex-end;
   animation: desplazamiento 0.8s ease-out;
+  z-index: 2;
 }
 
 .footer-form .secondary-button {
@@ -105,7 +105,7 @@ h3.field__title--hidden {
   margin-bottom: 0px;
 }
 
-.field__input--center {
+.field__input--center input {
   padding-left: 0px;
   text-align: center;
 }

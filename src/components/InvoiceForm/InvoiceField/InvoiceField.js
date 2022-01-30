@@ -5,14 +5,13 @@ import { Field, useField, ErrorMessage } from "formik";
 import "./InvoiceField.css";
 
 const InvoiceField = (props) => {
-  const { text, name, classes, placeholder } = props;
+  const { text, name, placeholder, fieldsetId } = props;
   const { setTouched } = useField(name)[2];
 
   return (
-    <Field name={name} className={`field ${classes ? classes : ""}`}>
+    <Field name={name}>
       {({ field: { value, onChange }, meta: { error } }) => (
-        <>
-          {console.log(error)}
+        <div className={`field field-${name.replace(".", "-")}`}>
           <label className="field__label" htmlFor={name}>
             {text}
             <ErrorMessage name={name} className="field__validation">
@@ -29,7 +28,7 @@ const InvoiceField = (props) => {
               onChange(e);
             }}
           />
-        </>
+        </div>
       )}
     </Field>
   );

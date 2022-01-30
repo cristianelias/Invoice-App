@@ -6,18 +6,17 @@ const InvoiceFieldFactory = (props) => {
   const {
     text,
     name,
-    classes,
+    fieldsetId,
     type,
     placeholder,
     multiplicand,
     multiplier,
   } = props;
-
   const fallback = (
     <InvoiceField
       text={text}
       name={name}
-      classes={classes}
+      fieldsetId={fieldsetId}
       placeholder={placeholder}
     />
   );
@@ -27,7 +26,7 @@ const InvoiceFieldFactory = (props) => {
       <CalculatedInvoiceField
         text={text}
         name={name}
-        classes={classes}
+        fieldsetId={fieldsetId}
         placeholder={placeholder}
         multiplicand={multiplicand}
         multiplier={multiplier}

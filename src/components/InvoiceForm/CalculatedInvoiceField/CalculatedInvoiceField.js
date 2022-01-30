@@ -1,14 +1,21 @@
 // Dependencies
-import { Field, useField, ErrorMessage } from "formik";
+import { Field } from "formik";
 
 // Styles
 import "./CalculatedInvoiceField.css";
 
 const CalculatedInvoiceField = (props) => {
-  const { text, name, classes, placeholder, multiplicand, multiplier } = props;
+  const {
+    text,
+    name,
+    fieldsetId,
+    placeholder,
+    multiplicand,
+    multiplier,
+  } = props;
 
   const calculateValue = () => {
-    if (Number.isInteger(multiplier) || Number.isInteger(multiplicand)) {
+    if (!Number.isInteger(multiplier) || !Number.isInteger(multiplicand)) {
       return 0;
     }
 
@@ -16,9 +23,9 @@ const CalculatedInvoiceField = (props) => {
   };
 
   return (
-    <Field name={name} className={`field ${classes ? classes : ""}`}>
+    <Field name={name}>
       {() => (
-        <>
+        <div className={`field field-${fieldsetId}-${name}`}>
           <label className="field__label" htmlFor={name}>
             {text}
           </label>
@@ -27,8 +34,9 @@ const CalculatedInvoiceField = (props) => {
             name={name}
             placeholder={placeholder}
             value={calculateValue()}
+            readOnly="readOnly"
           />
-        </>
+        </div>
       )}
     </Field>
   );

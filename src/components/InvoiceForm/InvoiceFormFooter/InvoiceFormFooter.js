@@ -1,5 +1,4 @@
 // Dependencies
-// eslint-disable-next-line
 import { useNavigate } from "react-router-dom";
 
 // Components

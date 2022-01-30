@@ -12,13 +12,13 @@
     "react/react-in-jsx-scope": 0
   },
   "plugins": ["react", "import", "jsx-a11y"],
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": true
   },
   "env": {
     "es6": true,

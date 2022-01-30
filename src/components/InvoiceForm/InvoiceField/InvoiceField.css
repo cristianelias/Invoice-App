@@ -71,3 +71,10 @@
   letter-spacing: -0.25px;
   color: #0c0e16;
 }
+
+@media (max-width: 650px) {
+  .field__input {
+    padding: 13px 0px 10px 20px;
+    font-size: 16px;
+  }
+}

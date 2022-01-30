@@ -51,3 +51,17 @@
 .invoice-filter-dropdown__content--invisible {
   display: none;
 }
+
+/* Checked checkbox style (in this case the background is red) */
+.invoice-filter-checkbox__input:checked
+  + .invoice-filter-checkbox__filter-name:before {
+  /* NOTE: Replace the url with a path to an SVG of a checkmark to get a checkmark icon */
+  background-image: url("../../../assets/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* The size of the checkmark icon, you may/may not need this */
+  background-size: 10px;
+  border-radius: 2px;
+  background-color: #7c5dfa;
+  color: white;
+}

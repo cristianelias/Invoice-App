@@ -22,23 +22,6 @@ fieldset {
   min-width: 0;
 }
 
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="tel"],
-input[type="url"] {
-  font-size: 16px;
-}
-
 body {
   font-family: "Spartan", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8f8fb;

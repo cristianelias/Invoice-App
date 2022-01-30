@@ -1,5 +1,5 @@
 {
-  "name": "Invoice-App",
+  "name": "invoice-app",
   "version": "1.0.0",
   "description": "Invoice management app",
   "source": "src/index.html",

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 // Components
-import InvoiceField from "./InvoiceField/InvoiceField";
+import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
 import Gradient from "../Gradient/Gradient";
 import PrimaryButton from "../Button/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../Button/SecondaryButton/SecondaryButton";
@@ -69,7 +69,9 @@ const inputDataByName = {
   total: {
     label: "Total",
     classes: "",
-    // type: "calculated",
+    type: "calculated",
+    multiplicand: "Price",
+    mutliplier: "Qty.",
   },
 };
 
@@ -203,8 +205,6 @@ const InvoiceForm = (props) => {
       {({ values }) => (
         <>
           <div className="invoice-form">
-            <pre>{JSON.stringify(values, null, 2)}</pre>
-
             <Form className="invoice-form__form">
               {title}
 
@@ -212,7 +212,7 @@ const InvoiceForm = (props) => {
                 <h2 className="h2">Bill From</h2>
 
                 {Object.keys(values.from).map((fieldName, index) => (
-                  <InvoiceField
+                  <InvoiceFieldFactory
                     key={index}
                     name={`from.${fieldName}`}
                     text={inputDataByName[fieldName].label}
@@ -224,25 +224,35 @@ const InvoiceForm = (props) => {
               <fieldset>
                 <h2 className="h2">Bill To</h2>
 
-                {Object.keys(values.to).map((fieldName, index) => (
-                  <InvoiceField
-                    key={index}
-                    name={`to.${fieldName}`}
-                    text={inputDataByName[fieldName].label}
-                    classes={inputDataByName[fieldName].classes}
-                  />
-                ))}
+                {Object.keys(values.to).map((fieldName, index) => {
+                  const fieldMeta = inputDataByName[fieldName];
+
+                  return (
+                    <InvoiceFieldFactory
+                      key={index}
+                      name={`to.${fieldName}`}
+                      text={fieldMeta.label}
+                      classes={fieldMeta.classes}
+                      type={fieldMeta.type}
+                    />
+                  );
+                })}
               </fieldset>
 
               <fieldset>
-                {Object.keys(values.details).map((fieldName, index) => (
-                  <InvoiceField
-                    key={index}
-                    name={`details.${fieldName}`}
-                    text={inputDataByName[fieldName].label}
-                    classes={inputDataByName[fieldName].classes}
-                  />
-                ))}
+                {Object.keys(values.details).map((fieldName, index) => {
+                  const fieldMeta = inputDataByName[fieldName];
+
+                  return (
+                    <InvoiceFieldFactory
+                      key={index}
+                      name={`details.${fieldName}`}
+                      text={inputDataByName[fieldName].label}
+                      classes={inputDataByName[fieldName].classes}
+                      type={fieldMeta.type}
+                    />
+                  );
+                })}
               </fieldset>
 
               <fieldset>
@@ -256,22 +266,28 @@ const InvoiceForm = (props) => {
 
                             return (
                               <Fragment key={`${index}x${fieldName}`}>
-                                <InvoiceField
+                                <InvoiceFieldFactory
                                   name={`charges[${index}].${fieldName}`}
                                   text={fieldMeta.label}
                                   classes={fieldMeta.classes}
-                                  // type={fieldMeta.type}
+                                  type={fieldMeta.type}
                                 />
                               </Fragment>
                             );
                           })}
 
-                          <div>
+                          {/* <div>
                             <h3>Total</h3>
                             <div>
-                              {parseInt(item.price) * parseInt(item.qty)}
+                              <InvoiceFieldFactory
+                                name={`charges[${index}].total`}
+                                text={inputDataByName["total"]}
+                                classes={fieldMeta.classes}
+                                type={"calculated"}
+                              />
                             </div>
-                          </div>
+                          </div> */}
+
                           <button
                             onClick={() => {
                               remove(index);

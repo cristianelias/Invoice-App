@@ -202,7 +202,7 @@ const InvoiceForm = (props) => {
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values, errors }) => (
+      {({ values }) => (
         <>
           <div className="invoice-form">
             <Form className="invoice-form__form">
@@ -217,7 +217,6 @@ const InvoiceForm = (props) => {
                       name={`from.${fieldName}`}
                       text={inputDataByName[fieldName].label}
                       classes={inputDataByName[fieldName].classes}
-                      hasErrors={errors["from"][fieldName]}
                     />
                   );
                 })}

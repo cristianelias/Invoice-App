@@ -10,8 +10,9 @@ const InvoiceField = (props) => {
 
   return (
     <Field name={name} className={`field ${classes ? classes : ""}`}>
-      {({ field: { value, onChange } }) => (
+      {({ field: { value, onChange }, meta: { error } }) => (
         <>
+          {console.log(error)}
           <label className="field__label" htmlFor={name}>
             {text}
             <ErrorMessage name={name} className="field__validation">

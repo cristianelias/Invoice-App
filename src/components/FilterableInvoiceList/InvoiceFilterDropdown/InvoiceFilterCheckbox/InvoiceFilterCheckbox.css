@@ -17,6 +17,7 @@
   line-height: 15px;
   letter-spacing: -0.25px;
   cursor: pointer;
+  padding: 13px 13px 13px 0;
 }
 
 .invoice-filter-checkbox__input + .invoice-filter-checkbox__filter-name:before {

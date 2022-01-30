@@ -26,14 +26,17 @@ const Header = () => {
           />
           <div className="header__logo-background"></div>
         </div>
-        <div className="header__theme-container">
+        <div
+          className="header__theme-container"
+          onClick={() => {
+            setDarkTheme(!darkTheme);
+          }}
+          role="img"
+        >
           <img
             className="header__theme"
             src={darkTheme === true ? lightThemeImage : darkThemeImage}
             alt="Theme color switch."
-            onClick={() => {
-              setDarkTheme(!darkTheme);
-            }}
           />
         </div>
         <div className="header__avatar-container">

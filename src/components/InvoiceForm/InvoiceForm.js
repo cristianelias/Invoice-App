@@ -202,7 +202,7 @@ const InvoiceForm = (props) => {
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values }) => (
+      {({ values, errors }) => (
         <>
           <div className="invoice-form">
             <Form className="invoice-form__form">
@@ -210,15 +210,17 @@ const InvoiceForm = (props) => {
 
               <fieldset>
                 <h2 className="h2">Bill From</h2>
-
-                {Object.keys(values.from).map((fieldName, index) => (
-                  <InvoiceFieldFactory
-                    key={index}
-                    name={`from.${fieldName}`}
-                    text={inputDataByName[fieldName].label}
-                    classes={inputDataByName[fieldName].classes}
-                  />
-                ))}
+                {Object.keys(values.from).map((fieldName, index) => {
+                  return (
+                    <InvoiceFieldFactory
+                      key={index}
+                      name={`from.${fieldName}`}
+                      text={inputDataByName[fieldName].label}
+                      classes={inputDataByName[fieldName].classes}
+                      hasErrors={errors["from"][fieldName]}
+                    />
+                  );
+                })}
               </fieldset>
 
               <fieldset>

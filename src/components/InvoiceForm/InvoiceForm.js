@@ -54,28 +54,28 @@ const InvoiceForm = (props) => {
             <Form className="invoice-form__form">
               {title}
 
-              <fieldset>
-                <h2 className="h2">Bill From</h2>
+              <fieldset className="fieldset-from">
+                <h2 className="invoice-form-heading">Bill From</h2>
                 {Object.keys(values.from).map((fieldName, index) =>
                   createField({ fieldsetId: "from", name: fieldName, index })
                 )}
               </fieldset>
 
-              <fieldset>
-                <h2 className="h2">Bill To</h2>
+              <fieldset className="fieldset-to">
+                <h2 className="invoice-form-heading">Bill To</h2>
 
                 {Object.keys(values.to).map((fieldName, index) =>
                   createField({ fieldsetId: "to", name: fieldName, index })
                 )}
               </fieldset>
 
-              <fieldset>
+              <fieldset className="fieldset-details">
                 {Object.keys(values.details).map((fieldName, index) =>
                   createField({ fieldsetId: "details", name: fieldName, index })
                 )}
               </fieldset>
 
-              <fieldset className="item-details-fields">
+              <fieldset className="fieldset-charges">
                 <h2 className="item-list">Item List</h2>
                 <FieldArray name="charges">
                   {({ push, remove }) => (

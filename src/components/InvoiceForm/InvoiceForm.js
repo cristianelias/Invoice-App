@@ -91,7 +91,7 @@ const formValues = {
 };
 
 const assembleRequiredInputValidation = (inputName) =>
-  `Please specify a ${inputName}.`;
+  `Please specify the ${inputName}.`;
 
 const assembleTypeInputValidation = (inputName, inputType) =>
   `${inputName} must be a ${inputType}.`;

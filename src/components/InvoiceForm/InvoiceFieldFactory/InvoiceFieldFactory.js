@@ -1,35 +1,29 @@
 // Components
 import InvoiceField from "../InvoiceField/InvoiceField";
-import CalculatedInvoiceField from "../CalculatedInvoiceField/CalculatedInvoiceField";
+import ItemTotalInvoiceField from "../ItemTotalInvoiceField/ItemTotalInvoiceField";
 
 const InvoiceFieldFactory = (props) => {
-  const {
-    text,
-    name,
-    fieldsetId,
-    type,
-    placeholder,
-    multiplicand,
-    multiplier,
-  } = props;
+  const { name, meta, placeholder, fields } = props;
+  const classes = `field field-${name.replace(".", "-")}`;
+  const { type, label } = meta;
+
   const fallback = (
     <InvoiceField
-      text={text}
+      label={label}
       name={name}
-      fieldsetId={fieldsetId}
       placeholder={placeholder}
+      classes={classes}
     />
   );
 
   const fieldsByType = {
-    calculated: (
-      <CalculatedInvoiceField
-        text={text}
+    total: (
+      <ItemTotalInvoiceField
+        label={label}
         name={name}
-        fieldsetId={fieldsetId}
         placeholder={placeholder}
-        multiplicand={multiplicand}
-        multiplier={multiplier}
+        classes={classes}
+        fields={fields}
       />
     ),
   };

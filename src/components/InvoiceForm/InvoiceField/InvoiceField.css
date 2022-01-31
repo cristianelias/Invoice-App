@@ -43,15 +43,12 @@
   border: solid 1px #7c5dfa;
 }
 
-.field__label,
-.field__total h3 {
+.field__label {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
   color: #7e88c3;
-  display: flex;
-  justify-content: space-between;
 }
 
 .field__input {
@@ -74,7 +71,6 @@
 
 @media (max-width: 650px) {
   .field__input {
-    padding: 13px 0px 10px 20px;
     font-size: 16px;
   }
 }

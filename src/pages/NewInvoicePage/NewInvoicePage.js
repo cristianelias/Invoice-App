@@ -7,11 +7,15 @@ import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/Invo
 // Styles
 import "./NewInvoicePage.css";
 
+// Data
+import initialValues from "../../components/InvoiceForm/initialValues";
+
 const NewInvoicePage = () => {
   return (
     <div className="new-invoice-page">
       <Overlay />
       <InvoiceForm
+        initialValues={initialValues}
         title={<InvoiceFormTitle />}
         footer={<InvoiceFormFooter />}
       />

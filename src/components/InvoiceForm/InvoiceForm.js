@@ -2,7 +2,6 @@
 import React, { Fragment } from "react";
 import { Formik, Form, FieldArray } from "formik";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 
 // Components
 import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
@@ -17,175 +16,13 @@ import "./InvoiceForm.css";
 // Assets
 import iconTrashCan from "../../assets/icon-delete.svg";
 
-const inputDataByName = {
-  streetAddress: {
-    label: "Street Address",
-  },
-  city: {
-    label: "City",
-  },
-  postCode: {
-    label: "Post Code",
-  },
-  country: {
-    label: "Country",
-  },
-  clientName: {
-    label: "Client's Name",
-  },
-  clientEmail: {
-    label: "Client's Email",
-  },
-  invoiceDate: {
-    label: "Invoice Date",
-  },
-  paymentTerms: {
-    label: "Payment Terms",
-  },
-  projectDescription: {
-    label: "Project Description",
-  },
-  itemName: {
-    label: "Item Name",
-  },
-  qty: {
-    label: "Qty.",
-  },
-  price: {
-    label: "Price",
-  },
-  total: {
-    label: "Total",
-    type: "total",
-  },
-};
-
-const chargesValues = {
-  itemName: "",
-  qty: "",
-  price: "",
-  total: "",
-};
-
-const formValues = {
-  from: {
-    streetAddress: "",
-    city: "",
-    postCode: "",
-    country: "",
-  },
-  to: {
-    clientName: "",
-    clientEmail: "",
-    streetAddress: "",
-    city: "",
-    postCode: "",
-    country: "",
-  },
-  details: {
-    invoiceDate: "",
-    paymentTerms: "",
-    projectDescription: "",
-  },
-  charges: [chargesValues],
-};
-
-const assembleRequiredInputValidation = (inputName) =>
-  `Please specify the ${inputName}.`;
-
-const assembleTypeInputValidation = (inputName, inputType) =>
-  `${inputName} must be a ${inputType}.`;
-const STRING_MIN_LENGTH = 4;
-const STRING_MIN_MESASGE = `This field must be at least ${STRING_MIN_LENGTH} characters long.`;
-const STRING_MAX_LENGTH = 30;
-const STRING_MAX_MESASGE = `This field can not be longer than ${STRING_MAX_LENGTH} characters.`;
-
-const QTY_MIN_VALUE = 1;
-const QTY_MIN_MESSAGE = `The minimum quantity is ${QTY_MIN_VALUE}.`;
-const QTY_MAX_VALUE = 10000;
-const QTY_MAX_MESSAGE = `The minimum quantity is ${QTY_MAX_VALUE}.`;
-
-const PRICE_MIN_VALUE = 1;
-const PRICE_MIN_MESSAGE = `The minimum price is ${PRICE_MIN_VALUE}.`;
-const PRICE_MAX_VALUE = 1000000;
-const PRICE_MAX_MESSAGE = `The minimum price is ${PRICE_MAX_VALUE}.`;
-
-const commonSchemas = {
-  streetAddress: Yup.string()
-    .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-    .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("Street Address")),
-  city: Yup.string()
-    .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-    .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("City")),
-  postCode: Yup.string()
-    .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-    .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("Post Code")),
-  country: Yup.string()
-    .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-    .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("Country")),
-};
-
-const validationSchema = Yup.object().shape({
-  from: Yup.object().shape({
-    streetAddress: commonSchemas.streetAddress,
-    city: commonSchemas.city,
-    postCode: commonSchemas.postCode,
-    country: commonSchemas.country,
-  }),
-  to: Yup.object().shape({
-    streetAddress: commonSchemas.streetAddress,
-    city: commonSchemas.city,
-    postCode: commonSchemas.postCode,
-    country: commonSchemas.country,
-    clientName: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Client Name")),
-    clientEmail: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Client E-mail")),
-  }),
-  details: Yup.object().shape({
-    invoiceDate: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Invoice Date")),
-    paymentTerms: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH)
-      .required("Please choose the desired Payment Terms"),
-    projectDescription: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Project Description")),
-  }),
-  charges: Yup.array().of(
-    Yup.object().shape({
-      itemName: Yup.string()
-        .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-        .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-        .required(assembleRequiredInputValidation("Item Name")),
-      qty: Yup.number()
-        .min(QTY_MIN_VALUE, QTY_MIN_MESSAGE)
-        .max(QTY_MAX_VALUE, QTY_MAX_MESSAGE)
-        .required(assembleRequiredInputValidation("Quantity"))
-        .typeError(assembleTypeInputValidation("Quantity", "number")),
-      price: Yup.number()
-        .min(PRICE_MIN_VALUE, PRICE_MIN_MESSAGE)
-        .max(PRICE_MAX_VALUE, PRICE_MAX_MESSAGE)
-        .required(assembleRequiredInputValidation("Price"))
-        .typeError(assembleTypeInputValidation("Price", "number")),
-    })
-  ),
-});
+// Data
+import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
+import inputDataByName from "./inputDataByName";
+import chargesValues from "./chargesValues";
 
 const InvoiceForm = (props) => {
-  const { title } = props;
+  const { title, initialValues } = props;
   const navigate = useNavigate();
 
   const createField = ({ name, fieldsetId, index, fields }) => {
@@ -203,22 +40,16 @@ const InvoiceForm = (props) => {
 
   return (
     <Formik
-      initialValues={formValues}
-      validationSchema={validationSchema}
+      initialValues={initialValues}
+      validationSchema={invoiceFormValidationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values, errors, handleSubmit }) => (
+      {({ values, handleSubmit }) => (
         <>
-          <pre>
-            <code>{JSON.stringify(values, null, 2)}</code>
-          </pre>
-          <pre>
-            <code>{JSON.stringify(errors, null, 2)}</code>
-          </pre>
           <div className="invoice-form">
             <Form className="invoice-form__form">
               {title}

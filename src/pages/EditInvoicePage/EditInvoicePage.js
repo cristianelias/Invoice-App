@@ -10,6 +10,9 @@ import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/In
 // Styles
 import "./EditInvoicePage.css";
 
+// Data
+import initialValues from "../../components/InvoiceForm/initialValues";
+
 const EditInvoicePage = (props) => {
   const { invoices } = props;
   const [, setInvoice] = useState({});
@@ -26,6 +29,7 @@ const EditInvoicePage = (props) => {
   return (
     <div className="edit-invoice-page">
       <InvoiceForm
+        initialValues={initialValues}
         title={<InvoiceFormTitle id={currentInvoiceId} edit={true} />}
         footer={<InvoiceFormFooter isEdit={true} />}
       />

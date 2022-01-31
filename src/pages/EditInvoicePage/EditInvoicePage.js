@@ -3,19 +3,16 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Components
-import InvoiceForm from "../../components/InvoiceForm/InvoiceForm";
+import EditInvoiceForm from "../../components/InvoiceForm/EditInvoiceForm/EditInvoiceForm";
 import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
 import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
 
 // Styles
 import "./EditInvoicePage.css";
 
-// Data
-import initialValues from "../../components/InvoiceForm/initialValues";
-
 const EditInvoicePage = (props) => {
   const { invoices } = props;
-  const [, setInvoice] = useState({});
+  const [invoice, setInvoice] = useState({});
   const currentInvoiceId = useParams().id;
 
   useEffect(() => {
@@ -28,11 +25,9 @@ const EditInvoicePage = (props) => {
 
   return (
     <div className="edit-invoice-page">
-      <InvoiceForm
-        initialValues={initialValues}
-        title={<InvoiceFormTitle id={currentInvoiceId} edit={true} />}
-        footer={<InvoiceFormFooter isEdit={true} />}
-      />
+      {invoice && invoice.id !== undefined && (
+        <EditInvoiceForm invoice={invoice} setInvoice={setInvoice} />
+      )}
     </div>
   );
 };

@@ -2,3 +2,7 @@
   background: #373b53;
   color: #888eb0;
 }
+
+.secondary-button:hover {
+  opacity: 0.9;
+}

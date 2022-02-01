@@ -91,5 +91,6 @@
 
   .view-invoice-page__gradient .gradient {
     display: inline;
+    z-index: 0;
   }
 }

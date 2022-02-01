@@ -56,6 +56,7 @@ const invoiceFormValidationSchema = Yup.object().shape({
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
       .required(assembleRequiredInputValidation("Client Name")),
     clientEmail: Yup.string()
+      .email("Please enter a valid e-mail address")
       .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
       .required(assembleRequiredInputValidation("Client E-mail")),

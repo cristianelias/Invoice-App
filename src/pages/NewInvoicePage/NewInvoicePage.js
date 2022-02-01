@@ -9,11 +9,18 @@ import "./NewInvoicePage.css";
 // Data
 import initialValues from "../../components/InvoiceForm/initialValues";
 
-const NewInvoicePage = () => {
+const NewInvoicePage = (props) => {
+  const { setInvoices, setLoading } = props;
+
   return (
     <div className="new-invoice-page">
       <Overlay />
-      <InvoiceForm initialValues={initialValues} title={<InvoiceFormTitle />} />
+      <InvoiceForm
+        initialValues={initialValues}
+        title={<InvoiceFormTitle />}
+        setLoading={setLoading}
+        setInvoices={setInvoices}
+      />
     </div>
   );
 };

@@ -43,7 +43,7 @@ const EditInvoiceForm = (props) => {
   return (
     <InvoiceForm
       initialValues={mapInitialValuesFromInvoice()}
-      title={<InvoiceFormTitle edit={true} id={invoice.id} />}
+      title={<InvoiceFormTitle editMode={true} id={invoice.id} />}
     />
   );
 };

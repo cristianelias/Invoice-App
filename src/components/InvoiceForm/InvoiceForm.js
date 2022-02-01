@@ -21,8 +21,14 @@ import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
 import inputDataByName from "./inputDataByName";
 import chargesValues from "./chargesValues";
 
+// Entities
+import InvoiceBuilder from "../../entities/InvoiceBuilder";
+
+// Clients
+import invoiceClient from "../../clients/invoiceClient";
+
 const InvoiceForm = (props) => {
-  const { title, initialValues } = props;
+  const { title, initialValues, editMode, setLoading, setInvoices } = props;
   const navigate = useNavigate();
 
   const createField = ({ name, fieldsetId, index, fields }) => {
@@ -38,12 +44,48 @@ const InvoiceForm = (props) => {
     );
   };
 
+  const createInvoice = (values) => {
+    const { from, to, details, charges } = values;
+    const iBuilder = new InvoiceBuilder();
+    let invoice = iBuilder
+      .description(details.projectDescription)
+      .paymentTerms(details.paymentTerms)
+      .clientName(to.clientName)
+      .clientEmail(to.clientEmail)
+      .senderAddressStreet(from.streetAddress)
+      .senderAddressCity(from.city)
+      .senderAddressPostCode(from.postCode)
+      .senderAddressCountry(from.country)
+      .clientAddressStreet(to.streetAddress)
+      .clientAddressCity(to.city)
+      .clientAddressPostCode(to.postCode)
+      .clientAddressCountry(to.country)
+      .items(charges)
+      .build();
+
+    return invoice;
+  };
+
+  const submitHandler = ({ values, setLoading, setInvoices }) => {
+    const invoice = createInvoice(values);
+
+    try {
+      setLoading(true);
+      const response = invoiceClient.postInvoice(invoice.asJSON());
+      setInvoices(response);
+      setLoading(false);
+      navigate(-1, { replace: true });
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={invoiceFormValidationSchema}
       onSubmit={(values) => {
-        console.log(values);
+        submitHandler({ values, setLoading, setInvoices });
       }}
       validateOnChange={true}
       validateOnBlur={false}
@@ -129,17 +171,42 @@ const InvoiceForm = (props) => {
           </div>
           <Gradient />
           <footer className="footer-form">
-            <TertiaryButton
-              onClick={() => navigate(-1, { replace: true })}
-              text="Discard"
-            />
+            {(() => {
+              if (editMode) {
+                return (
+                  <>
+                    <TertiaryButton
+                      onClick={() => navigate(-1, { replace: true })}
+                      text="Cancel"
+                    />
 
-            <SecondaryButton
-              onClick={() => navigate(-1, { replace: true })}
-              text="Save as Draft"
-            />
+                    <PrimaryButton
+                      onClick={() => handleSubmit()}
+                      text="Save Changes"
+                    />
+                  </>
+                );
+              }
 
-            <PrimaryButton onClick={() => handleSubmit()} text="Save & Send" />
+              return (
+                <>
+                  <TertiaryButton
+                    onClick={() => navigate(-1, { replace: true })}
+                    text="Discard"
+                  />
+
+                  <SecondaryButton
+                    onClick={() => navigate(-1, { replace: true })}
+                    text="Save as Draft"
+                  />
+
+                  <PrimaryButton
+                    onClick={() => handleSubmit()}
+                    text="Save & Send"
+                  />
+                </>
+              );
+            })()}
           </footer>
         </>
       )}

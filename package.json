@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@fontsource/spartan": "^4.5.2",
+    "dayjs": "^1.10.7",
     "formik": "^2.2.9",
     "lodash.debounce": "^4.0.8",
     "react": "^17.0.2",

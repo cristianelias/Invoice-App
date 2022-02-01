@@ -19,6 +19,7 @@ import "./App.css";
 
 const App = () => {
   const [invoices, setInvoices] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useLayoutEffect(() => {
     const invoices = invoiceClient.fetchInvoices();
@@ -33,7 +34,12 @@ const App = () => {
         <Route path="/" element={<ListInvoicesPage invoices={invoices} />}>
           <Route
             path="new-invoice"
-            element={<NewInvoicePage setInvoices={setInvoices} />}
+            element={
+              <NewInvoicePage
+                setLoading={setLoading}
+                setInvoices={setInvoices}
+              />
+            }
           />
         </Route>
 

@@ -1,5 +1,7 @@
 # Frontend Mentor - Invoice app solution
 
+🐡 **This is not finished, it's under heavy development so you might notice that it does not work as expected yet.** 🐡
+
 This is a solution to the [Invoice app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
@@ -55,7 +57,7 @@ Users should be able to:
 - [React.js Router DOM v6 docs](https://reactrouter.com/docs/en/v6)
 - [Formik docs](https://formik.org/docs/overview)
 - [FrontendMasters](https://frontendmasters.com/) - Priceless content coming straight from industry leading experts
-- [A Formik POC](https://codesandbox.io/s/formik-nested-fields-tvo0t) - This form is considerably big and it has to be able to add and remove groups of fields without losing the ability of validating them. After analyzing it, I've concluded that in order to be maintainable I should use a tool that would help me handle these functionalities. So after considering a couple of options I chose Formik. I like to slice huge problems into smaller pieces, so that's why I've decided to play with Formik in a codesandbox. After adding a few features I had the knowledge needed to tackle bigger forms. Hope it helps you understand Formik better, feel free to reach me at LinkedIn if you need help with it.
+- [A Formik POC live at Vercel](https://formik-poc-six.vercel.app/) - This form is considerably big and it has to be able to add and remove groups of fields without losing the ability to validate them. I decided to use Formik and created this POC while I was learning how to use it. After adding a few features I had the knowledge needed to tackle bigger forms. This is the repo BTW... [cristianelias/formik-poc](https://github.com/cristianelias/formik-poc)
 
 ## Author
 

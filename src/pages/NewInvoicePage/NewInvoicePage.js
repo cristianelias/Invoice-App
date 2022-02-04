@@ -7,13 +7,18 @@ import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/Invo
 import "./NewInvoicePage.css";
 
 // Data
-import initialValues from "../../components/InvoiceForm/initialValues";
+import getInitialValues from "../../components/InvoiceForm/getInitialValues";
 
-const NewInvoicePage = () => (
-  <div className="new-invoice-page">
-    <Overlay />
-    <InvoiceForm initialValues={initialValues} title={<InvoiceFormTitle />} />
-  </div>
-);
+const NewInvoicePage = () => {
+  return (
+    <div className="new-invoice-page">
+      <Overlay />
+      <InvoiceForm
+        initialValues={getInitialValues()}
+        title={<InvoiceFormTitle />}
+      />
+    </div>
+  );
+};
 
 export default NewInvoicePage;

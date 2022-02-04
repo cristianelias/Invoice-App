@@ -13,9 +13,9 @@ const InvoiceActions = (props) => {
     <div className="invoice-actions">
       <TertiaryButton linkTo={`/view-invoice/${id}/edit`} text="Edit" />
 
-      <ErrorButton linkTo="/" text="Delete" />
+      {/* <ErrorButton linkTo="/" text="Delete" />
 
-      <PrimaryButton text="Mark as Paid" />
+      <PrimaryButton text="Mark as Paid" /> */}
     </div>
   );
 };

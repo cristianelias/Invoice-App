@@ -1,6 +1,6 @@
 import chargesValues from "./chargesValues";
 
-const initialValues = {
+const getInitialValues = () => ({
   from: {
     streetAddress: "",
     city: "",
@@ -21,6 +21,6 @@ const initialValues = {
     projectDescription: "",
   },
   charges: [chargesValues],
-};
+});
 
-export default initialValues;
+export default getInitialValues;

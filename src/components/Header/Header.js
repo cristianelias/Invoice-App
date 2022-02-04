@@ -30,6 +30,7 @@ const Header = () => {
           className="header__theme-container"
           onClick={() => {
             setDarkTheme(!darkTheme);
+            alert("-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 ");
           }}
           role="img"
         >

@@ -66,12 +66,9 @@ const InvoiceForm = (props) => {
     return invoice;
   };
 
-  const submitHandler = async ({ values, setLoading }) => {
+  const submitHandler = async ({ values }) => {
     const invoice = createInvoice(values);
-
-    setLoading(true);
-    const response = await firebaseInvoiceClient.postInvoice(invoice.asJSON());
-    debugger;
+    await firebaseInvoiceClient.postInvoice(invoice.asJSON());
     navigate(-1, { replace: true });
   };
 
@@ -176,7 +173,13 @@ const InvoiceForm = (props) => {
                     />
 
                     <PrimaryButton
-                      onClick={() => handleSubmit()}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        alert(
+                          "-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 "
+                        );
+                      }}
                       text="Save Changes"
                     />
                   </>
@@ -191,7 +194,14 @@ const InvoiceForm = (props) => {
                   />
 
                   <SecondaryButton
-                    onClick={() => navigate(-1, { replace: true })}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      alert(
+                        "-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 "
+                      );
+                      navigate(-1, { replace: true });
+                    }}
                     text="Save as Draft"
                   />
 

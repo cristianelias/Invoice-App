@@ -25,10 +25,10 @@ import chargesValues from "./chargesValues";
 import InvoiceBuilder from "../../entities/InvoiceBuilder";
 
 // Clients
-import invoiceClient from "../../clients/invoiceClient";
+import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
 const InvoiceForm = (props) => {
-  const { title, initialValues, editMode, setLoading, setInvoices } = props;
+  const { title, initialValues, editMode } = props;
   const navigate = useNavigate();
 
   const createField = ({ name, fieldsetId, index, fields }) => {
@@ -66,18 +66,13 @@ const InvoiceForm = (props) => {
     return invoice;
   };
 
-  const submitHandler = ({ values, setLoading, setInvoices }) => {
+  const submitHandler = async ({ values, setLoading }) => {
     const invoice = createInvoice(values);
 
-    try {
-      setLoading(true);
-      const response = invoiceClient.postInvoice(invoice.asJSON());
-      setInvoices(response);
-      setLoading(false);
-      navigate(-1, { replace: true });
-    } catch (error) {
-      setLoading(false);
-    }
+    setLoading(true);
+    const response = await firebaseInvoiceClient.postInvoice(invoice.asJSON());
+    debugger;
+    navigate(-1, { replace: true });
   };
 
   return (
@@ -85,7 +80,7 @@ const InvoiceForm = (props) => {
       initialValues={initialValues}
       validationSchema={invoiceFormValidationSchema}
       onSubmit={(values) => {
-        submitHandler({ values, setLoading, setInvoices });
+        submitHandler({ values });
       }}
       validateOnChange={true}
       validateOnBlur={false}

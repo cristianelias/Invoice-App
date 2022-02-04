@@ -14,7 +14,6 @@ import "./FilterableInvoiceList.css";
 const FilterableInvoiceList = (props) => {
   const { invoices } = props;
   const [showFullInfo, setShowFullInfo] = useState(false);
-
   const [filterPaid, setFilterPaid] = useState(true);
   const [filterPending, setFilterPending] = useState(true);
   const [filterDraft, setFilterDraft] = useState(true);

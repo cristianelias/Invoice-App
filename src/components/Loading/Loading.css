@@ -1,0 +1,7 @@
+.loading {
+  grid-column: 1/2;
+}
+
+.loading__title {
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import { StrictMode, useState, useLayoutEffect } from "react";
+import { StrictMode, useState, useLayoutEffect, useEffect } from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -10,52 +10,59 @@ import EditInvoicePage from "../../pages/EditInvoicePage/EditInvoicePage";
 
 // Components
 import Header from "../Header/Header";
-
-// Clients
-import invoiceClient from "../../clients/invoiceClient";
+import Loading from "../Loading/Loading";
 
 // Styles
 import "./App.css";
 
+import { getFirestore, collection } from "firebase/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBJxmaEM79VlzO9I7Tqn5pF73EuG7IzY4s",
+  authDomain: "invoice-4pp.firebaseapp.com",
+  databaseURL: "https://invoice-4pp-default-rtdb.firebaseio.com",
+  projectId: "invoice-4pp",
+  storageBucket: "invoice-4pp.appspot.com",
+  messagingSenderId: "109703836878",
+  appId: "1:109703836878:web:e185b268e1dcd02e49cc9f",
+  measurementId: "G-PRR4HTQ58H",
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
 const App = () => {
-  const [invoices, setInvoices] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useLayoutEffect(() => {
-    const invoices = invoiceClient.fetchInvoices();
-
-    setInvoices(invoices);
-  }, []);
+  const [invoices, loading, error] = useCollectionData(
+    collection(getFirestore(firebaseApp), "invoices")
+  );
 
   return (
-    <div className="main-layout">
-      <Header />
-      <Routes>
-        <Route path="/" element={<ListInvoicesPage invoices={invoices} />}>
-          <Route
-            path="new-invoice"
-            element={
-              <NewInvoicePage
-                setLoading={setLoading}
-                setInvoices={setInvoices}
-              />
-            }
-          />
-        </Route>
+    <>
+      {error && <strong>Error: {JSON.stringify(error)}</strong>}
 
-        <Route
-          path="/view-invoice/:id"
-          element={<ViewInvoicePage invoices={invoices} />}
-        >
-          <Route
-            path="/view-invoice/:id/edit"
-            element={
-              <EditInvoicePage invoices={invoices} setInvoices={setInvoices} />
-            }
-          />
-        </Route>
-      </Routes>
-    </div>
+      <div className="main-layout">
+        <Header />
+
+        {loading && <Loading />}
+        {invoices && (
+          <Routes>
+            <Route path="/" element={<ListInvoicesPage invoices={invoices} />}>
+              <Route path="new-invoice" element={<NewInvoicePage />} />
+            </Route>
+
+            <Route
+              path="/view-invoice/:id"
+              element={<ViewInvoicePage invoices={invoices} />}
+            >
+              <Route
+                path="/view-invoice/:id/edit"
+                element={<EditInvoicePage invoices={invoices} />}
+              />
+            </Route>
+          </Routes>
+        )}
+      </div>
+    </>
   );
 };
 

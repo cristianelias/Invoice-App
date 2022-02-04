@@ -26,7 +26,7 @@ const EditInvoicePage = (props) => {
   return (
     <div className="edit-invoice-page">
       {invoice && invoice.id !== undefined && (
-        <EditInvoiceForm invoice={invoice} setInvoice={setInvoice} />
+        <EditInvoiceForm invoice={invoice} />
       )}
     </div>
   );

@@ -48,8 +48,9 @@ Users should be able to:
 - [React.js Router v6](https://reactrouter.com/) - A routing library for React
 - [Formik](https://formik.org/) - An open source form library for React
 - [Parcel](https://parceljs.org/) - A really fast module bundler for Web Apps
-- LocalStorage ( by now... )
-- Firebase || ( Express.js API + MongoDB + Mongoose ) I am not sure yet, I might end up coding both solutions since I want to learn Firebase and I love Express + MongoDB
+- LocalStorage ( Disabled by default )
+- [Firebase with Firestore Real Time DB](https://firebase.google.com/docs/firestore)
+- [firebase-react-hooks](https://www.npmjs.com/package/react-firebase-hooks) - It provides a lot of useful React Hooks
 
 ### Useful resources
 

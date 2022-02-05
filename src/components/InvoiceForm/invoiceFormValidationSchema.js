@@ -24,7 +24,7 @@ const commonSchemas = {
   streetAddress: Yup.string()
     .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("Street Address")),
+    .required(assembleRequiredInputValidation("Street address")),
   city: Yup.string()
     .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
@@ -32,7 +32,7 @@ const commonSchemas = {
   postCode: Yup.string()
     .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-    .required(assembleRequiredInputValidation("Post Code")),
+    .required(assembleRequiredInputValidation("Post code")),
   country: Yup.string()
     .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
@@ -54,26 +54,27 @@ const invoiceFormValidationSchema = Yup.object().shape({
     clientName: Yup.string()
       .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Client Name")),
+      .required(assembleRequiredInputValidation("Client name")),
     clientEmail: Yup.string()
       .email("Please enter a valid e-mail address")
       .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Client E-mail")),
+      .required(assembleRequiredInputValidation("Client e-mail")),
   }),
   details: Yup.object().shape({
-    invoiceDate: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Invoice Date")),
-    paymentTerms: Yup.string()
-      .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
-      .max(STRING_MAX_LENGTH)
-      .required("Please choose the desired Payment Terms"),
+    invoiceDate: Yup.date(
+      assembleTypeInputValidation("Invoice date", "date")
+    ).required(assembleRequiredInputValidation("Invoice Date")),
+    paymentTerms: Yup.number(
+      assembleTypeInputValidation("Payment terms", "number")
+    )
+      .min(1, "The minimum amount of payment terms is 1.")
+      .max(90, "The maximum amount of payment terms is 90.")
+      .required("Please choose the desired payment terms"),
     projectDescription: Yup.string()
       .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
       .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
-      .required(assembleRequiredInputValidation("Project Description")),
+      .required(assembleRequiredInputValidation("Project description")),
   }),
   charges: Yup.array().of(
     Yup.object().shape({

@@ -2,10 +2,10 @@
 import { Field, useField, ErrorMessage } from "formik";
 
 // Styles
-import "./InvoiceField.css";
+import "./InvoiceSelectField.css";
 
-const InvoiceField = (props) => {
-  const { label, name, classes, type, min, max } = props;
+const InvoiceSelectField = (props) => {
+  const { label, name, classes, type, values } = props;
   const { setTouched } = useField(name)[2];
 
   return (
@@ -18,22 +18,31 @@ const InvoiceField = (props) => {
           <label className="field__label" htmlFor={name}>
             {label}
           </label>
-          <input
-            className="field__input"
+          <select
+            className="field__input field__select"
             name={name}
             value={value}
             onChange={(e) => {
               setTouched(name, true);
               onChange(e);
             }}
-            type={type}
-            min={min}
-            max={max}
-          />
+          >
+            {values.map((currentVal, index) => {
+              return (
+                <option
+                  key={index}
+                  value={currentVal.value}
+                  selected={value.selected}
+                >
+                  {currentVal.text}
+                </option>
+              );
+            })}
+          </select>
         </div>
       )}
     </Field>
   );
 };
 
-export default InvoiceField;
+export default InvoiceSelectField;

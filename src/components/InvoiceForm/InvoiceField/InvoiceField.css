@@ -3,13 +3,19 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
 .field__input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.field__input[type="date"] {
+  padding: 0 0 0 20px;
 }
 
 ::-webkit-calendar-picker-indicator {
   width: 16px;
   height: 16px;
+  padding-right: 1rem;
 }
 
 ::placeholder {
@@ -35,6 +41,14 @@
   color: #ec5757;
 }
 
+.field--error {
+  margin-bottom: 15px;
+}
+
+.field {
+  position: relative;
+}
+
 .error {
   color: #ec5757;
   font-weight: 600;
@@ -42,6 +56,8 @@
   font-size: 10px;
   line-height: 15px;
   letter-spacing: -0.208333px;
+  position: absolute;
+  bottom: -30px;
 }
 
 .field--error .field__input {
@@ -73,8 +89,16 @@
   color: #0c0e16;
 }
 
+.fieldset-charges .field--error .error {
+  display: none;
+}
+
 .field__input:focus {
   border: solid 1px #7c5dfa;
+}
+
+.field.field--error .field__input:focus {
+  border: solid 1px #ec5757;
 }
 
 @media (max-width: 650px) {

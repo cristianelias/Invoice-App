@@ -2,10 +2,10 @@
 import { Field } from "formik";
 
 // Styles
-import "./ItemTotalInvoiceField.css";
+import "./InvoiceItemTotalField.css";
 
-const ItemTotalInvoiceField = (props) => {
-  const { label, name, placeholder, classes, fields } = props;
+const InvoiceItemTotalField = (props) => {
+  const { label, name, classes, fields } = props;
 
   const calculateValue = () =>
     [fields.price, fields.qty]
@@ -24,7 +24,6 @@ const ItemTotalInvoiceField = (props) => {
           <input
             className="field__input"
             name={name}
-            placeholder={placeholder}
             value={calculateValue()}
             readOnly="readOnly"
           />
@@ -34,4 +33,4 @@ const ItemTotalInvoiceField = (props) => {
   );
 };
 
-export default ItemTotalInvoiceField;
+export default InvoiceItemTotalField;

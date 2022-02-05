@@ -1,29 +1,33 @@
 {
   "name": "invoice-app",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Invoice management app",
-  "source": "src/index.html",
+  "main": "src/main.js",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+    "build": "webpack --mode=production",
+    "start": "webpack serve --mode=development --client-progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cristian Elias <cristian.ricardo.elias@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@parcel/babel-preset-env": "^2.2.1",
-    "@parcel/compressor-brotli": "^2.2.1",
-    "@parcel/transformer-image": "^2.2.1",
-    "@parcel/transformer-svg-react": "^2.2.1",
+    "@babel/core": "^7.17.0",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.6.0",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
-    "parcel": "^2.2.1",
-    "prettier": "2.2.1"
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.2.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
     "@fontsource/spartan": "^4.5.2",
@@ -36,6 +40,5 @@
     "react-firebase-hooks": "^5.0.1",
     "react-router-dom": "^6.2.1",
     "yup": "^0.32.11"
-  },
-  "browserslist": "> 0.25%, not dead"
+  }
 }

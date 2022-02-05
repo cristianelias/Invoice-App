@@ -1,5 +1,5 @@
-@import "npm:@fontsource/spartan/500.css";
-@import "npm:@fontsource/spartan/700.css";
+@import "@fontsource/spartan/500.css";
+@import "@fontsource/spartan/700.css";
 
 *,
 *::before,

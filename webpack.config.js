@@ -58,10 +58,7 @@ module.exports = (env, { mode }) => {
     },
     optimization: {
       minimize: isProduction,
-      minimizer: [
-        // Use esbuild to minify
-        new ESBuildMinifyPlugin({ target: "es2015" }),
-      ],
+      minimizer: [new ESBuildMinifyPlugin({ target: "es2015" })],
     },
   };
 };

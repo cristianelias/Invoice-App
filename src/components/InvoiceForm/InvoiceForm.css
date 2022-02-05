@@ -93,18 +93,8 @@
   margin-top: 32px;
 }
 
-.field.field-charges\[0\]-qty .field__input,
-.field-charges\[0\]-price .field__input,
-.field-charges\[0\]-total .field__input {
-  padding: 5px;
-  text-align: center;
-}
-
-.field-charges\[0\]-total .field__input {
+.field__input[name$=".total"] {
   text-align: left;
-}
-
-.field-charges\[0\]-total .field__input {
   border: none;
   color: #888eb0;
 }

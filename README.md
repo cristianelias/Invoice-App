@@ -50,6 +50,7 @@ Users should be able to:
 - [Formik](https://formik.org/)
 - [~~Parcel 2~~](https://parceljs.org/) - I've decided to switch to Webpack 5
 - [Webpack 5](https://webpack.js.org/)
+- [esbuild-loader](https://github.com/privatenumber/esbuild-loader)
 - ~~LocalStorage~~ - I replaced it with Firestore, but I also kept the LocalStorage client- [Firebase with Firestore Real Time DB](https://firebase.google.com/docs/firestore)
 - [firebase-react-hooks](https://www.npmjs.com/package/react-firebase-hooks) - It provides some useful React Hooks which come in handy
 

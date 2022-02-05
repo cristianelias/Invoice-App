@@ -7,7 +7,7 @@ module.exports = (env, { mode }) => {
   const isProduction = mode === "production";
 
   const backendUrl = isProduction
-    ? "[INSERT PRODUCTIVE URL]"
+    ? "https://invoice-app-thiscris.vercel.app/"
     : "http://localhost:3000/";
 
   return {
@@ -48,7 +48,17 @@ module.exports = (env, { mode }) => {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "esbuild-loader",
+              options: {
+                loader: "css",
+                minify: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(jpe?g|svg|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
@@ -58,7 +68,11 @@ module.exports = (env, { mode }) => {
     },
     optimization: {
       minimize: isProduction,
-      minimizer: [new ESBuildMinifyPlugin({ target: "es2015" })],
+      minimizer: [
+        new ESBuildMinifyPlugin({
+          target: "es2015",
+        }),
+      ],
     },
   };
 };

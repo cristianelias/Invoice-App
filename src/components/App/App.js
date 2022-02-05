@@ -1,9 +1,7 @@
 // Dependencies
-import { StrictMode } from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { collection } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Routes, Route } from "react-router-dom";
 
 // Pages
 import ListInvoicesPage from "../../pages/ListInvoicesPage/ListInvoicesPage";
@@ -57,11 +55,4 @@ const App = () => {
   );
 };
 
-render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-  document.getElementById("root")
-);
+export default App;

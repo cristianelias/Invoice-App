@@ -1,4 +1,4 @@
-@import "npm:@fontsource/spartan/700.css";
+@import "@fontsource/spartan/700.css";
 
 .loading {
   grid-column: 2/3;

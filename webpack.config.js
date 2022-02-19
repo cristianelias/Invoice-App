@@ -1,3 +1,4 @@
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
@@ -7,7 +8,7 @@ module.exports = (env, { mode }) => {
   const isProduction = mode === "production";
 
   const backendUrl = isProduction
-    ? "https://invoice-app-thiscris.vercel.app/"
+    ? "[INSERT PRODUCTIVE URL]"
     : "http://localhost:3000/";
 
   return {
@@ -35,7 +36,7 @@ module.exports = (env, { mode }) => {
       port: 3000,
       historyApiFallback: true,
     },
-    devtool: "source-map",
+    devtool: isProduction ? false : "source-map",
     module: {
       rules: [
         {
@@ -71,6 +72,27 @@ module.exports = (env, { mode }) => {
       minimizer: [
         new ESBuildMinifyPlugin({
           target: "es2015",
+        }),
+        new ImageMinimizerPlugin({
+          minimizer: {
+            implementation: ImageMinimizerPlugin.squooshMinify,
+            options: {
+              encodeOptions: {
+                mozjpeg: {
+                  // That setting might be close to lossless, but it’s not guaranteed
+                  // https://github.com/GoogleChromeLabs/squoosh/issues/85
+                  quality: 100,
+                },
+                webp: {
+                  lossless: 1,
+                },
+                avif: {
+                  // https://github.com/GoogleChromeLabs/squoosh/blob/dev/codecs/avif/enc/README.md
+                  cqLevel: 0,
+                },
+              },
+            },
+          },
         }),
       ],
     },

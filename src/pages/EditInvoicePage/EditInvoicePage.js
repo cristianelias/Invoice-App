@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 // Components
 import EditInvoiceForm from "../../components/InvoiceForm/EditInvoiceForm/EditInvoiceForm";
-import InvoiceFormTitle from "../../components/InvoiceForm/InvoiceFormTitle/InvoiceFormTitle";
-import InvoiceFormFooter from "../../components/InvoiceForm/InvoiceFormFooter/InvoiceFormFooter";
 
 // Styles
 import "./EditInvoicePage.css";

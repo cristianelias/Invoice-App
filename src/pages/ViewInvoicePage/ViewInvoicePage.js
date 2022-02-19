@@ -7,6 +7,7 @@ import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentSt
 import InvoiceActions from "../../components/InvoiceActions/InvoiceActions";
 import Gradient from "../../components/Gradient/Gradient";
 import GoBack from "../../components/GoBack/GoBack";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
 // Styles
 import "./ViewInvoicePage.css";
@@ -27,6 +28,7 @@ const ViewInvoicePage = (props) => {
     <div className="view-invoice-page">
       <div className="invoice-details-header">
         <GoBack />
+        <ScrollToTop />
 
         <article className="modify-invoice">
           <div className="modify-invoice__payment-status">

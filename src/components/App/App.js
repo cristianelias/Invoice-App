@@ -12,7 +12,6 @@ import EditInvoicePage from "../../pages/EditInvoicePage/EditInvoicePage";
 // Components
 import Header from "../Header/Header";
 import Loading from "../Loading/Loading";
-import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 // Styles
 import "./App.css";
@@ -28,8 +27,6 @@ const App = () => {
 
   return (
     <>
-      <ScrollToTop />
-
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
 
       <div className="main-layout">

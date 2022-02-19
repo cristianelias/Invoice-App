@@ -1,5 +1,5 @@
 // Dependencies
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect, useMemo, use } from "react";
 import debounce from "lodash.debounce";
 
 // Components
@@ -10,26 +10,24 @@ import InvoiceList from "./InvoiceList/InvoiceList";
 
 // Styles
 import "./FilterableInvoiceList.css";
+import { useCallback } from "react/cjs/react.production.min";
+
+const TABLET_MINIMAL_WIDTH = 768;
+const mustShowFullInfo = () => window.innerWidth >= TABLET_MINIMAL_WIDTH;
 
 const FilterableInvoiceList = (props) => {
   const { invoices } = props;
-  const [showFullInfo, setShowFullInfo] = useState(false);
+  const [showFullInfo, setShowFullInfo] = useState(mustShowFullInfo());
   const [filterPaid, setFilterPaid] = useState(true);
   const [filterPending, setFilterPending] = useState(true);
   const [filterDraft, setFilterDraft] = useState(true);
 
-  // TODO: Put this inside a custom hook or a context component
-  useLayoutEffect(() => {
-    const TABLET_MINIMAL_WIDTH = 768;
+  const updateShowFullInfo = debounce(() => {
+    mustShowFullInfo() ? setShowFullInfo(true) : setShowFullInfo(false);
+  }, 200);
 
-    const updateShowFullInfo = debounce(() => {
-      window.innerWidth >= TABLET_MINIMAL_WIDTH
-        ? setShowFullInfo(true)
-        : setShowFullInfo(false);
-    }, 200);
-
+  useEffect(() => {
     window.addEventListener("resize", updateShowFullInfo);
-    updateShowFullInfo();
 
     return () => {
       window.removeEventListener("resize", updateShowFullInfo);

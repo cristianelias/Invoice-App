@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 
 // Components
 import FilterableInvoiceList from "../../components/FilterableInvoiceList/FilterableInvoiceList";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
 import "./ListInvoicesPage.css";
 
@@ -11,6 +12,8 @@ const ListInvoicesPage = (props) => {
 
   return (
     <div className="list-invoices-page">
+      <ScrollToTop />
+
       <FilterableInvoiceList invoices={invoices} />
       <Outlet />
     </div>

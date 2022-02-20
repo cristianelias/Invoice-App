@@ -78,7 +78,10 @@ const InvoiceForm = (props) => {
                   {({ push, remove }) => (
                     <div>
                       {values.charges.map((item, index) => (
-                        <div key={index}>
+                        <div
+                          key={index}
+                          className={`fieldset-charges__group fieldset-charges__group-${index}`}
+                        >
                           {Object.keys(item).map((fieldName) =>
                             createField({
                               fieldsetId: `charges[${index}]`,

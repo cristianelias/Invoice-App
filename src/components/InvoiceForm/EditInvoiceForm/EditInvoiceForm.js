@@ -1,12 +1,17 @@
+// Dependencies
+import { useNavigate } from "react-router-dom";
+
 // Components
 import InvoiceForm from "../InvoiceForm";
-import InvoiceFormTitle from "../InvoiceFormTitle/InvoiceFormTitle";
+import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
+import TertiaryButton from "../../Button/TertiaryButton/TertiaryButton";
 
 // Data
 import getInitialValues from "../getInitialValues";
 
 const EditInvoiceForm = (props) => {
   const { invoice } = props;
+  const navigate = useNavigate();
 
   const mapInitialValuesFromInvoice = () => {
     const editInitialValues = Object.assign({}, getInitialValues());
@@ -40,11 +45,43 @@ const EditInvoiceForm = (props) => {
     return editInitialValues;
   };
 
+  const assembleTitle = () => (
+    <legend className="invoice-form-title">
+      {invoice.id.length > 0 ? (
+        <span>
+          Edit
+          <span>#</span>
+          {invoice.id}
+        </span>
+      ) : (
+        <span>Edit Invoice</span>
+      )}
+    </legend>
+  );
+
+  const assembleActions = () => (
+    <>
+      <TertiaryButton
+        onClick={() => navigate(-1, { replace: true })}
+        text="Cancel"
+      />
+
+      <PrimaryButton
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          alert("-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 ");
+        }}
+        text="Save Changes"
+      />
+    </>
+  );
+
   return (
     <InvoiceForm
-      editMode={true}
       initialValues={mapInitialValuesFromInvoice()}
-      title={<InvoiceFormTitle editMode={true} id={invoice.id} />}
+      title={assembleTitle()}
+      actions={assembleActions()}
     />
   );
 };

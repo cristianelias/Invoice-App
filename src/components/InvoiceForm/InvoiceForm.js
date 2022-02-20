@@ -1,14 +1,9 @@
 // Dependencies
-import React, { Fragment } from "react";
 import { Formik, Form, FieldArray } from "formik";
-import { useNavigate } from "react-router-dom";
 
 // Components
 import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
 import Gradient from "../Gradient/Gradient";
-import PrimaryButton from "../Button/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../Button/SecondaryButton/SecondaryButton";
-import TertiaryButton from "../Button/TertiaryButton/TertiaryButton";
 
 // Styles
 import "./InvoiceForm.css";
@@ -17,19 +12,17 @@ import "./InvoiceForm.css";
 import iconTrashCan from "../../assets/icon-delete.svg";
 
 // Data
-import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
 import inputDataByName from "./inputDataByName";
 import chargesValues from "./chargesValues";
 
-// Entities
-import InvoiceBuilder from "../../entities/InvoiceBuilder";
-
-// Clients
-import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
-
 const InvoiceForm = (props) => {
-  const { title, initialValues, editMode } = props;
-  const navigate = useNavigate();
+  const {
+    title,
+    initialValues,
+    submitHandler,
+    actions,
+    validationSchema,
+  } = props;
 
   const createField = ({ name, fieldsetId, index, fields }) => {
     const fieldMeta = inputDataByName[name];
@@ -44,45 +37,15 @@ const InvoiceForm = (props) => {
     );
   };
 
-  const createInvoice = (values) => {
-    const { from, to, details, charges } = values;
-    const iBuilder = new InvoiceBuilder();
-    let invoice = iBuilder
-      .description(details.projectDescription)
-      .paymentTerms(details.paymentTerms)
-      .clientName(to.clientName)
-      .clientEmail(to.clientEmail)
-      .senderAddressStreet(from.streetAddress)
-      .senderAddressCity(from.city)
-      .senderAddressPostCode(from.postCode)
-      .senderAddressCountry(from.country)
-      .clientAddressStreet(to.streetAddress)
-      .clientAddressCity(to.city)
-      .clientAddressPostCode(to.postCode)
-      .clientAddressCountry(to.country)
-      .items(charges)
-      .build();
-
-    return invoice;
-  };
-
-  const submitHandler = async ({ values }) => {
-    const invoice = createInvoice(values);
-    await firebaseInvoiceClient.postInvoice(invoice.asJSON());
-    navigate(-1, { replace: true });
-  };
-
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={invoiceFormValidationSchema}
-      onSubmit={(values) => {
-        submitHandler({ values });
-      }}
+      validationSchema={validationSchema}
+      onSubmit={(values) => submitHandler({ values })}
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values, handleSubmit }) => (
+      {({ values }) => (
         <>
           <div className="invoice-form">
             <Form className="invoice-form__form">
@@ -159,60 +122,10 @@ const InvoiceForm = (props) => {
               <p className="field__validation five-fields-container__validation">
                 - All fields must be added
               </p>
+              <Gradient />
+              <footer className="footer-form">{actions}</footer>
             </Form>
           </div>
-          <Gradient />
-          <footer className="footer-form">
-            {(() => {
-              if (editMode) {
-                return (
-                  <>
-                    <TertiaryButton
-                      onClick={() => navigate(-1, { replace: true })}
-                      text="Cancel"
-                    />
-
-                    <PrimaryButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        alert(
-                          "-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 "
-                        );
-                      }}
-                      text="Save Changes"
-                    />
-                  </>
-                );
-              }
-
-              return (
-                <>
-                  <TertiaryButton
-                    onClick={() => navigate(-1, { replace: true })}
-                    text="Discard"
-                  />
-
-                  <SecondaryButton
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      alert(
-                        "-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 "
-                      );
-                      navigate(-1, { replace: true });
-                    }}
-                    text="Save as Draft"
-                  />
-
-                  <PrimaryButton
-                    onClick={() => handleSubmit()}
-                    text="Save & Send"
-                  />
-                </>
-              );
-            })()}
-          </footer>
         </>
       )}
     </Formik>

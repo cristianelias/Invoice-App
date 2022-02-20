@@ -46,7 +46,7 @@ class InvoiceBuilder {
   }
 
   senderAddressCountry(value) {
-    this.skeleton.senderAddress.postCode = value;
+    this.skeleton.senderAddress.country = value;
     return this;
   }
 
@@ -66,7 +66,7 @@ class InvoiceBuilder {
   }
 
   clientAddressCountry(value) {
-    this.skeleton.clientAddress.postCode = value;
+    this.skeleton.clientAddress.country = value;
     return this;
   }
 
@@ -83,8 +83,12 @@ class InvoiceBuilder {
     return this;
   }
 
-  build() {
-    return new Invoice(this.skeleton);
+  create() {
+    return new Invoice({ data: this.skeleton });
+  }
+
+  edit(id) {
+    return new Invoice({ data: this.skeleton, id });
   }
 }
 

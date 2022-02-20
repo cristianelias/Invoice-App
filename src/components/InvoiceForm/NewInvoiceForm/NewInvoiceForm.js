@@ -34,7 +34,7 @@ const createInvoice = (values) => {
     .clientAddressPostCode(to.postCode)
     .clientAddressCountry(to.country)
     .items(charges)
-    .build();
+    .create();
 
   return invoice;
 };
@@ -44,8 +44,11 @@ const NewInvoiceForm = () => {
 
   const submitHandler = async ({ values }) => {
     const invoice = createInvoice(values);
-    await firebaseInvoiceClient.postInvoice(invoice.asJSON());
-    navigate(-1, { replace: true });
+    await firebaseInvoiceClient.postInvoice({
+      payload: invoice.asJSON(),
+      onSuccess: () => navigate(-1, { replace: true }),
+      onError: (err) => console.log(err),
+    });
   };
 
   const assembleActions = () => {

@@ -7,6 +7,7 @@ import InvoiceListOverview from "./InvoiceListOverview/InvoiceListOverview";
 import NewInvoiceButton from "./NewInvoiceButton/NewInvoiceButton";
 import InvoiceFilterDropdown from "./InvoiceFilterDropdown/InvoiceFilterDropdown";
 import InvoiceList from "./InvoiceList/InvoiceList";
+import EmptyInvoiceList from "./EmptyInvoiceList/EmptyInvoiceList";
 
 // Styles
 import "./FilterableInvoiceList.css";
@@ -61,12 +62,18 @@ const FilterableInvoiceList = (props) => {
     },
   ];
 
+  const filteredInvoices = statusFilters
+    .filter((filter) => filter.active)
+    .flatMap(({ status }) =>
+      invoices.filter((invoice) => invoice.status === status)
+    );
+
   return (
     <article className="invoice-list">
       <header className="invoice-list__header">
         <InvoiceListOverview
           showFullInfo={showFullInfo}
-          totalInvoices={invoices.length}
+          totalInvoices={filteredInvoices.length}
         />
 
         <InvoiceFilterDropdown
@@ -77,13 +84,11 @@ const FilterableInvoiceList = (props) => {
         <NewInvoiceButton showFullInfo={showFullInfo} />
       </header>
 
-      <InvoiceList
-        invoices={statusFilters
-          .filter((filter) => filter.active)
-          .flatMap(({ status }) =>
-            invoices.filter((invoice) => invoice.status === status)
-          )}
-      />
+      {filteredInvoices.length > 0 ? (
+        <InvoiceList invoices={filteredInvoices} />
+      ) : (
+        <EmptyInvoiceList />
+      )}
     </article>
   );
 };

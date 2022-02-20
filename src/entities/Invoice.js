@@ -13,12 +13,17 @@ const _createId = () => {
 };
 
 class Invoice {
-  constructor(payload) {
-    this.data = Object.assign({}, payload);
-    this.generateId();
+  constructor({ data, id }) {
+    this.data = Object.assign({}, data);
     this.setCreationAndPaymentDue();
-    this.setIntialStatus();
     this.setTotal();
+
+    if (id === undefined) {
+      this.generateId();
+      this.setIntialStatus();
+    } else {
+      this.data.id = id;
+    }
   }
 
   generateId() {

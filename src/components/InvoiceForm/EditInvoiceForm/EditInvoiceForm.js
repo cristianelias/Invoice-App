@@ -6,11 +6,17 @@ import InvoiceForm from "../InvoiceForm";
 import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
 import TertiaryButton from "../../Button/TertiaryButton/TertiaryButton";
 
+// Entities
+import InvoiceBuilder from "../../../entities/InvoiceBuilder";
+
+// Clients
+import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";
+
 // Data
 import getInitialValues from "../getInitialValues";
 
-const EditInvoiceForm = (props) => {
-  const { invoice } = props;
+const EditInvoiceForm = ({ invoice }) => {
+  const { id } = invoice;
   const navigate = useNavigate();
 
   const mapInitialValuesFromInvoice = () => {
@@ -45,6 +51,39 @@ const EditInvoiceForm = (props) => {
     return editInitialValues;
   };
 
+  const createInvoice = (values) => {
+    const { from, to, details, charges } = values;
+    const iBuilder = new InvoiceBuilder();
+
+    let invoice = iBuilder
+      .description(details.projectDescription)
+      .paymentTerms(details.paymentTerms)
+      .clientName(to.clientName)
+      .clientEmail(to.clientEmail)
+      .senderAddressStreet(from.streetAddress)
+      .senderAddressCity(from.city)
+      .senderAddressPostCode(from.postCode)
+      .senderAddressCountry(from.country)
+      .clientAddressStreet(to.streetAddress)
+      .clientAddressCity(to.city)
+      .clientAddressPostCode(to.postCode)
+      .clientAddressCountry(to.country)
+      .items(charges)
+      .edit(id);
+
+    return invoice;
+  };
+
+  const submitHandler = async ({ values }) => {
+    const invoice = createInvoice(values);
+
+    await firebaseInvoiceClient.editInvoice({
+      payload: invoice.asJSON(),
+      onSuccess: () => navigate(-1, { replace: true }),
+      onError: (err) => console.log(err),
+    });
+  };
+
   const assembleTitle = () => (
     <legend className="invoice-form-title">
       {invoice.id.length > 0 ? (
@@ -66,14 +105,7 @@ const EditInvoiceForm = (props) => {
         text="Cancel"
       />
 
-      <PrimaryButton
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          alert("-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 ");
-        }}
-        text="Save Changes"
-      />
+      <PrimaryButton text="Save Changes" />
     </>
   );
 
@@ -82,6 +114,7 @@ const EditInvoiceForm = (props) => {
       initialValues={mapInitialValuesFromInvoice()}
       title={assembleTitle()}
       actions={assembleActions()}
+      submitHandler={submitHandler}
     />
   );
 };

@@ -18,7 +18,6 @@ const EditInvoicePage = (props) => {
     const currentInvoice = invoices.filter(
       (inv) => inv.id === currentInvoiceId
     );
-
     setInvoice(currentInvoice[0]);
   }, [currentInvoiceId, invoices]);
 

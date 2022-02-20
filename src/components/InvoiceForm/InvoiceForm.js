@@ -126,6 +126,7 @@ const InvoiceForm = (props) => {
                           )}
 
                           <button
+                            className="field__delete"
                             onClick={(e) => {
                               e.stopPropagation();
                               e.preventDefault();

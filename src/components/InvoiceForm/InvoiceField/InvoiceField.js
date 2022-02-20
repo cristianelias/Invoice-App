@@ -12,9 +12,6 @@ const InvoiceField = (props) => {
     <Field name={name}>
       {({ field: { value, onChange }, meta: { error, touched } }) => (
         <div className={`${classes} ${error && touched ? "field--error" : ""}`}>
-          <ErrorMessage name={name} className="field__validation">
-            {(msg) => <div className="error">{msg}</div>}
-          </ErrorMessage>
           <label className="field__label" htmlFor={name}>
             {label}
           </label>
@@ -30,6 +27,9 @@ const InvoiceField = (props) => {
             min={min}
             max={max}
           />
+          <ErrorMessage name={name} className="field__validation">
+            {(msg) => <div className="error">{msg}</div>}
+          </ErrorMessage>
         </div>
       )}
     </Field>

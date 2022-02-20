@@ -12,9 +12,6 @@ const InvoiceSelectField = (props) => {
     <Field name={name}>
       {({ field: { value, onChange }, meta: { error, touched } }) => (
         <div className={`${classes} ${error && touched ? "field--error" : ""}`}>
-          <ErrorMessage name={name} className="field__validation">
-            {(msg) => <div className="error">{msg}</div>}
-          </ErrorMessage>
           <label className="field__label" htmlFor={name}>
             {label}
           </label>
@@ -39,6 +36,9 @@ const InvoiceSelectField = (props) => {
               );
             })}
           </select>
+          <ErrorMessage name={name} className="field__validation">
+            {(msg) => <div className="error">{msg}</div>}
+          </ErrorMessage>
         </div>
       )}
     </Field>

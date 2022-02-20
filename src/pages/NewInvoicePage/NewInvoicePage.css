@@ -68,7 +68,7 @@
 .five-fields-container__add-new-item {
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 39px;
+  margin: 18px 0 39px 0;
 }
 
 .footer-form {
@@ -253,5 +253,11 @@
     padding: 32px 24px 110px 24px;
     margin-top: 0;
     top: 75px;
+  }
+
+  .five-fields-container__add-new-item {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0px 0 39px;
   }
 }

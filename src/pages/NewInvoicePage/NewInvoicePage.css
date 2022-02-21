@@ -74,7 +74,6 @@
 .footer-form {
   width: 719px;
   min-width: 360px;
-  height: 110px;
   background-color: #ffffff;
   border-radius: 0 20px 20px 0;
   position: fixed;
@@ -83,8 +82,8 @@
   padding: 31px 56px 31px 159px;
   display: flex;
   justify-content: flex-end;
-  animation: desplazamiento 0.3s linear;
   z-index: 2;
+  animation: desplazamiento 0.8s ease-out;
 }
 
 .footer-form .secondary-button {

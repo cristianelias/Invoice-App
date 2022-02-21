@@ -13,9 +13,11 @@ const inputDataByName = {
   },
   clientName: {
     label: "Client's Name",
+    placeholder: "e.g. email@example.com",
   },
   clientEmail: {
     label: "Client's Email",
+    placeholder: "e.g. email@example.com",
   },
   invoiceDate: {
     label: "Invoice Date",
@@ -29,48 +31,30 @@ const inputDataByName = {
     values: [
       {
         value: 1,
-        text: 1,
+        text: "Net 1 Day",
         selected: true,
       },
       {
-        value: 3,
-        text: 3,
+        value: 7,
+        text: "Net 7 Days",
       },
       {
-        value: 6,
-        text: 6,
+        value: 14,
+        text: "Net 14 Days",
       },
       {
-        value: 9,
-        text: 9,
-      },
-      {
-        value: 12,
-        text: 12,
-      },
-      {
-        value: 18,
-        text: 18,
-      },
-      {
-        value: 36,
-        text: 36,
-      },
-      {
-        value: 72,
-        text: 72,
-      },
-      {
-        value: 90,
-        text: 90,
+        value: 30,
+        text: "Net 30 Days",
       },
     ],
   },
   projectDescription: {
     label: "Project Description",
+    placeholder: "e.g. Graphic Design Service",
   },
   itemName: {
     label: "Item Name",
+    placeholder: "e.g. Banner Design",
   },
   qty: {
     label: "Qty.",

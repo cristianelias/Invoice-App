@@ -5,7 +5,7 @@ import { Field, useField, ErrorMessage } from "formik";
 import "./InvoiceField.css";
 
 const InvoiceField = (props) => {
-  const { label, name, classes, type, min, max } = props;
+  const { label, name, classes, type, min, max, placeholder } = props;
   const { setTouched } = useField(name)[2];
 
   return (
@@ -26,6 +26,7 @@ const InvoiceField = (props) => {
             type={type}
             min={min}
             max={max}
+            placeholder={placeholder}
           />
           <ErrorMessage name={name} className="field__validation">
             {(msg) => <div className="error">{msg}</div>}

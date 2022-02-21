@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 // Dependencies
 import { Field, useField, ErrorMessage } from "formik";
 
@@ -5,7 +6,7 @@ import { Field, useField, ErrorMessage } from "formik";
 import "./InvoiceSelectField.css";
 
 const InvoiceSelectField = (props) => {
-  const { label, name, classes, type, values } = props;
+  const { label, name, classes, values } = props;
   const { setTouched } = useField(name)[2];
 
   return (

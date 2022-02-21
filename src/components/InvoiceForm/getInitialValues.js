@@ -1,6 +1,3 @@
-// Dependencies
-import dayjs from "dayjs";
-
 // Data
 import chargesValues from "./chargesValues";
 
@@ -20,7 +17,7 @@ const getInitialValues = () => ({
     country: "",
   },
   details: {
-    invoiceDate: dayjs().format("DD/MM/YYYY"),
+    invoiceDate: new Date(),
     paymentTerms: "",
     projectDescription: "",
   },

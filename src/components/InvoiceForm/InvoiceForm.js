@@ -20,7 +20,7 @@ const InvoiceForm = (props) => {
     title,
     initialValues,
     submitHandler,
-    actions,
+    assembleActions,
     validationSchema,
   } = props;
 
@@ -45,7 +45,7 @@ const InvoiceForm = (props) => {
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values }) => (
+      {({ values, isSubmitting }) => (
         <>
           <div className="invoice-form">
             <Form className="invoice-form__form">
@@ -127,7 +127,9 @@ const InvoiceForm = (props) => {
                 - All fields must be added
               </p>
               <Gradient />
-              <footer className="footer-form">{actions}</footer>
+              <footer className="footer-form">
+                {assembleActions({ isSubmitting })}
+              </footer>
             </Form>
           </div>
         </>

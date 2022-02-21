@@ -1,8 +1,7 @@
 /* eslint-disable react/display-name */
-
 // Dependencies
 import styled from "@emotion/styled";
-import { Field, useField, ErrorMessage, useFormikContext } from "formik";
+import { Field, ErrorMessage, useFormikContext } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { forwardRef } from "react";
@@ -12,11 +11,12 @@ import iconCalendar from "../../../assets/icon-calendar.svg";
 
 const Button = styled.button`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Img = styled.img`
-  position: absolute;
-  right: 0;
+  height: 20px;
 `;
 
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -26,13 +26,12 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
   </Button>
 ));
 
-const InvoiceDateField = ({ label, name, classes, type, values }) => {
-  const { setTouched } = useField(name)[2];
+const InvoiceDateField = ({ label, name, classes }) => {
   const { setFieldValue } = useFormikContext();
 
   return (
     <Field name={name}>
-      {({ field: { value, onChange }, meta: { error, touched } }) => {
+      {({ field: { value }, meta: { error, touched } }) => {
         return (
           <div
             className={`${classes} ${error && touched ? "field--error" : ""}`}

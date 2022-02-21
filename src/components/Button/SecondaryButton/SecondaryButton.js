@@ -5,7 +5,7 @@ import Button from "../Button";
 import "./SecondaryButton.css";
 
 const SecondaryButton = (props) => {
-  const { linkTo, text, onClick } = props;
+  const { linkTo, text, onClick, disabled } = props;
 
   return (
     <Button
@@ -13,6 +13,7 @@ const SecondaryButton = (props) => {
       onClick={onClick}
       linkTo={linkTo}
       text={text}
+      disabled={disabled}
     />
   );
 };

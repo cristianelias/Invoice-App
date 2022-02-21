@@ -5,7 +5,7 @@ import Button from "../Button";
 import "./PrimaryButton.css";
 
 const PrimaryButton = (props) => {
-  const { text, onClick } = props;
+  const { text, onClick, disabled } = props;
 
   return (
     <Button
@@ -13,6 +13,7 @@ const PrimaryButton = (props) => {
       type="submit"
       text={text}
       onClick={onClick}
+      disabled={disabled}
     />
   );
 };

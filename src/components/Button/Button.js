@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 const Button = (props) => {
-  const { className, linkTo, text, onClick, type } = props;
+  const { className, linkTo, text, onClick, type, disabled } = props;
 
   if (linkTo) {
     return (
@@ -20,6 +20,7 @@ const Button = (props) => {
       onClick={onClick}
       type={type ? type : "button"}
       className={`${className} button-component`}
+      disabled={disabled}
     >
       {text}
     </button>

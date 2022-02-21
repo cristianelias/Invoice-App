@@ -62,15 +62,17 @@ const NewInvoiceForm = () => {
     });
   };
 
-  const assembleActions = () => {
+  const assembleActions = ({ isSubmitting }) => {
     return (
       <>
         <TertiaryButton
+          disabled={isSubmitting}
           onClick={() => navigate(-1, { replace: true })}
           text="Discard"
         />
 
         <SecondaryButton
+          disabled={isSubmitting}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -80,7 +82,7 @@ const NewInvoiceForm = () => {
           text="Save as Draft"
         />
 
-        <PrimaryButton text="Save & Send" />
+        <PrimaryButton disabled={isSubmitting} text="Save & Send" />
       </>
     );
   };
@@ -95,7 +97,7 @@ const NewInvoiceForm = () => {
       initialValues={getInitialValues()}
       validationSchema={invoiceFormValidationSchema}
       submitHandler={submitHandler}
-      actions={assembleActions()}
+      assembleActions={assembleActions}
     />
   );
 };

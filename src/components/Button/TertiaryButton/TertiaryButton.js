@@ -5,7 +5,7 @@ import Button from "../Button";
 import "./TertiaryButton.css";
 
 const TertiaryButton = (props) => {
-  const { linkTo, text, onClick } = props;
+  const { linkTo, text, onClick, disabled } = props;
 
   return (
     <Button
@@ -13,6 +13,7 @@ const TertiaryButton = (props) => {
       linkTo={linkTo}
       onClick={onClick}
       text={text}
+      disabled={disabled}
     />
   );
 };

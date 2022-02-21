@@ -8,7 +8,7 @@
   left: 0;
   top: 0;
   z-index: 2;
-  animation: desplazamiento 0.3s linear;
+  animation: desplazamiento 0.8s ease-out;
 }
 
 .invoice-form-title {
@@ -24,6 +24,11 @@
   0% {
     left: -719px;
   }
+
+  70% {
+    left: 10px;
+  }
+
   100% {
     left: 0;
   }
@@ -89,6 +94,10 @@
   grid-column: 2/3;
   min-width: 42px;
 }
+[class*="-qty"] > input {
+  padding: 5px;
+  text-align: center;
+}
 
 .field__delete {
   margin-top: 32px;
@@ -98,6 +107,7 @@
   text-align: left;
   border: none;
   color: #888eb0;
+  padding: 5px;
 }
 
 @media (max-width: 650px) {

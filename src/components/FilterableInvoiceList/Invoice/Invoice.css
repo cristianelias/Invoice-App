@@ -13,7 +13,8 @@
   gap: 2%;
 }
 
-.invoice__container:hover {
+.invoice__container:hover,
+.invoice__container:focus {
   border: solid 1px #7c5dfa;
 }
 

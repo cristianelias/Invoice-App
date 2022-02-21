@@ -277,8 +277,7 @@ table tr:last-child td:last-child {
   }
 
   .billing-three-columns {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 130px 47px;
+    grid-template-columns: repeat(2, 50%);
     gap: 32px 0;
   }
 

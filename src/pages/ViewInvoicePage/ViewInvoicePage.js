@@ -10,6 +10,7 @@ import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import TertiaryButton from "../../components/Button/TertiaryButton/TertiaryButton";
 import DeleteAction from "../../components/DeleteAction/DeleteAction";
 import MarkAsPaidAction from "../../components/MarkAsPaidAction/MarkAsPaidAction";
+
 // Styles
 import "./ViewInvoicePage.css";
 
@@ -51,7 +52,7 @@ const ViewInvoicePage = (props) => {
             )}
           </div>
 
-          {actions}
+          <div className="invoice-action-desktop">{actions}</div>
         </article>
       </div>
 

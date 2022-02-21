@@ -27,10 +27,10 @@ module.exports = (env, { mode }) => {
       }),
     ],
     devServer: {
-      // open: true,
+      open: true,
       client: {
-        overlay: true,
-        progress: true,
+        // overlay: true,
+        // progress: true,
       },
       compress: true,
       port: 3000,
@@ -40,11 +40,17 @@ module.exports = (env, { mode }) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
-          loader: "esbuild-loader",
+          test: /\.js?$/,
+          loader: "babel-loader",
           options: {
-            loader: "jsx",
-            target: "es2015",
+            presets: [
+              [
+                "@babel/preset-react",
+                {
+                  runtime: "automatic",
+                },
+              ],
+            ],
           },
         },
         {
@@ -56,7 +62,7 @@ module.exports = (env, { mode }) => {
               loader: "esbuild-loader",
               options: {
                 loader: "css",
-                minify: true,
+                minify: isProduction,
               },
             },
           ],

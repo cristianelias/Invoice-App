@@ -4,7 +4,11 @@ import PrimaryButton from "../../components/Button/PrimaryButton/PrimaryButton";
 // Clients
 import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
-const MarkAsPaidAction = ({ id }) => {
+const MarkAsPaidAction = ({ id, status }) => {
+  if (status === "paid") {
+    return null;
+  }
+
   const markAsPaid = async () => {
     await firebaseInvoiceClient.markInvoiceAsPaid({
       id,

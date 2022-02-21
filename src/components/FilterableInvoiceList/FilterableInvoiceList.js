@@ -11,7 +11,6 @@ import EmptyInvoiceList from "./EmptyInvoiceList/EmptyInvoiceList";
 
 // Styles
 import "./FilterableInvoiceList.css";
-import { useCallback } from "react/cjs/react.production.min";
 
 const TABLET_MINIMAL_WIDTH = 768;
 const mustShowFullInfo = () => window.innerWidth >= TABLET_MINIMAL_WIDTH;

@@ -7,17 +7,18 @@ import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentSt
 import Gradient from "../../components/Gradient/Gradient";
 import GoBack from "../../components/GoBack/GoBack";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
-import TertiaryButton from "../../components/Button/TertiaryButton/TertiaryButton";
+import EditInvoiceAction from "../../components/EditInvoiceAction/EditInvoiceAction";
 import DeleteAction from "../../components/DeleteAction/DeleteAction";
 import MarkAsPaidAction from "../../components/MarkAsPaidAction/MarkAsPaidAction";
+
 // Styles
 import "./ViewInvoicePage.css";
 
-const assembleActions = (id) => (
+const assembleActions = ({ id, status }) => (
   <>
-    <TertiaryButton linkTo={`/view-invoice/${id}/edit`} text="Edit" />
+    <EditInvoiceAction id={id} />
     <DeleteAction id={id} />
-    <MarkAsPaidAction id={id} />
+    <MarkAsPaidAction id={id} status={status} />
   </>
 );
 
@@ -32,7 +33,10 @@ const ViewInvoicePage = (props) => {
     return null;
   }
 
-  const actions = assembleActions(currentInvoice.id);
+  const actions = assembleActions({
+    id: currentInvoice.id,
+    status: currentInvoice.status,
+  });
 
   return (
     <div className="view-invoice-page">

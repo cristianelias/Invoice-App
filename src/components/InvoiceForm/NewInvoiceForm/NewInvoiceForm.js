@@ -44,6 +44,17 @@ const NewInvoiceForm = () => {
 
   const submitHandler = async ({ values }) => {
     const invoice = createInvoice(values);
+
+    await firebaseInvoiceClient.postInvoice({
+      payload: invoice.asJSON(),
+      onSuccess: () => navigate(-1, { replace: true }),
+      onError: (err) => console.log(err),
+    });
+  };
+
+  const saveAsDraftHandler = async ({ values }) => {
+    const invoice = createInvoice(values);
+
     await firebaseInvoiceClient.postInvoice({
       payload: invoice.asJSON(),
       onSuccess: () => navigate(-1, { replace: true }),
@@ -63,7 +74,7 @@ const NewInvoiceForm = () => {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            alert("-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 ");
+
             navigate(-1, { replace: true });
           }}
           text="Save as Draft"

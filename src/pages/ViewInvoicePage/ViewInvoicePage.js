@@ -55,7 +55,7 @@ const ViewInvoicePage = (props) => {
             )}
           </div>
 
-          {actions}
+          <div className="invoice-action-desktop">{actions}</div>
         </article>
       </div>
 

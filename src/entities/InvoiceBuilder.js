@@ -104,11 +104,11 @@ class InvoiceBuilder {
   }
 
   setCreationAndPaymentDue() {
-    const DATE_FORMAT = "MMM d, YYYY";
+    const DATE_FORMAT = "D MMM YYYY";
 
-    this.data.createdAt = dayjs().format(DATE_FORMAT);
-    this.data.paymentDue = dayjs()
-      .add(dayjs.duration({ days: this.data.paymentTerms }))
+    this.data.createdAt = new dayjs().format(DATE_FORMAT);
+    this.data.paymentDue = new dayjs()
+      .add(this.data.paymentTerms, "day")
       .format(DATE_FORMAT);
   }
 

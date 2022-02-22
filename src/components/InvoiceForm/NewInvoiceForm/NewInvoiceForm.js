@@ -17,10 +17,8 @@ import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClie
 import getInitialValues from "../getInitialValues";
 import invoiceFormValidationSchema from "../invoiceFormValidationSchema";
 
-const createInvoice = (values) => {
-  const { from, to, details, charges } = values;
-  const iBuilder = new InvoiceBuilder();
-  let invoice = iBuilder
+const fillInvoiceBuilder = ({ from, to, details, charges }) =>
+  new InvoiceBuilder()
     .description(details.projectDescription)
     .paymentTerms(details.paymentTerms)
     .clientName(to.clientName)
@@ -33,34 +31,28 @@ const createInvoice = (values) => {
     .clientAddressCity(to.city)
     .clientAddressPostCode(to.postCode)
     .clientAddressCountry(to.country)
-    .items(charges)
-    .create();
+    .items(charges);
 
-  return invoice;
-};
+const createInvoice = (values) => fillInvoiceBuilder(values).asInvoice();
+
+const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
 
 const NewInvoiceForm = () => {
   const navigate = useNavigate();
 
-  const submitHandler = async ({ values }) => {
-    const invoice = createInvoice(values);
-
+  const submitHandler = async ({ values }) =>
     await firebaseInvoiceClient.postInvoice({
-      payload: invoice.asJSON(),
+      payload: createInvoice(values),
       onSuccess: () => navigate(-1, { replace: true }),
       onError: (err) => console.log(err),
     });
-  };
 
-  const saveAsDraftHandler = async ({ values }) => {
-    const invoice = createInvoice(values);
-
+  const saveAsDraftHandler = async ({ values }) =>
     await firebaseInvoiceClient.postInvoice({
-      payload: invoice.asJSON(),
+      payload: createDraftInvoice(values),
       onSuccess: () => navigate(-1, { replace: true }),
       onError: (err) => console.log(err),
     });
-  };
 
   const assembleActions = ({ isSubmitting }) => {
     return (

@@ -8,7 +8,9 @@ const InvoiceListOverview = (props) => {
     <div className="invoice-list-overview">
       <h1 className="invoice-list-overview__title">Invoices</h1>
       <h2 className="invoice-list-overview__total">
-        {showFullInfo
+        {totalInvoices < 1
+          ? `No invoices`
+          : showFullInfo
           ? `There are ${totalInvoices} total invoices`
           : `${totalInvoices} invoices`}
       </h2>

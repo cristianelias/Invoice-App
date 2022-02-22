@@ -1,9 +1,7 @@
 // Styles
 import "./InvoiceDetails.css";
 
-const InvoiceDetails = (props) => {
-  const { invoice } = props;
-
+const InvoiceDetails = ({ invoice }) => {
   return (
     <section className="invoice-details">
       <div>
@@ -19,7 +17,6 @@ const InvoiceDetails = (props) => {
               </p>
             </div>
 
-            {/* TODO: COMPONENT */}
             <div className="four-texts">
               <p>{invoice.senderAddress.street}</p>
               <p>{invoice.senderAddress.city}</p>
@@ -51,7 +48,6 @@ const InvoiceDetails = (props) => {
                 {invoice.clientName}
               </p>
 
-              {/* TODO: COMPONENT */}
               <div className="four-texts four-texts__left">
                 <p>{invoice.clientAddress.street}</p>
                 <p>{invoice.clientAddress.city}</p>
@@ -79,23 +75,16 @@ const InvoiceDetails = (props) => {
             </tr>
           </thead>
 
-          {/* TODO: COMPONENT, table and row */}
-          <tbody>
-            <tr className="pricing-table__row">
-              <td className="pricing-table__row-item-name">
-                {invoice.items[0].name}
-              </td>
-              <td className="pricing-table__row-qty">
-                {invoice.items[0].quantity}
-              </td>
-              <td className="pricing-table__row-price">
-                £ {invoice.items[0].price}
-              </td>
-              <td className="pricing-table__row-total">
-                £ {invoice.items[0].total}
-              </td>
-            </tr>
-          </tbody>
+          {invoice.items.map((item, index) => (
+            <tbody key={index}>
+              <tr className="pricing-table__row">
+                <td className="pricing-table__row-item-name">{item.name}</td>
+                <td className="pricing-table__row-qty">{item.quantity}</td>
+                <td className="pricing-table__row-price">£ {item.price}</td>
+                <td className="pricing-table__row-total">£ {item.total}</td>
+              </tr>
+            </tbody>
+          ))}
 
           <tfoot>
             <tr className="pricing-table__footer">
@@ -111,33 +100,27 @@ const InvoiceDetails = (props) => {
 
         <div className="pricing-table-mobile">
           <ul className="pricing-table-mobile__container">
-            <li>
-              <div className="pricing-table-mobile__row">
-                <div className="pricing-table-mobile__container-title-qty-price">
-                  <p className="pricing-table-mobile__title">Banner Design</p>
-                  <div className="pricing-table-mobile__qty-price">
-                    1 x £ 156.00
+            {invoice.items.map((item, index) => (
+              <li key={index}>
+                <div className="pricing-table-mobile__row">
+                  <div className="pricing-table-mobile__container-title-qty-price">
+                    <p className="pricing-table-mobile__title">{item.name}</p>
+                    <div className="pricing-table-mobile__qty-price">
+                      {item.quantity} x £ {item.price}
+                    </div>
+                  </div>
+                  <div className="pricing-table-mobile__total">
+                    £ {item.total}
                   </div>
                 </div>
-                <div className="pricing-table-mobile__total">£ 156.00</div>
-              </div>
-            </li>
-            <li>
-              <div className="pricing-table-mobile__row">
-                <div className="pricing-table-mobile__container-title-qty-price">
-                  <p className="pricing-table-mobile__title">Email Design</p>
-                  <div className="pricing-table-mobile__qty-price">
-                    2 x £ 200.00
-                  </div>
-                </div>
-                <div className="pricing-table-mobile__total">£ 400.00</div>
-              </div>
-            </li>
+              </li>
+            ))}
           </ul>
+
           <div className="pricing-table-mobile__footer">
             <p className="pricing-table-mobile__footer-amount">Grand Total</p>
             <div className="pricing-table-mobile__footer-final-price">
-              £ 556.00
+              £ {invoice.total}
             </div>
           </div>
         </div>

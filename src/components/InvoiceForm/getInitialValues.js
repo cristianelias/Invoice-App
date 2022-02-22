@@ -18,7 +18,7 @@ const getInitialValues = () => ({
   },
   details: {
     invoiceDate: new Date(),
-    paymentTerms: "",
+    paymentTerms: "1",
     projectDescription: "",
   },
   charges: [chargesValues],

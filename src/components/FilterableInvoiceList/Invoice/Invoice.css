@@ -1,5 +1,4 @@
 .invoice__container {
-  box-sizing: border-box;
   height: 72px;
   padding: 0 32px;
   background-color: #ffffff;
@@ -11,11 +10,13 @@
   align-items: center;
   text-align: left;
   gap: 2%;
+  border: 1px solid transparent;
+  transition: border 0.3s ease 0s, background 0.3s ease 0s;
 }
 
 .invoice__container:hover,
 .invoice__container:focus {
-  border: solid 1px #7c5dfa;
+  border-color: #7c5dfa;
 }
 
 .invoice__id {

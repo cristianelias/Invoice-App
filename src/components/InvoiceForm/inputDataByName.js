@@ -13,7 +13,6 @@ const inputDataByName = {
   },
   clientName: {
     label: "Client's Name",
-    placeholder: "e.g. email@example.com",
   },
   clientEmail: {
     label: "Client's Email",
@@ -22,8 +21,6 @@ const inputDataByName = {
   invoiceDate: {
     label: "Invoice Date",
     type: "date",
-    min: "1986-11-13",
-    max: "2199-12-31",
   },
   paymentTerms: {
     label: "Payment Terms",

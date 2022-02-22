@@ -56,4 +56,5 @@ const InvoiceDateField = ({ label, name, classes }) => {
     </Field>
   );
 };
+
 export default InvoiceDateField;

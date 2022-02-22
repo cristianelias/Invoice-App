@@ -20,7 +20,7 @@ const Invoice = (props) => {
           <span className="invoice__hashtag">#</span>
           {id}
         </span>
-        <time className="invoice__date">{paymentDue}</time>
+        <time className="invoice__date">Due {paymentDue}</time>
         <p className="invoice__client-name">{clientName}</p>
         <p className="invoice__amount">£ {total}</p>
         <PaymentStatusLabel status={status} />

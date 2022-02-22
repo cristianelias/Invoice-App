@@ -1,9 +1,20 @@
-// Entities
-import Invoice from "./Invoice";
+// Dependencies
+import dayjs from "dayjs";
+
+const _createId = () => {
+  const twoRandomUpperChars = Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .slice(0, 2)
+    .toUpperCase();
+  const fourRandomNumbers = Math.floor(1000 + Math.random() * 9000);
+
+  return `${twoRandomUpperChars}${fourRandomNumbers}`;
+};
 
 class InvoiceBuilder {
   constructor() {
-    this.skeleton = {
+    this.data = {
       senderAddress: {},
       clientAddress: {},
       items: [],
@@ -11,84 +22,118 @@ class InvoiceBuilder {
   }
 
   description(value) {
-    this.skeleton.description = value;
+    this.data.description = value;
     return this;
   }
 
   paymentTerms(value) {
-    this.skeleton.paymentTerms = value;
+    this.data.paymentTerms = value;
     return this;
   }
 
   clientName(value) {
-    this.skeleton.clientName = value;
+    this.data.clientName = value;
     return this;
   }
 
   clientEmail(value) {
-    this.skeleton.clientEmail = value;
+    this.data.clientEmail = value;
     return this;
   }
 
   senderAddressStreet(value) {
-    this.skeleton.senderAddress.street = value;
+    this.data.senderAddress.street = value;
     return this;
   }
 
   senderAddressCity(value) {
-    this.skeleton.senderAddress.city = value;
+    this.data.senderAddress.city = value;
     return this;
   }
 
   senderAddressPostCode(value) {
-    this.skeleton.senderAddress.postCode = value;
+    this.data.senderAddress.postCode = value;
     return this;
   }
 
   senderAddressCountry(value) {
-    this.skeleton.senderAddress.country = value;
+    this.data.senderAddress.country = value;
     return this;
   }
 
   clientAddressStreet(value) {
-    this.skeleton.clientAddress.street = value;
+    this.data.clientAddress.street = value;
     return this;
   }
 
   clientAddressCity(value) {
-    this.skeleton.clientAddress.city = value;
+    this.data.clientAddress.city = value;
     return this;
   }
 
   clientAddressPostCode(value) {
-    this.skeleton.clientAddress.postCode = value;
+    this.data.clientAddress.postCode = value;
     return this;
   }
 
   clientAddressCountry(value) {
-    this.skeleton.clientAddress.country = value;
+    this.data.clientAddress.country = value;
     return this;
   }
 
   items(values) {
-    this.skeleton.items = values.map((item) => {
+    this.data.items = values.map(({ itemName, qty, price }) => {
+      const parsedPrice = parseInt(price);
+      const parsedQuantity = parseInt(qty);
+
+      const calculatedTotal = parsedPrice * parsedQuantity;
+
       return {
-        name: item.itemName,
-        quantity: item.qty,
-        price: item.price,
-        total: item.total,
+        name: itemName,
+        quantity: qty,
+        price: price,
+        total: calculatedTotal,
       };
     });
 
     return this;
   }
 
-  create() {
-    return new Invoice({ data: this.skeleton });
+  generateId() {
+    this.data.id = _createId();
   }
 
-  edit(id) {
-    return new Invoice({ data: this.skeleton, id });
+  setCreationAndPaymentDue() {
+    const DATE_FORMAT = "MMM d, YYYY";
+
+    this.data.createdAt = dayjs().format(DATE_FORMAT);
+    this.data.paymentDue = dayjs()
+      .add(dayjs.duration({ days: this.data.paymentTerms }))
+      .format(DATE_FORMAT);
+  }
+
+  setIntialStatus() {
+    this.data.status = "pending";
+  }
+
+  setTotal() {
+    this.data.total = this.data.items.reduce(
+      (acum, { total }) => (acum = acum + total),
+      0
+    );
+  }
+
+  asInvoice() {
+    this.setCreationAndPaymentDue();
+    this.setTotal();
+    this.setIntialStatus();
+    this.generateId();
+
+    return this.data;
+  }
+
+  asDraft() {
+    return this.data;
   }
 }
 

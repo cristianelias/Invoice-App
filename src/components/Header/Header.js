@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // Assets
 import lightThemeImage from "../../assets/icon-sun.svg";
 import darkThemeImage from "../../assets/icon-moon.svg";
-import avatarImage from "../../assets/image-avatar.jpg";
+import avatarImage from "../../assets/image-avatar.jpeg";
 import logo from "../../assets/logo.svg";
 
 // Styles

@@ -7,9 +7,6 @@ import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../Button/SecondaryButton/SecondaryButton";
 import TertiaryButton from "../../Button/TertiaryButton/TertiaryButton";
 
-// Entities
-import InvoiceBuilder from "../../../entities/InvoiceBuilder";
-
 // Clients
 import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";
 
@@ -17,25 +14,12 @@ import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClie
 import getInitialValues from "../getInitialValues";
 import invoiceFormValidationSchema from "../invoiceFormValidationSchema";
 
-const fillInvoiceBuilder = ({ from, to, details, charges }) =>
-  new InvoiceBuilder()
-    .description(details.projectDescription)
-    .paymentTerms(details.paymentTerms)
-    .clientName(to.clientName)
-    .clientEmail(to.clientEmail)
-    .senderAddressStreet(from.streetAddress)
-    .senderAddressCity(from.city)
-    .senderAddressPostCode(from.postCode)
-    .senderAddressCountry(from.country)
-    .clientAddressStreet(to.streetAddress)
-    .clientAddressCity(to.city)
-    .clientAddressPostCode(to.postCode)
-    .clientAddressCountry(to.country)
-    .items(charges);
+// Utils
+import buildInvoice from "../buildInvoice";
 
-const createInvoice = (values) => fillInvoiceBuilder(values).asInvoice();
+const createInvoice = (values) => buildInvoice(values).asInvoice();
 
-const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
+// const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
 
 const NewInvoiceForm = () => {
   const navigate = useNavigate();

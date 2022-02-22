@@ -1,6 +1,9 @@
 // Styles
 import "./InvoiceDetails.css";
 
+// Components
+import Date from "../Date/Date";
+
 const InvoiceDetails = ({ invoice }) => {
   return (
     <section className="invoice-details">
@@ -30,14 +33,14 @@ const InvoiceDetails = ({ invoice }) => {
               <div className="title-and-subtitle title-and-subtitle--top">
                 <h3 className="title-and-subtitle__title">Invoice Date</h3>
                 <time className="title-and-subtitle__subtitle">
-                  {invoice.createdAt}
+                  {<Date unformattedDate={invoice.createdAt} />}
                 </time>
               </div>
 
               <div className="title-and-subtitle">
                 <h3 className="title-and-subtitle__title">Payment Due</h3>
                 <time className="title-and-subtitle__subtitle">
-                  {invoice.paymentDue}
+                  {<Date unformattedDate={invoice.paymentDue} />}
                 </time>
               </div>
             </div>

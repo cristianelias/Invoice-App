@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import PaymentStatusLabel from "../PaymentStatusLabel/PaymentStatusLabel";
+import Date from "../../Date/Date";
 
 // Assets
 import iconArrowRight from "../../../assets/icon-arrow-right.svg";
@@ -20,7 +21,9 @@ const Invoice = (props) => {
           <span className="invoice__hashtag">#</span>
           {id}
         </span>
-        <time className="invoice__date">Due {paymentDue}</time>
+        <time className="invoice__date">
+          Due <Date unformattedDate={paymentDue} />
+        </time>
         <p className="invoice__client-name">{clientName}</p>
         <p className="invoice__amount">£ {total}</p>
         <PaymentStatusLabel status={status} />

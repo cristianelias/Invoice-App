@@ -104,12 +104,10 @@ class InvoiceBuilder {
   }
 
   setCreationAndPaymentDue() {
-    const DATE_FORMAT = "D MMM YYYY";
-
-    this.data.createdAt = new dayjs().format(DATE_FORMAT);
+    this.data.createdAt = dayjs().format();
     this.data.paymentDue = new dayjs()
       .add(this.data.paymentTerms, "day")
-      .format(DATE_FORMAT);
+      .format();
   }
 
   setIntialStatus() {
@@ -129,6 +127,13 @@ class InvoiceBuilder {
     this.setIntialStatus();
     this.generateId();
 
+    return this.data;
+  }
+
+  asEdited(id) {
+    this.setCreationAndPaymentDue();
+    this.setTotal();
+    this.data.id = id;
     return this.data;
   }
 

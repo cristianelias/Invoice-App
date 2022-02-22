@@ -6,14 +6,14 @@ import InvoiceForm from "../InvoiceForm";
 import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
 import TertiaryButton from "../../Button/TertiaryButton/TertiaryButton";
 
-// Entities
-import InvoiceBuilder from "../../../entities/InvoiceBuilder";
-
 // Clients
 import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";
 
 // Data
 import getInitialValues from "../getInitialValues";
+
+// Utils
+import buildInvoice from "../buildInvoice";
 
 const EditInvoiceForm = ({ invoice }) => {
   const { id } = invoice;
@@ -43,7 +43,8 @@ const EditInvoiceForm = ({ invoice }) => {
       };
     });
 
-    editInitialValues.details.invoiceDate = invoice.paymentDue;
+    editInitialValues.details.invoiceDate = new Date(invoice.createdAt);
+
     editInitialValues.details.paymentTerms = invoice.paymentTerms;
     editInitialValues.details.projectDescription = invoice.description;
     editInitialValues.status = invoice.status;
@@ -51,34 +52,11 @@ const EditInvoiceForm = ({ invoice }) => {
     return editInitialValues;
   };
 
-  const createInvoice = (values) => {
-    const { from, to, details, charges } = values;
-    const iBuilder = new InvoiceBuilder();
-
-    let invoice = iBuilder
-      .description(details.projectDescription)
-      .paymentTerms(details.paymentTerms)
-      .clientName(to.clientName)
-      .clientEmail(to.clientEmail)
-      .senderAddressStreet(from.streetAddress)
-      .senderAddressCity(from.city)
-      .senderAddressPostCode(from.postCode)
-      .senderAddressCountry(from.country)
-      .clientAddressStreet(to.streetAddress)
-      .clientAddressCity(to.city)
-      .clientAddressPostCode(to.postCode)
-      .clientAddressCountry(to.country)
-      .items(charges)
-      .edit(id);
-
-    return invoice;
-  };
+  const createInvoice = (values) => buildInvoice(values).asEdited(id);
 
   const submitHandler = async ({ values }) => {
-    const invoice = createInvoice(values);
-
     await firebaseInvoiceClient.editInvoice({
-      payload: invoice.asJSON(),
+      payload: createInvoice(values),
       onSuccess: () => navigate(-1, { replace: true }),
       onError: (err) => console.log(err),
     });
@@ -98,14 +76,15 @@ const EditInvoiceForm = ({ invoice }) => {
     </legend>
   );
 
-  const assembleActions = () => (
+  const assembleActions = ({ isSubmitting }) => (
     <>
       <TertiaryButton
         onClick={() => navigate(-1, { replace: true })}
         text="Cancel"
+        disabled={isSubmitting}
       />
 
-      <PrimaryButton text="Save Changes" />
+      <PrimaryButton disabled={isSubmitting} text="Save Changes" />
     </>
   );
 
@@ -113,7 +92,7 @@ const EditInvoiceForm = ({ invoice }) => {
     <InvoiceForm
       initialValues={mapInitialValuesFromInvoice()}
       title={assembleTitle()}
-      actions={assembleActions()}
+      assembleActions={assembleActions}
       submitHandler={submitHandler}
     />
   );

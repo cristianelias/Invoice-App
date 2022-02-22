@@ -133,6 +133,8 @@ class InvoiceBuilder {
   }
 
   asDraft() {
+    this.generateId();
+
     return this.data;
   }
 }

@@ -47,12 +47,12 @@ const NewInvoiceForm = () => {
       onError: (err) => console.log(err),
     });
 
-  const saveAsDraftHandler = async ({ values }) =>
-    await firebaseInvoiceClient.postInvoice({
-      payload: createDraftInvoice(values),
-      onSuccess: () => navigate(-1, { replace: true }),
-      onError: (err) => console.log(err),
-    });
+  // const saveAsDraftHandler = async ({ values }) =>
+  //   await firebaseInvoiceClient.postInvoice({
+  //     payload: createDraftInvoice(values),
+  //     onSuccess: () => navigate(-1, { replace: true }),
+  //     onError: (err) => console.log(err),
+  //   });
 
   const assembleActions = ({ isSubmitting }) => {
     return (
@@ -63,7 +63,7 @@ const NewInvoiceForm = () => {
           text="Discard"
         />
 
-        <SecondaryButton
+        {/* <SecondaryButton
           disabled={isSubmitting}
           onClick={(e) => {
             e.preventDefault();
@@ -72,7 +72,7 @@ const NewInvoiceForm = () => {
             navigate(-1, { replace: true });
           }}
           text="Save as Draft"
-        />
+        /> */}
 
         <PrimaryButton disabled={isSubmitting} text="Save & Send" />
       </>

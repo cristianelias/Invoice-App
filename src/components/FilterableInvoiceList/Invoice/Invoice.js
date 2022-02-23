@@ -1,5 +1,6 @@
 // Dependencies
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Components
 import PaymentStatusLabel from "../PaymentStatusLabel/PaymentStatusLabel";
@@ -15,7 +16,13 @@ const Invoice = (props) => {
   const { id, paymentDue, clientName, total, status } = props;
 
   return (
-    <article className="invoice">
+    <motion.article
+      whileHover={{
+        scale: 1.04,
+      }}
+      transition={{ type: "spring", stiffness: 900 }}
+      className="invoice"
+    >
       <Link to={`/view-invoice/${id}`} className="invoice__container">
         <span className="invoice__id">
           <span className="invoice__hashtag">#</span>
@@ -35,7 +42,7 @@ const Invoice = (props) => {
           ></img>
         </span>
       </Link>
-    </article>
+    </motion.article>
   );
 };
 

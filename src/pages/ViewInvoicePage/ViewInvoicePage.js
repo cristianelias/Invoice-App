@@ -1,5 +1,6 @@
 // Dependencies
 import { Outlet, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Components
 import InvoiceDetails from "../../components/InvoiceDetails/InvoiceDetails";
@@ -39,7 +40,11 @@ const ViewInvoicePage = (props) => {
   });
 
   return (
-    <div className="view-invoice-page">
+    <motion.div
+      className="view-invoice-page"
+      initial={{ x: 0 }}
+      animate={{ x: 0 }}
+    >
       <div className="invoice-details-header">
         <GoBack />
         <ScrollToTop />
@@ -68,7 +73,7 @@ const ViewInvoicePage = (props) => {
       <div className="invoice-action-mobile">{actions}</div>
 
       <Outlet />
-    </div>
+    </motion.div>
   );
 };
 

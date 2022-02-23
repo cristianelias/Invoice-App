@@ -1,3 +1,6 @@
+// Dependencies
+import { motion } from "framer-motion";
+
 // Components
 import Invoice from "../Invoice/Invoice";
 
@@ -10,7 +13,7 @@ const InvoiceList = (props) => {
     <section>
       <ul>
         {invoices.map((invoice) => (
-          <li className="invoice-list__item" key={invoice.id}>
+          <motion.li className="invoice-list__item" key={invoice.id}>
             <Invoice
               id={invoice.id}
               paymentDue={invoice.paymentDue}
@@ -18,7 +21,7 @@ const InvoiceList = (props) => {
               total={invoice.total}
               status={invoice.status}
             />
-          </li>
+          </motion.li>
         ))}
       </ul>
     </section>

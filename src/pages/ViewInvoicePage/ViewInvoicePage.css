@@ -4,19 +4,6 @@
   grid-template-columns: 18% 730px 26%;
   margin: 64px 0 54px 0;
   min-width: 360px;
-  animation: view-invoice-page 0.6s ease-out;
-}
-
-@keyframes view-invoice-page {
-  0% {
-    transform: translateX(60%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0%);
-    opacity: 0.9s;
-  }
 }
 
 .invoice-details-header {

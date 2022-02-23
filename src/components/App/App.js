@@ -1,7 +1,8 @@
 // Dependencies
 import { collection } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 // Pages
 import ListInvoicesPage from "../../pages/ListInvoicesPage/ListInvoicesPage";
@@ -24,6 +25,7 @@ const App = () => {
   const [invoices, loading, error] = useCollectionData(
     collection(firebaseInstance, "invoices")
   );
+  const location = useLocation();
 
   return (
     <>
@@ -34,21 +36,26 @@ const App = () => {
 
         {loading && <Loading />}
         {invoices && (
-          <Routes>
-            <Route path="/" element={<ListInvoicesPage invoices={invoices} />}>
-              <Route path="new-invoice" element={<NewInvoicePage />} />
-            </Route>
-
-            <Route
-              path="/view-invoice/:id"
-              element={<ViewInvoicePage invoices={invoices} />}
-            >
+          <AnimatePresence exitBeforeEnter>
+            <Routes location={location} key={location.key}>
               <Route
-                path="/view-invoice/:id/edit"
-                element={<EditInvoicePage invoices={invoices} />}
-              />
-            </Route>
-          </Routes>
+                path="/"
+                element={<ListInvoicesPage invoices={invoices} />}
+              >
+                <Route path="new-invoice" element={<NewInvoicePage />} />
+              </Route>
+
+              <Route
+                path="/view-invoice/:id"
+                element={<ViewInvoicePage invoices={invoices} />}
+              >
+                <Route
+                  path="/view-invoice/:id/edit"
+                  element={<EditInvoicePage invoices={invoices} />}
+                />
+              </Route>
+            </Routes>
+          </AnimatePresence>
         )}
       </div>
     </>

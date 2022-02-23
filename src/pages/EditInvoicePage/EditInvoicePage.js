@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 // Components
 import EditInvoiceForm from "../../components/InvoiceForm/EditInvoiceForm/EditInvoiceForm";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
+import Overlay from "../../components/Overlay/Overlay";
 
 // Styles
 import "./EditInvoicePage.css";
@@ -23,6 +24,7 @@ const EditInvoicePage = (props) => {
 
   return (
     <div className="edit-invoice-page">
+      <Overlay />
       <ScrollToTop />
       {invoice && invoice.id !== undefined && (
         <EditInvoiceForm invoice={invoice} />

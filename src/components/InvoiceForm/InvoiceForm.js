@@ -1,5 +1,6 @@
 // Dependencies
 import { Formik, Form, FieldArray } from "formik";
+import { motion } from "framer-motion";
 
 // Components
 import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
@@ -47,7 +48,13 @@ const InvoiceForm = (props) => {
     >
       {({ values, isSubmitting }) => (
         <>
-          <div className="invoice-form">
+          <motion.div
+            initial={{ x: "-100vw" }}
+            exit={{ x: "-100vw" }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", stiffness: "80" }}
+            className="invoice-form"
+          >
             <Form className="invoice-form__form">
               {title}
 
@@ -68,7 +75,11 @@ const InvoiceForm = (props) => {
 
               <fieldset className="fieldset-details">
                 {Object.keys(values.details).map((fieldName, index) =>
-                  createField({ fieldsetId: "details", name: fieldName, index })
+                  createField({
+                    fieldsetId: "details",
+                    name: fieldName,
+                    index,
+                  })
                 )}
               </fieldset>
 
@@ -131,7 +142,7 @@ const InvoiceForm = (props) => {
                 {assembleActions({ isSubmitting })}
               </footer>
             </Form>
-          </div>
+          </motion.div>
         </>
       )}
     </Formik>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 // Components
 import PaymentStatusLabel from "./PaymentStatusLabel";
-import Date from "../Date/Date";
+import Date from "../Date";
 
 // Assets
 import iconArrowRight from "../../assets/icon-arrow-right.svg";
@@ -19,7 +19,7 @@ const InnerContainer = styled(Link)`
   border-radius: 8px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   display: grid;
-  grid-template-columns: 15% 20% 18% 20% 15% 3%;
+  grid-template-columns: 14% 20% 18% 20% 15% 3%;
   align-items: center;
   text-align: left;
   gap: 2%;
@@ -113,7 +113,7 @@ const ImgContainer = styled.span`
   justify-content: flex-end;
 `;
 
-const Img = styled.span`
+const Img = styled.img`
   width: 7px;
 
   @media (max-width: 650px) {

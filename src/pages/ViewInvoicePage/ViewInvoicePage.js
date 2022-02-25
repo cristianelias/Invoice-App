@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 // Components
 import InvoiceDetails from "../../components/InvoiceDetails/InvoiceDetails";
 import PaymentStatusLabel from "../../components/FilterableInvoiceList/PaymentStatusLabel";
-import Gradient from "../../components/Gradient/Gradient";
-import GoBack from "../../components/GoBack/GoBack";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
+import Gradient from "../../components/Gradient";
+import GoBack from "../../components/GoBack";
+import ScrollToTop from "../../components/ScrollToTop";
 import EditInvoiceAction from "../../components/Actions/EditInvoiceAction";
 import DeleteAction from "../../components/Actions/DeleteAction";
 import MarkAsPaidAction from "../../components/Actions/MarkAsPaidAction";

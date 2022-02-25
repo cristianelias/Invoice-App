@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 // Components
 import EditInvoiceForm from "../../components/InvoiceForm/EditInvoiceForm/EditInvoiceForm";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
+import ScrollToTop from "../../components/ScrollToTop";
 import Overlay from "../../components/Overlay/Overlay";
 
 // Styles

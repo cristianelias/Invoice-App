@@ -1,7 +1,7 @@
 // Components
 import NewInvoiceForm from "../../components/InvoiceForm/NewInvoiceForm/NewInvoiceForm";
 import Overlay from "../../components/Overlay/Overlay";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
+import ScrollToTop from "../../components/ScrollToTop";
 
 // Styles
 import "./NewInvoicePage.css";

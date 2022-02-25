@@ -6,17 +6,17 @@ import { css, Global } from "@emotion/react";
 import { AnimatePresence } from "framer-motion";
 
 // Pages
-import ListInvoicesPage from "../../pages/ListInvoicesPage/ListInvoicesPage";
-import NewInvoicePage from "../../pages/NewInvoicePage/NewInvoicePage";
-import ViewInvoicePage from "../../pages/ViewInvoicePage/ViewInvoicePage";
-import EditInvoicePage from "../../pages/EditInvoicePage/EditInvoicePage";
+import ListInvoicesPage from "../pages/ListInvoicesPage/ListInvoicesPage";
+import NewInvoicePage from "../pages/NewInvoicePage/NewInvoicePage";
+import ViewInvoicePage from "../pages/ViewInvoicePage/ViewInvoicePage";
+import EditInvoicePage from "../pages/EditInvoicePage/EditInvoicePage";
 
 // Components
-import Header from "../Header/Header";
-import Loading from "../Loading/Loading";
+import Header from "./Header/Header";
+import Loading from "./Loading/Loading";
 
 // Clients
-import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
+import firebaseInvoiceClient from "../clients/firebase/firebaseInvoiceClient";
 
 // Assets
 import "@fontsource/spartan/500.css";

@@ -2,7 +2,7 @@
 import "./InvoiceDetails.css";
 
 // Components
-import Date from "../Date/Date";
+import Date from "../Date";
 
 const InvoiceDetails = ({ invoice }) => {
   return (

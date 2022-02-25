@@ -1,4 +1,8 @@
-.gradient {
+// Dependencies
+import styled from "@emotion/styled";
+
+// Styles
+const StyledGradient = styled.div`
   display: none;
   width: 616px;
   height: 141px;
@@ -11,4 +15,8 @@
     rgba(0, 0, 0, 0.1) 100%
   );
   z-index: 2;
-}
+`;
+
+const Gradient = () => <StyledGradient />;
+
+export default Gradient;

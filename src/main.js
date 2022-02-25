@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { HashRouter } from "react-router-dom";
 
 // Components
-import App from "./components/App/App";
+import App from "./components/App";
 
 render(
   <StrictMode>

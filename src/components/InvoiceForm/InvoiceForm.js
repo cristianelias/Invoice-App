@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // Components
 import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
-import Gradient from "../Gradient/Gradient";
+import Gradient from "../Gradient";
 
 // Styles
 import "./InvoiceForm.css";

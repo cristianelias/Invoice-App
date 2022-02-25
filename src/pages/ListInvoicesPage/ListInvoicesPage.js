@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 // Components
 import FilterableInvoiceList from "../../components/FilterableInvoiceList/FilterableInvoiceList";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
+import ScrollToTop from "../../components/ScrollToTop";
 
 import "./ListInvoicesPage.css";
 

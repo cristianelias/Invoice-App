@@ -57,7 +57,11 @@ const NewInvoiceForm = () => {
           text="Save as Draft"
         /> */}
 
-        <PrimaryButton disabled={isSubmitting} text="Save & Send" />
+        <PrimaryButton
+          disabled={isSubmitting}
+          type="submit"
+          text="Save & Send"
+        />
       </>
     );
   };

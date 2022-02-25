@@ -59,9 +59,7 @@ const fixedStyles = css`
   padding: 13px 17px 12px 18px;
 `;
 
-const PaymentStatusLabel = (props) => {
-  const { status, fixedSize } = props;
-
+const PaymentStatusLabel = ({ status, fixedSize }) => {
   const assembleModifiers = () => {
     const styles = [modifiers[status]];
 

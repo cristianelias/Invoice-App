@@ -7,17 +7,17 @@ import ScrollToTop from "../../components/ScrollToTop";
 
 import "./ListInvoicesPage.css";
 
-const ListInvoicesPage = (props) => {
-  const { invoices } = props;
+const ListInvoicesPage = ({ invoices }) => (
+  <>
+    {Array.isArray(invoices) && (
+      <div className="list-invoices-page">
+        <ScrollToTop />
 
-  return (
-    <div className="list-invoices-page">
-      <ScrollToTop />
-
-      <FilterableInvoiceList invoices={invoices} />
-      <Outlet />
-    </div>
-  );
-};
+        <FilterableInvoiceList invoices={invoices} />
+        <Outlet />
+      </div>
+    )}
+  </>
+);
 
 export default ListInvoicesPage;

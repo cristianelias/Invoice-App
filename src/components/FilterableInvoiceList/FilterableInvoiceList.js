@@ -1,16 +1,43 @@
 // Dependencies
+import styled from "@emotion/styled";
 import { useState, useEffect, useMemo, use } from "react";
 import debounce from "lodash.debounce";
 
 // Components
-import InvoiceListOverview from "./InvoiceListOverview/InvoiceListOverview";
-import NewInvoiceButton from "./NewInvoiceButton/NewInvoiceButton";
-import InvoiceFilterDropdown from "./InvoiceFilterDropdown/InvoiceFilterDropdown";
-import InvoiceList from "./InvoiceList/InvoiceList";
-import EmptyInvoiceList from "./EmptyInvoiceList/EmptyInvoiceList";
+import InvoiceListOverview from "./InvoiceListOverview";
+import NewInvoiceButton from "./NewInvoiceButton";
+import FilterDropdown from "./FilterDropdown/FilterDropdown";
+import InvoiceList from "./InvoiceList";
+import EmptyInvoiceList from "./EmptyInvoiceList";
 
 // Styles
-import "./FilterableInvoiceList.css";
+const Container = styled.article`
+  grid-column: 2/3;
+  min-width: 730px;
+  max-width: 1100px;
+
+  @media (max-width: 1227px) {
+    min-width: 672px;
+  }
+
+  @media (max-width: 850px) {
+    min-width: 320px;
+  }
+
+  @media (max-width: 850px) {
+    margin: 56px 0 0 0;
+  }
+
+  @media (max-width: 650px) {
+    width: 80%;
+    margin: 56px auto 0 auto;
+  }
+`;
+
+const Header = styled.header`
+  margin-bottom: 65px;
+  display: flex;
+`;
 
 const TABLET_MINIMAL_WIDTH = 768;
 const mustShowFullInfo = () => window.innerWidth >= TABLET_MINIMAL_WIDTH;
@@ -68,27 +95,27 @@ const FilterableInvoiceList = (props) => {
     );
 
   return (
-    <article className="invoice-list">
-      <header className="invoice-list__header">
+    <Container>
+      <Header>
         <InvoiceListOverview
           showFullInfo={showFullInfo}
           totalInvoices={filteredInvoices.length}
         />
 
-        <InvoiceFilterDropdown
+        <FilterDropdown
           showFullInfo={showFullInfo}
           statusFilters={statusFilters}
         />
 
         <NewInvoiceButton showFullInfo={showFullInfo} />
-      </header>
+      </Header>
 
       {filteredInvoices.length > 0 ? (
         <InvoiceList invoices={filteredInvoices} />
       ) : (
         <EmptyInvoiceList />
       )}
-    </article>
+    </Container>
   );
 };
 

@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import InvoiceForm from "../InvoiceForm";
 
 // Components
-import PrimaryButton from "../../Button/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../../Button/SecondaryButton/SecondaryButton";
-import TertiaryButton from "../../Button/TertiaryButton/TertiaryButton";
+import PrimaryButton from "../../Button/PrimaryButton";
+import TertiaryButton from "../../Button/TertiaryButton";
 
 // Clients
 import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";

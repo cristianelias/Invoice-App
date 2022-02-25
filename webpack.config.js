@@ -46,11 +46,10 @@ module.exports = (env, { mode }) => {
             presets: [
               [
                 "@babel/preset-react",
-                {
-                  runtime: "automatic",
-                },
+                { runtime: "automatic", importSource: "@emotion/react" },
               ],
             ],
+            plugins: ["@emotion/babel-plugin"],
           },
         },
         {

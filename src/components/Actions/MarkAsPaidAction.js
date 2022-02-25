@@ -1,5 +1,5 @@
 // Dependencies
-import PrimaryButton from "../../components/Button/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../Button/PrimaryButton";
 
 // Clients
 import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";

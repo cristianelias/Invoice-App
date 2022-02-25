@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 
 // Assets
-import emptyImage from "../../../assets/illustration-empty.svg";
+import emptyImage from "../../assets/illustration-empty.svg";
 
 // Styles
 const Section = styled.section`

@@ -1,6 +1,6 @@
 // Dependencies
 import { useNavigate } from "react-router-dom";
-import ErrorButton from "../Button/ErrorButton/ErrorButton";
+import ErrorButton from "../Button/ErrorButton";
 
 // Clients
 import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";

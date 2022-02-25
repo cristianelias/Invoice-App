@@ -1,30 +1,36 @@
 // Dependencies
+import styled from "@emotion/styled";
+
+// Dependencies
 import { Link } from "react-router-dom";
 
 // Styles
-import "./Button.css";
+const StyledButton = styled.button`
+  border: none;
+  padding: 17px 24px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  border-radius: 24px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.25px;
 
-const Button = (props) => {
-  const { className, linkTo, text, onClick, type, disabled } = props;
+  background: none;
+  color: inherit;
+`;
 
-  if (linkTo) {
-    return (
-      <Link className={`${className} button-component`} to={linkTo}>
-        {text}
-      </Link>
-    );
-  }
-
-  return (
-    <button
-      onClick={onClick}
-      type={type ? type : "button"}
-      className={`${className} button-component`}
-      disabled={disabled}
-    >
-      {text}
-    </button>
-  );
-};
+const Button = ({ className, linkTo, text, onClick, type, disabled }) => (
+  <StyledButton
+    onClick={onClick}
+    type={type ? type : "button"}
+    disabled={disabled}
+    className={className}
+  >
+    {linkTo !== undefined ? <Link to={linkTo}>{text}</Link> : text}
+  </StyledButton>
+);
 
 export default Button;

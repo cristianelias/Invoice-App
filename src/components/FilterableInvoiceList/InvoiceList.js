@@ -1,11 +1,15 @@
 // Dependencies
+import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 // Components
-import Invoice from "../Invoice/Invoice";
+import Invoice from "./Invoice";
 
 // Styles
-import "./InvoiceList.css";
+const InvoiceItem = styled(motion.li)`
+  width: 100%;
+  list-style: none;
+`;
 
 const InvoiceList = (props) => {
   const { invoices } = props;
@@ -13,7 +17,7 @@ const InvoiceList = (props) => {
     <section>
       <ul>
         {invoices.map((invoice) => (
-          <motion.li className="invoice-list__item" key={invoice.id}>
+          <InvoiceItem key={invoice.id}>
             <Invoice
               id={invoice.id}
               paymentDue={invoice.paymentDue}
@@ -21,7 +25,7 @@ const InvoiceList = (props) => {
               total={invoice.total}
               status={invoice.status}
             />
-          </motion.li>
+          </InvoiceItem>
         ))}
       </ul>
     </section>

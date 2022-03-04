@@ -1,7 +1,7 @@
 // Styles
 import StyledInput from "./Styled/StyledInput";
 
-const InvoiceItemTotalField = ({ name, fields }) => {
+const ItemTotalField = ({ name, fields }) => {
   const value = [fields.price, fields.qty]
     .map((value) => (isNaN(parseInt(value)) ? 0 : parseInt(value)))
     .reduce((current, next) => {
@@ -11,4 +11,4 @@ const InvoiceItemTotalField = ({ name, fields }) => {
   return <StyledInput name={name} value={value} readOnly="readOnly" />;
 };
 
-export default InvoiceItemTotalField;
+export default ItemTotalField;

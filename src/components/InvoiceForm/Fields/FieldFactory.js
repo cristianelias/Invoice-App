@@ -1,6 +1,6 @@
 // Components
 import BaseField from "./BaseField";
-import InvoiceItemTotalField from "./InvoiceItemTotalField";
+import ItemTotalField from "./ItemTotalInput";
 import InvoiceSelectField from "./InvoiceSelectField";
 import DateField from "./DateField";
 import TextInput from "./TextInput";
@@ -13,7 +13,7 @@ const FieldFactory = ({ name, meta, fields }) => {
   const fieldsByType = {
     date: <DateField {...commonProps} />,
     select: <InvoiceSelectField {...commonProps} />,
-    total: <InvoiceItemTotalField {...commonProps} />,
+    total: <ItemTotalField {...commonProps} />,
   };
 
   return (

@@ -13,8 +13,8 @@ import "./InvoiceForm.css";
 import iconTrashCan from "../../assets/icon-delete.svg";
 
 // Data
-import inputDataByName from "./inputDataByName";
-import chargesValues from "./chargesValues";
+import inputDataByName from "./utils/inputDataByName";
+import chargesValues from "./utils/chargesValues";
 
 const InvoiceForm = (props) => {
   const {

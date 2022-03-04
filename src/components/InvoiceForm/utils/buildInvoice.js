@@ -1,5 +1,5 @@
 // Entities
-import InvoiceBuilder from "../../entities/InvoiceBuilder";
+import InvoiceBuilder from "../../../entities/InvoiceBuilder";
 
 const buildInvoice = ({ from, to, details, charges }) =>
   new InvoiceBuilder()

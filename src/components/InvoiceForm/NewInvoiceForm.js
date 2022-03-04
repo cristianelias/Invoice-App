@@ -10,11 +10,11 @@ import TertiaryButton from "../Button/TertiaryButton";
 import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
 // Data
-import getInitialValues from "./getInitialValues";
+import getInitialValues from "./utils/getInitialValues";
 import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
 
 // Utils
-import buildInvoice from "./buildInvoice";
+import buildInvoice from "./utils/buildInvoice";
 
 const createInvoice = (values) => buildInvoice(values).asInvoice();
 

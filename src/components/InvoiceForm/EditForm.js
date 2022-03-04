@@ -10,10 +10,10 @@ import TertiaryButton from "../Button/TertiaryButton";
 import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
 // Data
-import getInitialValues from "./getInitialValues";
+import getInitialValues from "./utils/getInitialValues";
 
 // Utils
-import buildInvoice from "./buildInvoice";
+import buildInvoice from "./utils/buildInvoice";
 
 const EditForm = ({ invoice }) => {
   const { id } = invoice;

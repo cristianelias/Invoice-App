@@ -1,5 +1,5 @@
 // Components
-import NewInvoiceForm from "../../components/InvoiceForm/NewInvoiceForm/NewInvoiceForm";
+import NewInvoiceForm from "../../components/InvoiceForm/NewInvoiceForm";
 import Overlay from "../../components/Overlay/Overlay";
 import ScrollToTop from "../../components/ScrollToTop";
 

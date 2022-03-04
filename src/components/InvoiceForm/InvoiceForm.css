@@ -10,6 +10,10 @@
   z-index: 2;
 }
 
+.fieldset-charges .validation-message {
+  display: none;
+}
+
 .invoice-form-title {
   font-size: 24px;
   font-weight: bold;

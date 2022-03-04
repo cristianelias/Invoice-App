@@ -26,7 +26,7 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
   </Button>
 ));
 
-const InvoiceDateField = ({ label, name, classes }) => {
+const DateField = ({ label, name, classes }) => {
   const { setFieldValue } = useFormikContext();
 
   return (
@@ -57,4 +57,4 @@ const InvoiceDateField = ({ label, name, classes }) => {
   );
 };
 
-export default InvoiceDateField;
+export default DateField;

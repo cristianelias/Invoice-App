@@ -3,7 +3,7 @@ import { Formik, Form, FieldArray } from "formik";
 import { motion } from "framer-motion";
 
 // Components
-import InvoiceFieldFactory from "./InvoiceFieldFactory/InvoiceFieldFactory";
+import InvoiceFieldFactory from "./Fields/InvoiceFieldFactory";
 import Gradient from "../Gradient";
 
 // Styles

@@ -1,8 +1,8 @@
 // Components
-import InvoiceField from "../InvoiceField/InvoiceField";
-import InvoiceItemTotalField from "../InvoiceItemTotalField/InvoiceItemTotalField";
-import InvoiceSelectField from "../InvoiceSelectField/InvoiceSelectField";
-import InvoiceDateField from "../InvoiceDateField/InvoiceDateField";
+import BaseField from "./BaseField";
+import InvoiceItemTotalField from "./InvoiceItemTotalField";
+import InvoiceSelectField from "./InvoiceSelectField";
+import DateField from "./DateField";
 
 const InvoiceFieldFactory = (props) => {
   const { name, meta, fields } = props;
@@ -10,7 +10,7 @@ const InvoiceFieldFactory = (props) => {
   const { type, label, min, max, values, placeholder } = meta;
 
   const fallback = (
-    <InvoiceField
+    <BaseField
       label={label}
       name={name}
       classes={classes}
@@ -23,7 +23,7 @@ const InvoiceFieldFactory = (props) => {
 
   const fieldsByType = {
     date: (
-      <InvoiceDateField
+      <DateField
         label={label}
         name={name}
         classes={classes}

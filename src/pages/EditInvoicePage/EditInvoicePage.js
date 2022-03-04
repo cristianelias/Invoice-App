@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Components
-import EditInvoiceForm from "../../components/InvoiceForm/EditInvoiceForm/EditInvoiceForm";
+import EditForm from "../../components/InvoiceForm/EditForm";
 import ScrollToTop from "../../components/ScrollToTop";
 import Overlay from "../../components/Overlay/Overlay";
 
@@ -26,9 +26,7 @@ const EditInvoicePage = (props) => {
     <div className="edit-invoice-page">
       <Overlay />
       <ScrollToTop />
-      {invoice && invoice.id !== undefined && (
-        <EditInvoiceForm invoice={invoice} />
-      )}
+      {invoice && invoice.id !== undefined && <EditForm invoice={invoice} />}
     </div>
   );
 };

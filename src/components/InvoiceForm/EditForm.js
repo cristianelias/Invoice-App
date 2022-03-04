@@ -2,20 +2,20 @@
 import { useNavigate } from "react-router-dom";
 
 // Components
-import InvoiceForm from "../InvoiceForm";
-import PrimaryButton from "../../Button/PrimaryButton";
-import TertiaryButton from "../../Button/TertiaryButton";
+import InvoiceForm from "./InvoiceForm";
+import PrimaryButton from "../Button/PrimaryButton";
+import TertiaryButton from "../Button/TertiaryButton";
 
 // Clients
-import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";
+import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
 // Data
-import getInitialValues from "../getInitialValues";
+import getInitialValues from "./getInitialValues";
 
 // Utils
-import buildInvoice from "../buildInvoice";
+import buildInvoice from "./buildInvoice";
 
-const EditInvoiceForm = ({ invoice }) => {
+const EditForm = ({ invoice }) => {
   const { id } = invoice;
   const navigate = useNavigate();
 
@@ -97,4 +97,4 @@ const EditInvoiceForm = ({ invoice }) => {
     />
   );
 };
-export default EditInvoiceForm;
+export default EditForm;

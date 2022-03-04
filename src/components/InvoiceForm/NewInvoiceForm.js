@@ -1,20 +1,20 @@
 // Dependencies
 import { useNavigate } from "react-router-dom";
-import InvoiceForm from "../InvoiceForm";
+import InvoiceForm from "./InvoiceForm";
 
 // Components
-import PrimaryButton from "../../Button/PrimaryButton";
-import TertiaryButton from "../../Button/TertiaryButton";
+import PrimaryButton from "../Button/PrimaryButton";
+import TertiaryButton from "../Button/TertiaryButton";
 
 // Clients
-import firebaseInvoiceClient from "../../../clients/firebase/firebaseInvoiceClient";
+import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
 
 // Data
-import getInitialValues from "../getInitialValues";
-import invoiceFormValidationSchema from "../invoiceFormValidationSchema";
+import getInitialValues from "./getInitialValues";
+import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
 
 // Utils
-import buildInvoice from "../buildInvoice";
+import buildInvoice from "./buildInvoice";
 
 const createInvoice = (values) => buildInvoice(values).asInvoice();
 

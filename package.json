@@ -35,7 +35,8 @@
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@fontsource/spartan": "^4.5.2",
+    "@fontsource/antonio": "^4.5.3",
+    "@fontsource/spartan": "^4.5.4",
     "dayjs": "^1.10.7",
     "firebase": "^9.6.5",
     "formik": "^2.2.9",

@@ -66,10 +66,6 @@ const ViewInvoicePage = (props) => {
 
       <InvoiceDetails invoice={currentInvoice} />
 
-      <div className="view-invoice-page__gradient">
-        <Gradient />
-      </div>
-
       <div className="invoice-action-mobile">{actions}</div>
 
       <Outlet />

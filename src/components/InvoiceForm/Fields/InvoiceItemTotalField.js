@@ -1,36 +1,14 @@
-// Dependencies
-import { Field } from "formik";
-
 // Styles
-import "./InvoiceItemTotalField.css";
+import StyledInput from "./Styled/StyledInput";
 
-const InvoiceItemTotalField = (props) => {
-  const { label, name, classes, fields } = props;
+const InvoiceItemTotalField = ({ name, fields }) => {
+  const value = [fields.price, fields.qty]
+    .map((value) => (isNaN(parseInt(value)) ? 0 : parseInt(value)))
+    .reduce((current, next) => {
+      return current * next;
+    }, 1);
 
-  const calculateValue = () =>
-    [fields.price, fields.qty]
-      .map((value) => (isNaN(parseInt(value)) ? 0 : parseInt(value)))
-      .reduce((current, next) => {
-        return current * next;
-      }, 1);
-
-  return (
-    <Field name={name}>
-      {() => (
-        <div className={classes}>
-          <label className="field__label" htmlFor={name}>
-            {label}
-          </label>
-          <input
-            className="field__input"
-            name={name}
-            value={calculateValue()}
-            readOnly="readOnly"
-          />
-        </div>
-      )}
-    </Field>
-  );
+  return <StyledInput name={name} value={value} readOnly="readOnly" />;
 };
 
 export default InvoiceItemTotalField;

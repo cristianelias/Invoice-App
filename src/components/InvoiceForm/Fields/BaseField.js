@@ -1,13 +1,22 @@
 // Dependencies
 import { Field, useField, ErrorMessage } from "formik";
+import { cloneElement } from "react";
 
 // Components
 import StyledField from "./Styled/StyledField";
 import StyledLabel from "./Styled/StyledLabel";
-import StyledInput from "./Styled/StyledInput";
 import getStyledErrorMessage from "./Styled/getStyledErrorMessage";
 
-const BaseField = ({ label, name, classes, type, min, max, placeholder }) => {
+const BaseField = ({
+  label,
+  name,
+  classes,
+  type,
+  min,
+  max,
+  placeholder,
+  children,
+}) => {
   const { setTouched } = useField(name)[2];
   const StyledErrorMessage = getStyledErrorMessage(ErrorMessage);
 
@@ -22,19 +31,21 @@ const BaseField = ({ label, name, classes, type, min, max, placeholder }) => {
               {label}
             </StyledLabel>
 
-            <StyledInput
-              className={`${errorClass}`}
-              name={name}
-              value={value}
-              onChange={(e) => {
+            {cloneElement(children, {
+              label,
+              name,
+              classes,
+              type,
+              min,
+              max,
+              placeholder,
+              className: `${errorClass}`,
+              value,
+              onChange: (e) => {
                 setTouched(name, true);
                 onChange(e);
-              }}
-              type={type}
-              min={min}
-              max={max}
-              placeholder={placeholder}
-            />
+              },
+            })}
 
             <StyledErrorMessage name={name}>
               {(msg) => <div className="validation-message">{msg}</div>}

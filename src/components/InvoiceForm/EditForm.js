@@ -20,7 +20,7 @@ const EditForm = ({ invoice }) => {
   const navigate = useNavigate();
 
   const mapInitialValuesFromInvoice = () => {
-    const editInitialValues = Object.assign({}, getInitialValues());
+    const editInitialValues = getInitialValues();
 
     editInitialValues.from.streetAddress = invoice.senderAddress.street;
     editInitialValues.from.city = invoice.senderAddress.city;

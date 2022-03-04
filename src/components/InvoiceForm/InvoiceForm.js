@@ -3,7 +3,7 @@ import { Formik, Form, FieldArray } from "formik";
 import { motion } from "framer-motion";
 
 // Components
-import InvoiceFieldFactory from "./Fields/InvoiceFieldFactory";
+import FieldFactory from "./Fields/FieldFactory";
 import Gradient from "../Gradient";
 
 // Styles
@@ -29,7 +29,7 @@ const InvoiceForm = (props) => {
     const fieldMeta = inputDataByName[name];
 
     return (
-      <InvoiceFieldFactory
+      <FieldFactory
         key={index}
         name={`${fieldsetId}.${name}`}
         meta={fieldMeta}

@@ -21,11 +21,11 @@ const StyledInput = styled.input`
   }
 
   &:focus {
-    border: solid 1px #7c5dfa;
+    border-color: #7c5dfa;
   }
 
   &.error:focus {
-    border: solid 1px #ec5757;
+    border-color: #ec5757;
   }
 
   @media (max-width: 650px) {

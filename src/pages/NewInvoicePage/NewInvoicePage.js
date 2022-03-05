@@ -1,6 +1,6 @@
 // Components
-import NewInvoiceForm from "../../components/InvoiceForm/NewInvoiceForm";
-import Overlay from "../../components/Overlay/Overlay";
+import CreateForm from "../../components/Form/CreateForm";
+import Overlay from "../../components/Overlay";
 import ScrollToTop from "../../components/ScrollToTop";
 
 // Styles
@@ -11,7 +11,7 @@ const NewInvoicePage = () => {
     <div className="new-invoice-page">
       <Overlay />
       <ScrollToTop />
-      <NewInvoiceForm />
+      <CreateForm />
     </div>
   );
 };

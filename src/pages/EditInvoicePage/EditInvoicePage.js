@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Components
-import EditForm from "../../components/InvoiceForm/EditForm";
+import EditForm from "../../components/Form/EditForm";
 import ScrollToTop from "../../components/ScrollToTop";
-import Overlay from "../../components/Overlay/Overlay";
+import Overlay from "../../components/Overlay";
 
 // Styles
 import "./EditInvoicePage.css";

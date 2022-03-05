@@ -44,6 +44,10 @@ const ChargesContainer = styled.div`
     visibility: hidden;
   }
 
+  & .validation {
+    display: none;
+  }
+
   @media (max-width: 500px) {
     height: 176px;
     margin-bottom: 48px;

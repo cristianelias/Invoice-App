@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 
 // Components
-import InvoiceForm from "./InvoiceForm";
+import BaseForm from "./BaseForm";
 import PrimaryButton from "../Button/PrimaryButton";
 import TertiaryButton from "../Button/TertiaryButton";
 
@@ -92,7 +92,7 @@ const EditForm = ({ invoice }) => {
   );
 
   return (
-    <InvoiceForm
+    <BaseForm
       initialValues={mapInitialValuesFromInvoice()}
       title={assembleTitle()}
       assembleActions={assembleActions}

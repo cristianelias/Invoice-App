@@ -26,22 +26,15 @@ const StyledField = styled.div`
   &.error {
     color: #ec5757;
     font-weight: 600;
-    margin-top: 10px;
-    font-size: 10px;
-    line-height: 15px;
-    letter-spacing: -0.208333px;
+
+    .validation {
+      font-size: 10px;
+    }
   }
 
   &.error {
-    color: #ec5757;
-    font-weight: 600;
-    margin-top: 10px;
-    font-size: 10px;
-    line-height: 15px;
-    letter-spacing: -0.208333px;
-
     input {
-      border: solid 1px #ec5757;
+      border-color: #ec5757;
     }
   }
 
@@ -69,7 +62,7 @@ const StyledField = styled.div`
     text-align: center;
   }
 
-  &.field__input[name$=".total"] {
+  &[class*="total"] > input {
     text-align: left;
     border: none;
     color: #888eb0;

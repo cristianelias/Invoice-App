@@ -81,7 +81,7 @@ const Footer = styled.footer`
   }
 `;
 
-const InvoiceForm = ({
+const BaseForm = ({
   title,
   initialValues,
   submitHandler,
@@ -134,4 +134,4 @@ const InvoiceForm = ({
   );
 };
 
-export default InvoiceForm;
+export default BaseForm;

@@ -1,6 +1,6 @@
 // Dependencies
 import { useNavigate } from "react-router-dom";
-import InvoiceForm from "./InvoiceForm";
+import BaseForm from "./BaseForm";
 
 // Components
 import PrimaryButton from "../Button/PrimaryButton";
@@ -23,7 +23,7 @@ const createInvoice = (values) => buildInvoice(values).asInvoice();
 
 // const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
 
-const NewInvoiceForm = () => {
+const CreateForm = () => {
   const navigate = useNavigate();
 
   const submitHandler = async ({ values }) =>
@@ -72,7 +72,7 @@ const NewInvoiceForm = () => {
   const assembleTitle = () => <FormTitle>New invoice</FormTitle>;
 
   return (
-    <InvoiceForm
+    <BaseForm
       title={assembleTitle()}
       initialValues={getInitialValues()}
       validationSchema={invoiceFormValidationSchema}
@@ -81,4 +81,4 @@ const NewInvoiceForm = () => {
     />
   );
 };
-export default NewInvoiceForm;
+export default CreateForm;

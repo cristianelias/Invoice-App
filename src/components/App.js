@@ -13,7 +13,7 @@ import EditInvoicePage from "../pages/EditInvoicePage/EditInvoicePage";
 
 // Components
 import Header from "./Header/Header";
-import Loading from "./Loading/Loading";
+import Loading from "./Loading";
 
 // Clients
 import firebaseInvoiceClient from "../clients/firebase/firebaseInvoiceClient";

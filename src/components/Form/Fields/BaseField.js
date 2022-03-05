@@ -1,11 +1,24 @@
 // Dependencies
+import styled from "@emotion/styled";
 import { Field, useField, ErrorMessage } from "formik";
 import { cloneElement } from "react";
 
 // Components
 import StyledField from "./Styled/StyledField";
 import StyledLabel from "./Styled/StyledLabel";
-import getStyledErrorMessage from "./Styled/getStyledErrorMessage";
+
+// Styles
+const StyledValidationContainer = styled(ErrorMessage)`
+  display: none;
+  color: #ec5757;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 15px;
+`;
+
+const StyledError = styled.div`
+  margin-top: 10px;
+`;
 
 const BaseField = ({
   label,
@@ -18,7 +31,6 @@ const BaseField = ({
   children,
 }) => {
   const { setTouched } = useField(name)[2];
-  const StyledErrorMessage = getStyledErrorMessage(ErrorMessage);
 
   return (
     <Field name={name}>
@@ -47,9 +59,9 @@ const BaseField = ({
               },
             })}
 
-            <StyledErrorMessage name={name}>
-              {(msg) => <div className="validation-message">{msg}</div>}
-            </StyledErrorMessage>
+            <StyledValidationContainer name={name}>
+              {(msg) => <StyledError className="validation">{msg}</StyledError>}
+            </StyledValidationContainer>
           </StyledField>
         );
       }}

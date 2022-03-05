@@ -20,6 +20,7 @@ const StyledButton = styled.button`
 
   background: none;
   color: inherit;
+  flex-shrink: 0;
 `;
 
 const Button = ({ className, linkTo, text, onClick, type, disabled }) => (

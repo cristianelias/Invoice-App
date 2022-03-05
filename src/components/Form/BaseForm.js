@@ -109,7 +109,7 @@ const BaseForm = ({
       validateOnChange={true}
       validateOnBlur={false}
     >
-      {({ values, isSubmitting }) => (
+      {({ values, isSubmitting, errors, touched }) => (
         <>
           <FormContainer
             initial={{ x: "-100vw" }}
@@ -123,7 +123,12 @@ const BaseForm = ({
               <FieldsetFrom values={values} createField={createField} />
               <FieldsetTo values={values} createField={createField} />
               <FieldsetDetails values={values} createField={createField} />
-              <FieldsetCharges values={values} createField={createField} />
+              <FieldsetCharges
+                values={values}
+                createField={createField}
+                errors={errors}
+                touched={touched}
+              />
 
               <Footer>{assembleActions({ isSubmitting })}</Footer>
             </Form>

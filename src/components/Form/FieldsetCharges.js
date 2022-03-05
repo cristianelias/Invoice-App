@@ -96,7 +96,7 @@ const ChargesValidation = styled.p`
   line-height: 1rem;
 `;
 
-const FieldsetCharges = ({ createField, values }) => (
+const FieldsetCharges = ({ createField, values, errors, touched }) => (
   <Container>
     <ItemListHeading>Item List</ItemListHeading>
     <FieldArray name="charges">
@@ -120,9 +120,7 @@ const FieldsetCharges = ({ createField, values }) => (
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  if (values.charges.length > 1) {
-                    remove(index);
-                  }
+                  remove(index);
                 }}
               >
                 <TrashIcon
@@ -143,7 +141,14 @@ const FieldsetCharges = ({ createField, values }) => (
         </div>
       )}
     </FieldArray>
-    <ChargesValidation>- All fields must be added</ChargesValidation>
+    {errors && errors.charges && touched && touched.charges && (
+      <ChargesValidation>- All fields must be added</ChargesValidation>
+    )}
+    {values.charges &&
+      Array.isArray(values.charges) &&
+      values.charges.length === 0 && (
+        <ChargesValidation>- An item must be added</ChargesValidation>
+      )}
   </Container>
 );
 

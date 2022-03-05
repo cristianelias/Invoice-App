@@ -28,13 +28,27 @@ const createInvoice = (values) => buildInvoice(values).asInvoice();
 // Styles
 const ActionsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
   justify-content: space-between;
   width: 100%;
-`;
 
-const RightCol = styled.div`
-  display: flex;
-  gap: 8%;
+  & button {
+    height: 48px;
+  }
+
+  & > .secondary-button {
+    margin-left: auto;
+  }
+
+  @media (max-width: 500px) {
+    & .primary-button,
+    & .secondary-button,
+    & .tertiray-button {
+      padding: 11px 14px;
+    }
+  }
 `;
 
 const CreateForm = () => {
@@ -58,29 +72,30 @@ const CreateForm = () => {
     return (
       <ActionsContainer>
         <TertiaryButton
+          className="tertiary-button"
           disabled={isSubmitting}
           onClick={() => navigate(-1, { replace: true })}
           text="Discard"
         />
 
-        <RightCol>
-          <SecondaryButton
-            disabled={isSubmitting}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
+        <SecondaryButton
+          className="secondary-button"
+          disabled={isSubmitting}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-              navigate(-1, { replace: true });
-            }}
-            text="Save as Draft"
-          />
+            navigate(-1, { replace: true });
+          }}
+          text="Save as Draft"
+        />
 
-          <PrimaryButton
-            disabled={isSubmitting}
-            type="submit"
-            text="Save & Send"
-          />
-        </RightCol>
+        <PrimaryButton
+          className="primary-button"
+          disabled={isSubmitting}
+          type="submit"
+          text="Save & Send"
+        />
       </ActionsContainer>
     );
   };

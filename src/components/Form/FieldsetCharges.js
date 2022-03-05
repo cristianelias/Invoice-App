@@ -25,10 +25,6 @@ const ItemListHeading = styled.h2`
   letter-spacing: -0.375px;
   color: #777f98;
   margin: 32px 0 16px 0;
-
-  @media (max-width: 616px) {
-    margin: 66px 0 24px 0;
-  }
 `;
 
 const ChargesContainer = styled.div`
@@ -55,6 +51,10 @@ const ChargesContainer = styled.div`
     gap: 24px 5%;
 
     &.fieldset-charges__group label {
+      visibility: visible;
+    }
+
+    & label {
       visibility: visible;
     }
   }

@@ -15,6 +15,7 @@ const Container = styled.article`
   grid-column: 2/3;
   min-width: 730px;
   max-width: 1100px;
+  padding-bottom: 120px;
 
   @media (max-width: 1227px) {
     min-width: 672px;

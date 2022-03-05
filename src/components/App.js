@@ -52,11 +52,11 @@ const styles = css`
     padding: 0;
     margin: 0;
     font-weight: 500;
-    min-width: 360px;
+    min-width: 375px;
   }
 
   .main-layout {
-    min-width: 360px;
+    min-width: 375px;
     display: grid;
     grid-template-columns: 103px auto;
   }

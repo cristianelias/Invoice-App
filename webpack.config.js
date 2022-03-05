@@ -21,7 +21,10 @@ module.exports = (env, { mode }) => {
       new webpack.DefinePlugin({
         BACKEND_URL: JSON.stringify(backendUrl),
       }),
-      new HtmlWebpackPlugin({ template: "src/index.html" }),
+      new HtmlWebpackPlugin({
+        template: "src/index.html",
+        favicon: "src/assets/favicon-32x32.png",
+      }),
       new webpack.ProvidePlugin({
         React: "react",
       }),

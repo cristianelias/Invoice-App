@@ -26,7 +26,6 @@ const Container = styled.header`
 
   @media (max-width: 850px) {
     width: 100%;
-    min-width: 360px;
     height: 80px;
     min-height: unset;
     grid-row: 1/2;

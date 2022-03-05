@@ -48,8 +48,8 @@
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 500px) {
   .list-invoices-page {
-    grid-template-columns: auto 320px auto;
+    grid-template-columns: 24px auto 24px;
   }
 }

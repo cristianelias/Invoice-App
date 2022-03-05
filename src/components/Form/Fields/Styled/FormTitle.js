@@ -8,6 +8,10 @@ const FormTitle = styled.legend`
   line-height: 32px;
   letter-spacing: -0.5px;
   padding-bottom: 48px;
+
+  @media (max-width: 500px) {
+    padding-bottom: 24px;
+  }
 `;
 
 export default FormTitle;

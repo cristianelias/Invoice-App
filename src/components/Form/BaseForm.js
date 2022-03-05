@@ -2,6 +2,7 @@
 import styled from "@emotion/styled";
 import { Formik, Form } from "formik";
 import { motion } from "framer-motion";
+import { css } from "@emotion/react";
 
 // Components
 import FieldFactory from "./Fields/FieldFactory";
@@ -14,70 +15,94 @@ import FieldsetCharges from "./FieldsetCharges";
 import inputDataByName from "./utils/inputDataByName";
 
 // Styles
-const FormContainer = styled(motion.div)`
+const footerHeight = `111px`;
+const footerPlusHeader = `191px`;
+
+const FormContainer = styled.div`
   width: 719px;
-  min-width: 360px;
-  padding: 65px 56px 110px 159px;
   background: #ffffff;
   border-radius: 0px 20px 20px 0px;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 2;
 
   @media (max-width: 850px) {
     width: 616px;
-    padding: 65px 56px 110px 56px;
     top: 80px;
-    overflow: hidden;
-    overflow-y: scroll;
   }
 
-  @media (max-width: 616px) {
-    padding: 32px auto 91px auto;
-    width: 100%;
+  @media (max-width: 630px) {
     border-radius: 0px;
+    width: auto;
   }
 
   @media (max-width: 500px) {
-    padding: 32px 24px 110px 24px;
     margin-top: 0;
     top: 75px;
   }
 `;
 
+const FormInnerWrapper = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - ${footerHeight});
+
+  padding: 65px 56px 0 159px;
+
+  @media (max-width: 850px) {
+    padding-left: 56px;
+    height: calc(100vh - ${footerPlusHeader});
+  }
+
+  @media (max-width: 500px) {
+    padding: 32px 24px 32px 24px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #7e88c3;
+    outline: 1px solid #f9fafe;
+  }
+`;
+
 const Footer = styled.footer`
-  width: 719px;
-  min-width: 360px;
+  height: ${footerHeight};
   background-color: #ffffff;
-  border-radius: 0 20px 20px 0;
-  position: fixed;
-  bottom: 0;
-  left: 0px;
-  padding: 31px 56px 31px 159px;
   display: flex;
   justify-content: flex-end;
   z-index: 2;
   animation: desplazamiento 0.8s ease-out;
+  border-top: 1px solid #43434324;
+  border-top-right-radius: 15px;
 
   & > .button-component {
     padding: 10px 24px;
   }
 
+  padding: 0 56px 0 159px;
+
   @media (max-width: 850px) {
-    width: 616px;
-    left: 0px;
-    padding: 31px 56px;
+    padding-left: 56px;
   }
 
-  @media (max-width: 616px) {
-    width: 100%;
+  @media (max-width: 500px) {
+    padding: 32px 24px 32px 24px;
   }
 
-  @media (max-width: 616px) {
-    height: 91px;
-    padding: 21px 24px 21px 24px;
-    border-radius: 0;
+  @media (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    padding: 0 10px;
   }
 `;
 
@@ -118,18 +143,19 @@ const BaseForm = ({
             transition={{ type: "spring", stiffness: "80" }}
           >
             <Form>
-              {title}
+              <FormInnerWrapper>
+                {title}
 
-              <FieldsetFrom values={values} createField={createField} />
-              <FieldsetTo values={values} createField={createField} />
-              <FieldsetDetails values={values} createField={createField} />
-              <FieldsetCharges
-                values={values}
-                createField={createField}
-                errors={errors}
-                touched={touched}
-              />
-
+                <FieldsetFrom values={values} createField={createField} />
+                <FieldsetTo values={values} createField={createField} />
+                <FieldsetDetails values={values} createField={createField} />
+                <FieldsetCharges
+                  values={values}
+                  createField={createField}
+                  errors={errors}
+                  touched={touched}
+                />
+              </FormInnerWrapper>
               <Footer>{assembleActions({ isSubmitting })}</Footer>
             </Form>
           </FormContainer>

@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 18% 730px 26%;
   margin: 64px 0 54px 0;
-  min-width: 360px;
+  min-width: 375px;
 }
 
 .invoice-details-header {
@@ -55,7 +55,7 @@
   justify-content: space-around;
   grid-column: 2/3;
   width: 100%;
-  min-width: 360px;
+  min-width: 375px;
   height: 91px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   background-color: #ffffff;

@@ -15,6 +15,9 @@ import getInitialValues from "./utils/getInitialValues";
 // Utils
 import buildInvoice from "./utils/buildInvoice";
 
+// Styles
+import FormTitle from "./Fields/Styled/FormTitle";
+
 const EditForm = ({ invoice }) => {
   const { id } = invoice;
   const navigate = useNavigate();
@@ -63,7 +66,7 @@ const EditForm = ({ invoice }) => {
   };
 
   const assembleTitle = () => (
-    <legend className="invoice-form-title">
+    <FormTitle>
       {invoice.id.length > 0 ? (
         <span>
           Edit
@@ -73,7 +76,7 @@ const EditForm = ({ invoice }) => {
       ) : (
         <span>Edit Invoice</span>
       )}
-    </legend>
+    </FormTitle>
   );
 
   const assembleActions = ({ isSubmitting }) => (

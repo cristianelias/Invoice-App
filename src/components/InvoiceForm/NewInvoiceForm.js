@@ -16,6 +16,9 @@ import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
 // Utils
 import buildInvoice from "./utils/buildInvoice";
 
+// Styles
+import FormTitle from "./Fields/Styled/FormTitle";
+
 const createInvoice = (values) => buildInvoice(values).asInvoice();
 
 // const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
@@ -66,9 +69,7 @@ const NewInvoiceForm = () => {
     );
   };
 
-  const assembleTitle = () => (
-    <legend className="invoice-form-title">New invoice</legend>
-  );
+  const assembleTitle = () => <FormTitle>New invoice</FormTitle>;
 
   return (
     <InvoiceForm

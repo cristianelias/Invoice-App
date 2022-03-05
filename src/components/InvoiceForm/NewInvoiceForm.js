@@ -11,7 +11,7 @@ import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient"
 
 // Data
 import getInitialValues from "./utils/getInitialValues";
-import invoiceFormValidationSchema from "./invoiceFormValidationSchema";
+import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 
 // Utils
 import buildInvoice from "./utils/buildInvoice";

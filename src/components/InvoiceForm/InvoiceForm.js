@@ -1,30 +1,93 @@
 // Dependencies
-import { Formik, Form, FieldArray } from "formik";
+import styled from "@emotion/styled";
+import { Formik, Form } from "formik";
 import { motion } from "framer-motion";
 
 // Components
 import FieldFactory from "./Fields/FieldFactory";
-import Gradient from "../Gradient";
-
-// Styles
-import "./InvoiceForm.css";
-
-// Assets
-import iconTrashCan from "../../assets/icon-delete.svg";
+import FieldsetFrom from "./FieldsetFrom";
+import FieldsetTo from "./FieldsetTo";
+import FieldsetDetails from "./FieldsetDetails";
+import FieldsetCharges from "./FieldsetCharges";
 
 // Data
 import inputDataByName from "./utils/inputDataByName";
-import chargesValues from "./utils/chargesValues";
 
-const InvoiceForm = (props) => {
-  const {
-    title,
-    initialValues,
-    submitHandler,
-    assembleActions,
-    validationSchema,
-  } = props;
+// Styles
+const FormContainer = styled(motion.div)`
+  width: 719px;
+  min-width: 360px;
+  padding: 65px 56px 110px 159px;
+  background: #ffffff;
+  border-radius: 0px 20px 20px 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
 
+  @media (max-width: 850px) {
+    width: 616px;
+    padding: 65px 56px 110px 56px;
+    top: 80px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  @media (max-width: 616px) {
+    padding: 32px auto 91px auto;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 32px 24px 110px 24px;
+    margin-top: 0;
+    top: 75px;
+  }
+`;
+
+const Footer = styled.footer`
+  width: 719px;
+  min-width: 360px;
+  background-color: #ffffff;
+  border-radius: 0 20px 20px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  padding: 31px 56px 31px 159px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+  animation: desplazamiento 0.8s ease-out;
+
+  & > .button-component {
+    padding: 10px 24px;
+  }
+
+  @media (max-width: 850px) {
+    width: 616px;
+    left: 0px;
+    padding: 31px 56px;
+  }
+
+  @media (max-width: 616px) {
+    width: 100%;
+  }
+
+  @media (max-width: 616px) {
+    height: 91px;
+    padding: 21px 24px 21px 24px;
+    border-radius: 0;
+  }
+`;
+
+const InvoiceForm = ({
+  title,
+  initialValues,
+  submitHandler,
+  assembleActions,
+  validationSchema,
+}) => {
   const createField = ({ name, fieldsetId, index, fields }) => {
     const fieldMeta = inputDataByName[name];
 
@@ -48,101 +111,23 @@ const InvoiceForm = (props) => {
     >
       {({ values, isSubmitting }) => (
         <>
-          <motion.div
+          <FormContainer
             initial={{ x: "-100vw" }}
             exit={{ x: "-100vw" }}
             animate={{ x: 0 }}
             transition={{ type: "spring", stiffness: "80" }}
-            className="invoice-form"
           >
-            <Form className="invoice-form__form">
+            <Form>
               {title}
 
-              <fieldset className="fieldset-from">
-                <h2 className="invoice-form-heading">Bill From</h2>
-                {Object.keys(values.from).map((fieldName, index) =>
-                  createField({ fieldsetId: "from", name: fieldName, index })
-                )}
-              </fieldset>
+              <FieldsetFrom values={values} createField={createField} />
+              <FieldsetTo values={values} createField={createField} />
+              <FieldsetDetails values={values} createField={createField} />
+              <FieldsetCharges values={values} createField={createField} />
 
-              <fieldset className="fieldset-to">
-                <h2 className="invoice-form-heading">Bill To</h2>
-
-                {Object.keys(values.to).map((fieldName, index) =>
-                  createField({ fieldsetId: "to", name: fieldName, index })
-                )}
-              </fieldset>
-
-              <fieldset className="fieldset-details">
-                {Object.keys(values.details).map((fieldName, index) =>
-                  createField({
-                    fieldsetId: "details",
-                    name: fieldName,
-                    index,
-                  })
-                )}
-              </fieldset>
-
-              <fieldset className="fieldset-charges">
-                <h2 className="item-list">Item List</h2>
-                <FieldArray name="charges">
-                  {({ push, remove }) => (
-                    <div>
-                      {values.charges.map((item, index) => (
-                        <div
-                          key={index}
-                          className={`fieldset-charges__group fieldset-charges__group-${index}`}
-                        >
-                          {Object.keys(item).map((fieldName) =>
-                            createField({
-                              fieldsetId: `charges[${index}]`,
-                              name: fieldName,
-                              index: `${index}x${fieldName}`,
-                              fields: values.charges[index],
-                            })
-                          )}
-
-                          <button
-                            className="field__delete"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              e.preventDefault();
-                              if (values.charges.length > 1) {
-                                remove(index);
-                              }
-                            }}
-                          >
-                            <img
-                              src={iconTrashCan}
-                              alt="Trash icon. Click to delete."
-                            ></img>
-                          </button>
-                        </div>
-                      ))}
-                      <button
-                        className="five-fields-container__add-new-item button-component tertiary-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          push(chargesValues);
-                        }}
-                      >
-                        + Add New Item
-                      </button>
-                    </div>
-                  )}
-                </FieldArray>
-              </fieldset>
-
-              <p className="field__validation five-fields-container__validation">
-                - All fields must be added
-              </p>
-              <Gradient />
-              <footer className="footer-form">
-                {assembleActions({ isSubmitting })}
-              </footer>
+              <Footer>{assembleActions({ isSubmitting })}</Footer>
             </Form>
-          </motion.div>
+          </FormContainer>
         </>
       )}
     </Formik>

@@ -35,6 +35,7 @@ const Trigger = styled.span`
 `;
 
 const Content = styled.fieldset`
+  z-index: 1;
   position: absolute;
   top: 53px;
   right: -18px;

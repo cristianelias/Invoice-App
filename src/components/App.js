@@ -6,10 +6,10 @@ import { css, Global } from "@emotion/react";
 import { AnimatePresence } from "framer-motion";
 
 // Pages
-import ListInvoicesPage from "../pages/ListInvoicesPage/ListInvoicesPage";
-import NewInvoicePage from "../pages/NewInvoicePage/NewInvoicePage";
-import ViewInvoicePage from "../pages/ViewInvoicePage/ViewInvoicePage";
-import EditInvoicePage from "../pages/EditInvoicePage/EditInvoicePage";
+import ListInvoicesPage from "../pages/ListInvoicesPage";
+import NewInvoicePage from "../pages/NewInvoicePage";
+import ViewInvoicePage from "../pages/ViewInvoicePage";
+import EditInvoicePage from "../pages/EditInvoicePage";
 
 // Components
 import Header from "./Header/Header";

@@ -17,7 +17,7 @@ const useComponentVisible = (initialIsVisible) => {
     if (
       refComponent.current &&
       !refComponent.current.contains(event.target) &&
-      !refTrigger.current.contains(event.target)
+      !refTrigger.current?.contains(event.target)
     ) {
       setIsComponentVisible(false);
     }

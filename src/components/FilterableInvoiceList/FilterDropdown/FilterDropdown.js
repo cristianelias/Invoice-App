@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 // Dependencies
 import styled from "@emotion/styled";
-import useComponentVisible from "../../../hooks/useComponentVisible";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
 
@@ -12,6 +11,9 @@ import FilterDropdownContent from "./FilterDropdownContent";
 
 // Assets
 import iconArrowDown from "../../../assets/icon-arrow-down.svg";
+
+// Custom hooks
+import useComponentVisible from "../../../hooks/useComponentVisible";
 
 // Styles
 const Container = styled.div`

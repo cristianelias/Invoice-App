@@ -126,25 +126,35 @@ const animationVariants = {
   },
 };
 
+// Custom hooks
+import useComponentVisible from "../../hooks/useComponentVisible";
+
+const createField = ({ name, fieldsetId, index, fields }) => {
+  const fieldMeta = inputDataByName[name];
+
+  return (
+    <FieldFactory
+      key={index}
+      name={`${fieldsetId}.${name}`}
+      meta={fieldMeta}
+      fields={fields}
+    />
+  );
+};
+
 const BaseForm = ({
   title,
   initialValues,
   submitHandler,
   assembleActions,
   validationSchema,
+  onBlurAction,
 }) => {
-  const createField = ({ name, fieldsetId, index, fields }) => {
-    const fieldMeta = inputDataByName[name];
+  const { refComponent, isComponentVisible } = useComponentVisible(true);
 
-    return (
-      <FieldFactory
-        key={index}
-        name={`${fieldsetId}.${name}`}
-        meta={fieldMeta}
-        fields={fields}
-      />
-    );
-  };
+  if (!isComponentVisible) {
+    onBlurAction();
+  }
 
   return (
     <Formik
@@ -161,6 +171,7 @@ const BaseForm = ({
             initial="gone"
             animate="here"
             exit="gone"
+            ref={refComponent}
           >
             <Form>
               <FormInnerWrapper>

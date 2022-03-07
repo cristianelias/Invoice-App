@@ -20,7 +20,6 @@ const LogoContainer = styled.div`
   @media (max-width: 850px) {
     width: 80px;
     height: 80px;
-    margin-right: auto;
     margin-bottom: unset;
     border-radius: 0 20px 20px 0;
   }

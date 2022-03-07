@@ -7,7 +7,6 @@ import BaseForm from "./BaseForm";
 // Components
 import PrimaryButton from "../Button/PrimaryButton";
 import TertiaryButton from "../Button/TertiaryButton";
-import SecondaryButton from "../Button/SecondaryButton";
 
 // Context
 import InvoiceContext from "../../state/InvoiceContext";
@@ -108,6 +107,7 @@ const CreateForm = () => {
       validationSchema={invoiceFormValidationSchema}
       submitHandler={submitHandler}
       assembleActions={assembleActions}
+      onBlurAction={() => navigate(-1, { replace: true })}
     />
   );
 };

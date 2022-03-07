@@ -142,6 +142,7 @@ const EditForm = () => {
       title={assembleTitle()}
       assembleActions={assembleActions}
       submitHandler={submitHandler}
+      onBlurAction={goBack}
     />
   );
 };

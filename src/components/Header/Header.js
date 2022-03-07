@@ -53,6 +53,7 @@ const Nav = styled.nav`
 
   @media (max-width: 850px) {
     flex-flow: row nowrap;
+    justify-content: space-between;
   }
 `;
 

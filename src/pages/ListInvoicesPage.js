@@ -8,17 +8,25 @@ import ScrollToTop from "../components/ScrollToTop";
 // Styles
 import PageContainer from "./Styled/PageContainer";
 
-const ListInvoicesPage = ({ invoices }) => (
-  <>
-    {Array.isArray(invoices) && (
-      <PageContainer>
-        <ScrollToTop />
+// Context
+import InvoiceContext from "../state/InvoiceContext";
+import { useContext } from "react";
 
-        <FilterableInvoiceList invoices={invoices} />
-        <Outlet />
-      </PageContainer>
-    )}
-  </>
-);
+const ListInvoicesPage = () => {
+  const { invoices } = useContext(InvoiceContext);
+
+  return (
+    <>
+      {Array.isArray(invoices) && (
+        <PageContainer>
+          <ScrollToTop />
+
+          <FilterableInvoiceList />
+          <Outlet />
+        </PageContainer>
+      )}
+    </>
+  );
+};
 
 export default ListInvoicesPage;

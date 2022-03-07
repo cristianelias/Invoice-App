@@ -1,4 +1,5 @@
 // Dependencies
+import { useContext } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import BaseForm from "./BaseForm";
@@ -8,12 +9,15 @@ import PrimaryButton from "../Button/PrimaryButton";
 import TertiaryButton from "../Button/TertiaryButton";
 import SecondaryButton from "../Button/SecondaryButton";
 
-// Clients
-import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
+// Context
+import InvoiceContext from "../../state/InvoiceContext";
 
 // Data
 import getInitialValues from "./utils/getInitialValues";
 import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
+
+// Clients
+import { addInvoice } from "../../clients/localStorageClient";
 
 // Utils
 import buildInvoice from "./utils/buildInvoice";
@@ -22,8 +26,6 @@ import buildInvoice from "./utils/buildInvoice";
 import FormTitle from "./Fields/Styled/FormTitle";
 
 const createInvoice = (values) => buildInvoice(values).asInvoice();
-
-// const createDraftInvoice = (values) => fillInvoiceBuilder(values).asDraft();
 
 // Styles
 const ActionsContainer = styled.div`
@@ -52,21 +54,18 @@ const ActionsContainer = styled.div`
 `;
 
 const CreateForm = () => {
+  const { setInvoices } = useContext(InvoiceContext);
   const navigate = useNavigate();
 
-  const submitHandler = async ({ values }) =>
-    await firebaseInvoiceClient.postInvoice({
+  const submitHandler = async ({ values }) => {
+    addInvoice({
       payload: createInvoice(values),
-      onSuccess: () => navigate(-1, { replace: true }),
-      onError: (err) => console.log(err),
+      onSuccess: (invoices) => {
+        setInvoices(invoices);
+        navigate(-1, { replace: true });
+      },
     });
-
-  // const saveAsDraftHandler = async ({ values }) =>
-  //   await firebaseInvoiceClient.postInvoice({
-  //     payload: createDraftInvoice(values),
-  //     onSuccess: () => navigate(-1, { replace: true }),
-  //     onError: (err) => console.log(err),
-  //   });
+  };
 
   const assembleActions = ({ isSubmitting }) => {
     return (

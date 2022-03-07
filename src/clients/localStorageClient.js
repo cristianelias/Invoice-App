@@ -1,32 +1,37 @@
-import invoicesFromServer from "../mocks/data.json";
+import initialState from "../mocks/data.json";
 
 const storage = window.localStorage;
-const INVOICES = "invoicesFromServer";
+const INVOICES = "invoices";
 
-class LocalStorageClient {
-  constructor() {
-    this._setItem(INVOICES, invoicesFromServer);
+const populateInvoices = () => {
+  console.log(initialState);
+  _setInvoices(initialState);
+};
+
+const _getInvoices = () => JSON.parse(storage.getItem(INVOICES));
+const _setInvoices = (payload) =>
+  storage.setItem(INVOICES, JSON.stringify(payload));
+
+const getInvoices = ({ onSuccess }) => {
+  try {
+    if (storage.getItem(INVOICES) === null) {
+      populateInvoices();
+    }
+
+    onSuccess(_getInvoices());
+  } catch (error) {
+    console.log("localStorageClient: Unable to get invoices.");
   }
+};
 
-  _getInvoices() {
-    return JSON.parse(storage.getItem(INVOICES));
+const addInvoice = ({ payload, onSuccess }) => {
+  try {
+    const currentInvoices = _getInvoices();
+    _setInvoices([...currentInvoices, payload]);
+    onSuccess(_getInvoices());
+  } catch (error) {
+    console.log("localStorageClient: Unable to add invoice.");
   }
+};
 
-  _setItem(key, data) {
-    storage.setItem(key, JSON.stringify(data));
-  }
-
-  fetchInvoices() {
-    return this._getInvoices();
-  }
-
-  postInvoice(invoice) {
-    const oldInvoices = this._getInvoices();
-    const invoices = [...oldInvoices];
-    invoices.push(invoice);
-    this._setItem(INVOICES, invoices);
-    return this._getInvoices();
-  }
-}
-
-export default new LocalStorageClient();
+export { getInvoices, addInvoice };

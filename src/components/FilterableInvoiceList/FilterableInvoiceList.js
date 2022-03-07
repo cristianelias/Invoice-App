@@ -1,6 +1,6 @@
 // Dependencies
 import styled from "@emotion/styled";
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, useMemo, use, useContext } from "react";
 import debounce from "lodash.debounce";
 
 // Components
@@ -9,6 +9,9 @@ import NewInvoiceButton from "./NewInvoiceButton";
 import FilterDropdown from "./FilterDropdown/FilterDropdown";
 import InvoiceList from "./InvoiceList";
 import EmptyInvoiceList from "./EmptyInvoiceList";
+
+// Context
+import InvoiceContext from "../../state/InvoiceContext";
 
 // Styles
 const Container = styled.article`
@@ -44,7 +47,7 @@ const TABLET_MINIMAL_WIDTH = 768;
 const mustShowFullInfo = () => window.innerWidth >= TABLET_MINIMAL_WIDTH;
 
 const FilterableInvoiceList = (props) => {
-  const { invoices } = props;
+  const { invoices } = useContext(InvoiceContext);
   const [showFullInfo, setShowFullInfo] = useState(mustShowFullInfo());
   const [filterPaid, setFilterPaid] = useState(true);
   const [filterPending, setFilterPending] = useState(true);

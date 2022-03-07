@@ -1,8 +1,7 @@
 // Dependencies
-import { collection } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { css, Global } from "@emotion/react";
+import styled from "@emotion/styled";
 import { AnimatePresence } from "framer-motion";
 
 // Pages
@@ -16,99 +15,56 @@ import Header from "./Header/Header";
 import Loading from "./Loading";
 
 // Clients
-import firebaseInvoiceClient from "../clients/firebase/firebaseInvoiceClient";
+import { getInvoices } from "../clients/localStorageClient";
 
-// Assets
-import "@fontsource/spartan/500.css";
-import "@fontsource/spartan/700.css";
+// Context
+import InvoiceContext from "../state/InvoiceContext";
 
-const styles = css`
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box !important;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  a,
-  button {
-    all: unset;
-    cursor: pointer;
-  }
-
-  fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    min-width: 0;
-  }
-
-  body {
-    font-family: "Spartan", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8fb;
-    padding: 0;
-    margin: 0;
-    font-weight: 500;
-    min-width: 375px;
-  }
-
-  .main-layout {
-    min-width: 375px;
-    display: grid;
-    grid-template-columns: 103px auto;
-  }
+// Styled
+const MainLayout = styled.div`
+  min-width: 375px;
+  display: grid;
+  grid-template-columns: 103px auto;
 
   @media (max-width: 850px) {
-    .main-layout {
-      grid-template-rows: 80px auto;
-    }
+    grid-template-rows: 80px auto;
   }
 `;
 
 const App = () => {
-  const firebaseInstance = firebaseInvoiceClient.getFirestore();
-  const [invoices, loading, error] = useCollectionData(
-    collection(firebaseInstance, "invoices")
-  );
+  const [invoices, setInvoices] = useState(null);
   const location = useLocation();
 
+  useEffect(() => {
+    getInvoices({
+      onSuccess: (invoices) => setInvoices(invoices),
+    });
+  }, []);
+
   return (
-    <>
-      <Global styles={styles} />
-
-      {error && <strong>Error: {JSON.stringify(error)}</strong>}
-
-      <div className="main-layout">
+    <InvoiceContext.Provider value={{ invoices, setInvoices }}>
+      <MainLayout>
         <Header />
 
-        {loading && <Loading />}
+        {invoices === null && <Loading />}
         {invoices && (
           <AnimatePresence exitBeforeEnter>
             <Routes location={location} key={location.key}>
-              <Route
-                path="/"
-                element={<ListInvoicesPage invoices={invoices} />}
-              >
+              <Route path="/" element={<ListInvoicesPage />}>
                 <Route path="new-invoice" element={<NewInvoicePage />} />
               </Route>
 
-              <Route
-                path="/view-invoice/:id"
-                element={<ViewInvoicePage invoices={invoices} />}
-              >
+              <Route path="/view-invoice/:id" element={<ViewInvoicePage />}>
                 <Route
                   path="/view-invoice/:id/edit"
-                  element={<EditInvoicePage invoices={invoices} />}
+                  element={<EditInvoicePage />}
                 />
               </Route>
             </Routes>
           </AnimatePresence>
         )}
-      </div>
-    </>
+      </MainLayout>
+    </InvoiceContext.Provider>
   );
 };
 

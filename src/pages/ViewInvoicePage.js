@@ -1,7 +1,8 @@
 // Dependencies
+import { useContext } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { Outlet, useParams } from "react-router-dom";
 
 // Components
 import InvoiceDetails from "../components/InvoiceDetails/InvoiceDetails";
@@ -14,6 +15,9 @@ import MarkAsPaidAction from "../components/Actions/MarkAsPaidAction";
 
 // Styled
 import PageContainer from "./Styled/PageContainer";
+
+// Context
+import InvoiceContext from "../state/InvoiceContext";
 
 // Styles
 const HeaderContainer = styled.div`
@@ -90,8 +94,8 @@ const assembleActions = ({ id, status }) => (
   </>
 );
 
-const ViewInvoicePage = (props) => {
-  const { invoices } = props;
+const ViewInvoicePage = () => {
+  const { invoices } = useContext(InvoiceContext);
   const currentInvoiceId = useParams().id;
   const currentInvoice = invoices.find(
     (invoice) => invoice.id === currentInvoiceId

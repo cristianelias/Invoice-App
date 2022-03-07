@@ -37,6 +37,7 @@
     "@emotion/styled": "^11.8.1",
     "@fontsource/antonio": "^4.5.3",
     "@fontsource/spartan": "^4.5.4",
+    "accounting-js": "^1.1.1",
     "dayjs": "^1.10.7",
     "firebase": "^9.6.5",
     "formik": "^2.2.9",

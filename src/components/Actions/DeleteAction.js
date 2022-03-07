@@ -1,21 +1,29 @@
 // Dependencies
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+// Styled
 import ErrorButton from "../Button/ErrorButton";
 
 // Clients
-import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
+import { deleteInvoice } from "../../clients/localStorageClient";
+
+// Context
+import InvoiceContext from "../../state/InvoiceContext";
 
 const DeleteAction = ({ id }) => {
   const navigate = useNavigate();
+  const { setInvoices } = useContext(InvoiceContext);
 
-  const deleteInvoice = async () => {
-    await firebaseInvoiceClient.deleteInvoice({
+  const handler = () =>
+    deleteInvoice({
       id,
-      onSuccess: () => navigate("/", { replace: true }),
-      onError: (err) => console.log(err),
+      onSuccess: (invoices) => {
+        setInvoices(invoices);
+        navigate("/", { replace: true });
+      },
     });
-  };
 
-  return <ErrorButton onClick={deleteInvoice} text="Delete" />;
+  return <ErrorButton onClick={handler} text="Delete" />;
 };
 export default DeleteAction;

@@ -1,19 +1,25 @@
 // Dependencies
 import PrimaryButton from "../Button/PrimaryButton";
+import { useContext } from "react";
 
 // Clients
-import firebaseInvoiceClient from "../../clients/firebase/firebaseInvoiceClient";
+import { markInvoiceAsPaid } from "../../clients/localStorageClient";
+
+// Context
+import InvoiceContext from "../../state/InvoiceContext";
 
 const MarkAsPaidAction = ({ id, status }) => {
+  const { setInvoices } = useContext(InvoiceContext);
+
   if (status === "paid") {
     return null;
   }
 
   const markAsPaid = async () => {
-    await firebaseInvoiceClient.markInvoiceAsPaid({
+    markInvoiceAsPaid({
       id,
-      onSuccess: () => {
-        console.log("Agregar toast");
+      onSuccess: (invoices) => {
+        setInvoices(invoices);
       },
       onError: (err) => console.log("Agregar toast", err),
     });

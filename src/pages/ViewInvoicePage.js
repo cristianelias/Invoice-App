@@ -106,7 +106,7 @@ const ViewInvoicePage = () => {
   }
 
   const actions = assembleActions({
-    id: currentInvoice.id,
+    id: currentInvoiceId,
     status: currentInvoice.status,
   });
 

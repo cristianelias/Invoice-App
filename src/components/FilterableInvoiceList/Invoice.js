@@ -1,7 +1,9 @@
+/* eslint-disable import/default */
 // Dependencies
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import accounting from "accounting-js";
 
 // Components
 import PaymentStatusLabel from "./PaymentStatusLabel";
@@ -137,7 +139,7 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => (
         Due <Date unformattedDate={paymentDue} />
       </DueDate>
       <ClientName>{clientName}</ClientName>
-      <Amount>£ {total}</Amount>
+      <Amount>£ {accounting.formatNumber(total)}</Amount>
       <PaymentStatusLabel status={status} />
       <ImgContainer>
         <Img src={iconArrowRight} alt="Arrow icon. Click to edit invoice." />

@@ -21,6 +21,24 @@ import PageContainer from "./Styled/PageContainer";
 import InvoiceContext from "../state/InvoiceContext";
 
 // Styles
+const StyledPageContainer = styled(motion(PageContainer))`
+  margin-bottom: 54px;
+  grid-row: 1/3;
+  margin-top: 64px;
+
+  @media (max-width: 850px) {
+    grid-template-columns: 40px auto 40px;
+    margin-top: 128px;
+    margin-bottom: 135px;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 24px auto 24px;
+    margin-top: 104px;
+    margin-bottom: 0;
+  }
+`;
+
 const HeaderContainer = styled.div`
   grid-column: 2/3;
 `;
@@ -40,6 +58,11 @@ const HeaderInnerWrapper = styled.article`
 const PaymentStatusContainer = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 670px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 
 const PaymentStatusText = styled.p`
@@ -87,8 +110,6 @@ const InvoiceActionDesktop = styled.div`
   }
 `;
 
-const Container = styled(motion(PageContainer))``;
-
 const assembleActions = ({ id, status }) => (
   <>
     <EditInvoiceAction id={id} />
@@ -100,7 +121,7 @@ const assembleActions = ({ id, status }) => (
 // Framer motion variants
 const animationVariants = {
   here: {
-    x: "0",
+    opacity: 1,
     transition: {
       type: "spring",
       duration: 0.2,
@@ -108,7 +129,7 @@ const animationVariants = {
     },
   },
   gone: {
-    x: "-100vh",
+    opacity: 0,
     transition: {
       type: "spring",
       duration: 0.2,
@@ -134,7 +155,7 @@ const ViewInvoicePage = () => {
   });
 
   return (
-    <Container
+    <StyledPageContainer
       variants={animationVariants}
       initial="gone"
       animate="here"
@@ -164,7 +185,7 @@ const ViewInvoicePage = () => {
       <InvoiceActionMobile>{actions}</InvoiceActionMobile>
 
       <Outlet />
-    </Container>
+    </StyledPageContainer>
   );
 };
 

@@ -28,36 +28,21 @@ const TwoColumns = styled.div`
 `;
 
 const ThreeColumns = styled.div`
-  display: grid;
-  grid-template-columns: 30% 35% auto;
-
-  @media (max-width: 670px) {
-    grid-template-columns: repeat(2, 50%);
-    gap: 32px 0;
-  }
+  display: flex;
+  justify-content: space-between;
+  gap: 32px 25px;
+  flex-wrap: wrap;
 
   @media (max-width: 490px) {
     margin-top: 31px;
   }
 `;
 
-const ColOneOfThree = styled.div`
-  grid-column: 1/2;
-`;
+const ColOneOfThree = styled.div``;
 
-const ColTwoOfThree = styled.div`
-  grid-column: 2/3;
-  text-align: left;
-`;
+const ColTwoOfThree = styled.div``;
 
-const ColThreeOfThree = styled.div`
-  grid-column: 3/4;
-
-  @media (max-width: 670px) {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
-`;
+const ColThreeOfThree = styled.div``;
 
 const Title = styled.h3`
   font-weight: 500;

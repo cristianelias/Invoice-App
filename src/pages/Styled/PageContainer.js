@@ -26,7 +26,8 @@ const PageContainer = styled.div`
 
   @media (max-width: 850px) {
     grid-column: 1/3;
-    grid-template-columns: 48px auto 48px;
+    grid-template-columns: 6.5% auto 6.5%;
+    margin-top: 80px;
   }
 
   @media (max-width: 500px) {

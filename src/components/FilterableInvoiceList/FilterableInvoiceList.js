@@ -34,7 +34,7 @@ const Container = styled(motion.article)`
   }
 
   @media (max-width: 650px) {
-    width: 80%;
+    width: 100%;
     margin: 56px auto 0 auto;
   }
 `;

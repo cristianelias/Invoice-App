@@ -31,11 +31,11 @@ const Container = styled.header`
     grid-row: 1/2;
     grid-column: 1/4;
     border-radius: 0px;
-    margin-bottom: 56px;
   }
 
   @media (max-width: 500px) {
     height: 75px;
+    min-width: 375px;
   }
 `;
 

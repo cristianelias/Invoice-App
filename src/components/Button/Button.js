@@ -4,7 +4,8 @@ import styled from "@emotion/styled";
 // Styles
 const StyledButton = styled.button`
   border: none;
-  padding: 17px 24px;
+  height: 48px;
+  padding: 0px 24px;
   font: inherit;
   cursor: pointer;
   outline: inherit;

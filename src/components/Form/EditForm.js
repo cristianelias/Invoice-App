@@ -1,6 +1,7 @@
 // Dependencies
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
+import styled from "@emotion/styled";
 
 // Components
 import BaseForm from "./BaseForm";
@@ -19,6 +20,28 @@ import buildInvoice from "./utils/buildInvoice";
 // Styled
 import FormTitle from "./Fields/Styled/FormTitle";
 import InvoiceContext from "../../state/InvoiceContext";
+
+// Styles
+const StyledHashtag = styled.span`
+  margin-left: 5px;
+  color: #888eb0;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+`;
+
+const FooterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 500px) {
+    padding: 0 14px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+`;
 
 const mapInitialValuesFromInvoice = (invoice) => {
   const editInitialValues = getInitialValues();
@@ -61,18 +84,22 @@ const EditForm = () => {
   )[0];
   const navigate = useNavigate();
 
+  const goBack = () =>
+    navigate(`/view-invoice/${currentInvoiceId}`, { replace: true });
+
   const createInvoice = (values) =>
     buildInvoice(values).asEdited(currentInvoiceId);
 
   const submitHandler = ({ values }) => {
     const invoiceMetadata = createInvoice(values);
+    const currentId = invoiceMetadata.id;
 
     editInvoice({
-      id: invoiceMetadata.id,
+      id: currentId,
       payload: invoiceMetadata,
       onSuccess: (invoices) => {
         setInvoices(invoices);
-        navigate(-1, { replace: true });
+        goBack();
       },
     });
   };
@@ -80,11 +107,13 @@ const EditForm = () => {
   const assembleTitle = () => (
     <FormTitle>
       {currentInvoice.id.length > 0 ? (
-        <span>
-          Edit
-          <span>#</span>
-          {currentInvoice.id}
-        </span>
+        <>
+          <span>
+            Edit
+            <StyledHashtag>#</StyledHashtag>
+            {currentInvoice.id}
+          </span>
+        </>
       ) : (
         <span>Edit Invoice</span>
       )}
@@ -92,9 +121,9 @@ const EditForm = () => {
   );
 
   const assembleActions = ({ isSubmitting }) => (
-    <>
+    <FooterContainer>
       <TertiaryButton
-        onClick={() => navigate(-1, { replace: true })}
+        onClick={() => goBack()}
         text="Cancel"
         disabled={isSubmitting}
       />
@@ -104,7 +133,7 @@ const EditForm = () => {
         disabled={isSubmitting}
         text="Save Changes"
       />
-    </>
+    </FooterContainer>
   );
 
   return (

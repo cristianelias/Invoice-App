@@ -19,6 +19,7 @@ const footerPlusHeader = `191px`;
 
 const FormContainer = styled(motion.div)`
   width: 719px;
+  min-width: 375px;
   background: #ffffff;
   border-radius: 0px 20px 20px 0px;
   position: fixed;
@@ -31,7 +32,7 @@ const FormContainer = styled(motion.div)`
     top: 80px;
   }
 
-  @media (max-width: 630px) {
+  @media (max-width: 616px) {
     border-radius: 0px;
     width: auto;
   }
@@ -39,6 +40,7 @@ const FormContainer = styled(motion.div)`
   @media (max-width: 500px) {
     margin-top: 0;
     top: 75px;
+    height: 100vh;
   }
 `;
 
@@ -80,7 +82,6 @@ const Footer = styled.footer`
   z-index: 2;
   animation: desplazamiento 0.8s ease-out;
   border-top: 1px solid #43434324;
-  border-top-right-radius: 15px;
 
   & > .button-component {
     padding: 10px 24px;

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/default */
 // Dependencies
 import styled from "@emotion/styled";
@@ -15,13 +16,13 @@ import iconArrowRight from "../../assets/icon-arrow-right.svg";
 // Styles
 const InnerContainer = styled(Link)`
   height: 72px;
-  padding: 0 32px;
+  padding: 0 24px;
   background-color: #ffffff;
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   display: grid;
-  grid-template-columns: 14% 20% 18% 20% 15% 3%;
+  grid-template-columns: 12% 20% 17% 20% 18% 3%;
   align-items: center;
   text-align: left;
   gap: 2%;
@@ -33,17 +34,21 @@ const InnerContainer = styled(Link)`
   }
 
   @media (max-width: 720px) {
-    gap: 1%;
-    grid-template-columns: 15% 17% 20% 22% 18% 3%;
+    grid-template-columns: 12% 20% 17% 20% 18% 3%;
   }
 
   @media (max-width: 650px) {
     height: 134px;
-    padding: 24px 36px;
+    padding: 24px;
     margin: 0 auto 16px auto;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 30% 40% 30%;
-    gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 27% 27% 26%;
+    gap: 8px 0;
+
+    & .payment-status-label {
+      justify-self: end;
+      grid-row: 2/4;
+    }
   }
 `;
 
@@ -113,14 +118,14 @@ const Amount = styled.span`
 const ImgContainer = styled.span`
   display: flex;
   justify-content: flex-end;
-`;
-
-const Img = styled.img`
-  width: 7px;
 
   @media (max-width: 650px) {
     display: none;
   }
+`;
+
+const Img = styled.img`
+  width: 7px;
 `;
 
 const animation = {

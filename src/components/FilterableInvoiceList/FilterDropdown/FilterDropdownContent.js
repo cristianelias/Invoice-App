@@ -7,19 +7,16 @@ import iconCheck from "../../../assets/icon-check.svg";
 
 // Styles
 const Container = styled(motion.div)`
-  margin-bottom: 15px;
   height: 16px;
 `;
 
 const Label = styled.label`
   font-weight: 700;
-  margin-right: 12px;
   font-style: normal;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
   cursor: pointer;
-  padding: 13px 13px 13px 0;
 `;
 
 const Checkbox = styled.input`
@@ -52,7 +49,7 @@ const Checkbox = styled.input`
 `;
 
 const Text = styled.span`
-  padding: 7px 60px 7px 0px;
+  padding: 12px 60px 12px 0px;
   cursor: pointer;
 
   &:before {

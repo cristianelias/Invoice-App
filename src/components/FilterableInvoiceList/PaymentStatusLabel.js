@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 // Styles
 const Container = styled.span`
   height: 40px;
+  width: 104px;
   border-radius: 6px;
   text-align: center;
   display: flex;
@@ -72,7 +73,7 @@ const PaymentStatusLabel = ({ status, fixedSize }) => {
 
   return (
     <>
-      <Container css={assembleModifiers()}>
+      <Container css={assembleModifiers()} className="payment-status-label">
         <StatusIcon />
         <Text>{status}</Text>
       </Container>

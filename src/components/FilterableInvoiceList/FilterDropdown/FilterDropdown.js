@@ -43,11 +43,12 @@ const Content = styled(motion.fieldset)`
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
   border-radius: 8px;
-  padding: 0;
   width: 192px;
-  padding: 24px 0 24px 24px;
-  margin: 0;
+  padding: 28px 0 28px 24px;
   border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 
   &:last-child {
     margin-bottom: 0 !important;
@@ -57,7 +58,7 @@ const Content = styled(motion.fieldset)`
 // Animation variants
 const animationVariants = {
   open: {
-    display: "block",
+    display: "flex",
     y: 0,
     transition: {
       type: "spring",

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { motion } from "framer-motion";
 
 // Components
 import InvoiceDetails from "../components/InvoiceDetails/InvoiceDetails";
@@ -86,6 +87,8 @@ const InvoiceActionDesktop = styled.div`
   }
 `;
 
+const Container = styled(motion(PageContainer))``;
+
 const assembleActions = ({ id, status }) => (
   <>
     <EditInvoiceAction id={id} />
@@ -93,6 +96,26 @@ const assembleActions = ({ id, status }) => (
     <MarkAsPaidAction id={id} status={status} />
   </>
 );
+
+// Framer motion variants
+const animationVariants = {
+  here: {
+    x: "0",
+    transition: {
+      type: "spring",
+      duration: 0.2,
+      stiffness: 100,
+    },
+  },
+  gone: {
+    x: "-100vh",
+    transition: {
+      type: "spring",
+      duration: 0.2,
+      stiffness: 100,
+    },
+  },
+};
 
 const ViewInvoicePage = () => {
   const { invoices } = useContext(InvoiceContext);
@@ -111,7 +134,12 @@ const ViewInvoicePage = () => {
   });
 
   return (
-    <PageContainer>
+    <Container
+      variants={animationVariants}
+      initial="gone"
+      animate="here"
+      exit="gone"
+    >
       <HeaderContainer>
         <GoBack />
         <ScrollToTop />
@@ -136,7 +164,7 @@ const ViewInvoicePage = () => {
       <InvoiceActionMobile>{actions}</InvoiceActionMobile>
 
       <Outlet />
-    </PageContainer>
+    </Container>
   );
 };
 

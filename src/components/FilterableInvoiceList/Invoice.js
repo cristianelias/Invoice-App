@@ -123,13 +123,22 @@ const Img = styled.img`
   }
 `;
 
+const animation = {
+  hidden: {
+    opacity: 0,
+    y: -200,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+  hover: {
+    scale: 1.04,
+  },
+};
+
 const Invoice = ({ id, paymentDue, clientName, total, status }) => (
-  <motion.article
-    whileHover={{
-      scale: 1.04,
-    }}
-    transition={{ type: "spring", stiffness: 900 }}
-  >
+  <motion.article variants={animation} whileHover={animation.hover}>
     <InnerContainer to={`/view-invoice/${id}`}>
       <Id>
         <Hashtag>#</Hashtag>

@@ -6,14 +6,30 @@ import { motion } from "framer-motion";
 import Invoice from "./Invoice";
 
 // Styles
-const InvoiceItem = styled(motion.li)`
+const InvoiceItem = styled.li`
   width: 100%;
   list-style: none;
 `;
 
+const StyledInvoiceList = styled(motion.ol)``;
+
+// Framer motion variants
+const invoiceListVariant = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+  hidden: {},
+};
+
 const InvoiceList = ({ invoices }) => (
   <section>
-    <ul>
+    <StyledInvoiceList
+      variants={invoiceListVariant}
+      initial="hidden"
+      animate="visible"
+    >
       {invoices.map((invoice) => (
         <InvoiceItem key={invoice.id}>
           <Invoice
@@ -25,7 +41,7 @@ const InvoiceList = ({ invoices }) => (
           />
         </InvoiceItem>
       ))}
-    </ul>
+    </StyledInvoiceList>
   </section>
 );
 

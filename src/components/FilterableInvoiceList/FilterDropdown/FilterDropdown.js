@@ -5,6 +5,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { css } from "@emotion/react";
+import { motion } from "framer-motion";
 
 // Components
 import FilterDropdownContent from "./FilterDropdownContent";
@@ -34,7 +35,7 @@ const Trigger = styled.span`
   margin-right: 12px;
 `;
 
-const Content = styled.fieldset`
+const Content = styled(motion.fieldset)`
   z-index: 1;
   position: absolute;
   top: 53px;
@@ -52,6 +53,22 @@ const Content = styled.fieldset`
     margin-bottom: 0 !important;
   }
 `;
+
+// Animation variants
+const animationVariants = {
+  open: {
+    display: "block",
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+    },
+  },
+  closed: {
+    display: "none",
+    y: -50,
+  },
+};
 
 const FilterDropdown = ({ showFullInfo, statusFilters }) => {
   const [filtersVisibility, setFilterVisibility] = useState(false);
@@ -71,12 +88,12 @@ const FilterDropdown = ({ showFullInfo, statusFilters }) => {
         />
       </legend>
       <Content
+        initial="closed"
+        animate={filtersVisibility ? "open" : "closed"}
+        variants={animationVariants}
         onClick={(e) => {
           e.stopPropagation();
         }}
-        css={css`
-          ${!filtersVisibility ? "display: none;" : ""};
-        `}
       >
         {statusFilters.map((filter) => {
           return (

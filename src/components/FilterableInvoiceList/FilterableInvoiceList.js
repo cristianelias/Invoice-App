@@ -1,7 +1,8 @@
 // Dependencies
 import styled from "@emotion/styled";
-import { useState, useEffect, useMemo, use, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import debounce from "lodash.debounce";
+import { motion } from "framer-motion";
 
 // Components
 import InvoiceListOverview from "./InvoiceListOverview";
@@ -14,7 +15,7 @@ import EmptyInvoiceList from "./EmptyInvoiceList";
 import InvoiceContext from "../../state/InvoiceContext";
 
 // Styles
-const Container = styled.article`
+const Container = styled(motion.article)`
   grid-column: 2/3;
   min-width: 730px;
   max-width: 1100px;

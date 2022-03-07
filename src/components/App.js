@@ -20,7 +20,7 @@ import { getInvoices } from "../clients/localStorageClient";
 // Context
 import InvoiceContext from "../state/InvoiceContext";
 
-// Styled
+// Styles
 const MainLayout = styled.div`
   min-width: 375px;
   display: grid;
@@ -49,15 +49,24 @@ const App = () => {
         {invoices === null && <Loading />}
         {invoices && (
           <AnimatePresence exitBeforeEnter>
-            <Routes location={location} key={location.key}>
-              <Route path="/" element={<ListInvoicesPage />}>
-                <Route path="new-invoice" element={<NewInvoicePage />} />
+            <Routes location={location}>
+              <Route path="/" element={<ListInvoicesPage />} key={location.key}>
+                <Route
+                  path="new-invoice"
+                  element={<NewInvoicePage />}
+                  key={location.key}
+                />
               </Route>
 
-              <Route path="/view-invoice/:id" element={<ViewInvoicePage />}>
+              <Route
+                path="/view-invoice/:id"
+                element={<ViewInvoicePage />}
+                key={location.key}
+              >
                 <Route
                   path="/view-invoice/:id/edit"
                   element={<EditInvoicePage />}
+                  key={location.key}
                 />
               </Route>
             </Routes>

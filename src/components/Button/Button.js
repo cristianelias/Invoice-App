@@ -1,9 +1,6 @@
 // Dependencies
 import styled from "@emotion/styled";
 
-// Dependencies
-import { Link } from "react-router-dom";
-
 // Styles
 const StyledButton = styled.button`
   border: none;
@@ -17,20 +14,19 @@ const StyledButton = styled.button`
   line-height: 15px;
   text-align: center;
   letter-spacing: -0.25px;
-
   background: none;
   color: inherit;
   flex-shrink: 0;
 `;
 
-const Button = ({ className, linkTo, text, onClick, type, disabled }) => (
+const Button = ({ className, text, onClick, type, disabled }) => (
   <StyledButton
     onClick={onClick}
     type={type ? type : "button"}
     disabled={disabled}
     className={className}
   >
-    {linkTo !== undefined ? <Link to={linkTo}>{text}</Link> : text}
+    {text}
   </StyledButton>
 );
 

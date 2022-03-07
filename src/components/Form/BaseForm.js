@@ -2,7 +2,6 @@
 import styled from "@emotion/styled";
 import { Formik, Form } from "formik";
 import { motion } from "framer-motion";
-import { css } from "@emotion/react";
 
 // Components
 import FieldFactory from "./Fields/FieldFactory";
@@ -18,7 +17,7 @@ import inputDataByName from "./utils/inputDataByName";
 const footerHeight = `111px`;
 const footerPlusHeader = `191px`;
 
-const FormContainer = styled.div`
+const FormContainer = styled(motion.div)`
   width: 719px;
   background: #ffffff;
   border-radius: 0px 20px 20px 0px;
@@ -106,6 +105,26 @@ const Footer = styled.footer`
   }
 `;
 
+// Framer motion variants
+const animationVariants = {
+  here: {
+    x: "0",
+    transition: {
+      type: "spring",
+      duration: 0.2,
+      stiffness: 100,
+    },
+  },
+  gone: {
+    x: "-100vh",
+    transition: {
+      type: "spring",
+      duration: 0.2,
+      stiffness: 100,
+    },
+  },
+};
+
 const BaseForm = ({
   title,
   initialValues,
@@ -137,10 +156,10 @@ const BaseForm = ({
       {({ values, isSubmitting, errors, touched }) => (
         <>
           <FormContainer
-            initial={{ x: "-100vw" }}
-            exit={{ x: "-100vw" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", stiffness: "80" }}
+            variants={animationVariants}
+            initial="gone"
+            animate="here"
+            exit="gone"
           >
             <Form>
               <FormInnerWrapper>

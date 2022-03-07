@@ -1,11 +1,12 @@
 // Dependencies
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
 // Assets
 import iconCheck from "../../../assets/icon-check.svg";
 
 // Styles
-const Container = styled.div`
+const Container = styled(motion.div)`
   margin-bottom: 15px;
   height: 16px;
 `;

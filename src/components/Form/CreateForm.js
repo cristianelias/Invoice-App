@@ -77,7 +77,7 @@ const CreateForm = () => {
           text="Discard"
         />
 
-        <SecondaryButton
+        {/* <SecondaryButton
           className="secondary-button"
           disabled={isSubmitting}
           onClick={(e) => {
@@ -87,7 +87,7 @@ const CreateForm = () => {
             navigate(-1, { replace: true });
           }}
           text="Save as Draft"
-        />
+        /> */}
 
         <PrimaryButton
           className="primary-button"

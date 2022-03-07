@@ -72,7 +72,10 @@ const markInvoiceAsPaid = ({ id, onSuccess }) => {
 
     invoiceToModify.status = "paid";
 
-    _setInvoices([...currentInvoices, invoiceToModify]);
+    _setInvoices([
+      ...currentInvoices.filter((current) => current.id !== id),
+      invoiceToModify,
+    ]);
 
     onSuccess(_getInvoices());
   } catch (error) {

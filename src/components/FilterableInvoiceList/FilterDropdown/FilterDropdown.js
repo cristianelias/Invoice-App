@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 // Dependencies
 import styled from "@emotion/styled";
-import { useState } from "react";
+import useComponentVisible from "../../../hooks/useComponentVisible";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
 
@@ -72,12 +72,14 @@ const animationVariants = {
 };
 
 const FilterDropdown = ({ showFullInfo, statusFilters }) => {
-  const [filtersVisibility, setFilterVisibility] = useState(false);
-  const arrowRotationDegree = filtersVisibility ? 180 : 0;
+  const { refComponent, refTrigger, isComponentVisible } = useComponentVisible(
+    false
+  );
+  const arrowRotationDegree = isComponentVisible ? 180 : 0;
 
   return (
-    <Container onClick={() => setFilterVisibility(!filtersVisibility)}>
-      <legend>
+    <Container>
+      <legend ref={refTrigger}>
         <Trigger>{showFullInfo ? `Filter by status` : `Filter`}</Trigger>
 
         <img
@@ -90,11 +92,9 @@ const FilterDropdown = ({ showFullInfo, statusFilters }) => {
       </legend>
       <Content
         initial="closed"
-        animate={filtersVisibility ? "open" : "closed"}
+        animate={isComponentVisible ? "open" : "closed"}
         variants={animationVariants}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
+        ref={refComponent}
       >
         {statusFilters.map((filter) => {
           return (

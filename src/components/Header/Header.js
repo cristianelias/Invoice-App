@@ -64,7 +64,7 @@ const Header = () => {
         <Nav>
           <Logo />
 
-          {/* <ThemeSwitch /> */}
+          <ThemeSwitch />
 
           <Avatar />
         </Nav>

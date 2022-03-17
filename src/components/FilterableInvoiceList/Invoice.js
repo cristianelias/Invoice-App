@@ -17,7 +17,7 @@ import iconArrowRight from "../../assets/icon-arrow-right.svg";
 const InnerContainer = styled(Link)`
   height: 72px;
   padding: 0 24px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.background.primary};
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
@@ -60,8 +60,12 @@ const Id = styled.span`
   text-align: left;
 `;
 
+const IdText = styled.span`
+  color: ${({ theme }) => theme.colors.text.primary};
+`;
+
 const Hashtag = styled.span`
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.tertiary};
 
   @media (max-width: 650px) {
     grid-column: 1/2;
@@ -147,7 +151,7 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => (
     <InnerContainer to={`/view-invoice/${id}`}>
       <Id>
         <Hashtag>#</Hashtag>
-        {id}
+        <IdText>{id}</IdText>
       </Id>
       <DueDate>
         Due <Date unformattedDate={paymentDue} />

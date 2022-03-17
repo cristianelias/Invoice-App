@@ -49,7 +49,7 @@ const MainLayout = (props) => {
 
     body {
       font-family: "Spartan", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: ${theme.colors.bkgColor};
+      background-color: ${theme.colors.background.secondary};
       transition: background-color 1s ease-out;
       padding: 0;
       margin: 0;

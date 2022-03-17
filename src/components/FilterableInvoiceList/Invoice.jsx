@@ -4,7 +4,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import accounting from "accounting-js";
 
 // Components
 import PaymentStatusLabel from "./PaymentStatusLabel";
@@ -12,6 +11,9 @@ import Date from "../Date";
 
 // Assets
 import iconArrowRight from "../../assets/icon-arrow-right.svg";
+
+// Utils
+import priceFormatter from "../Form/utils/priceFormatter";
 
 // Styles
 const InnerContainer = styled(Link)`
@@ -153,7 +155,7 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => (
         Due <Date unformattedDate={paymentDue} />
       </DueDate>
       <ClientName>{clientName}</ClientName>
-      <Amount>£ {accounting.formatNumber(total)}</Amount>
+      <Amount>£ {priceFormatter.format(total)}</Amount>
       <PaymentStatusLabel status={status} />
       <ImgContainer>
         <Img src={iconArrowRight} alt="Arrow icon. Click to edit invoice." />

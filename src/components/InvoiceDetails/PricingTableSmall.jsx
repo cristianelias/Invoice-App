@@ -1,7 +1,9 @@
 /* eslint-disable import/default */
 // Dependencies
 import styled from "@emotion/styled";
-import accounting from "accounting-js";
+
+// Utils
+import priceFormatter from "../Form/utils/priceFormatter";
 
 const Container = styled.div`
   display: none;
@@ -86,18 +88,18 @@ const PricingTableSmall = ({ invoice }) => (
           <div>
             <ItemName>{item.name}</ItemName>
             <QtyAndPrice>
-              {accounting.formatNumber(item.quantity)} x £{" "}
-              {accounting.formatNumber(item.price)}
+              {priceFormatter.format(item.quantity)} x £{" "}
+              {priceFormatter.format(item.price)}
             </QtyAndPrice>
           </div>
-          <ItemTotal>£ {accounting.formatNumber(item.total)}</ItemTotal>
+          <ItemTotal>£ {priceFormatter.format(item.total)}</ItemTotal>
         </Item>
       ))}
     </ItemList>
 
     <Footer>
       <TotalHeading>Grand Total</TotalHeading>
-      <TotalValue>£ {accounting.formatNumber(invoice.total)}</TotalValue>
+      <TotalValue>£ {priceFormatter.format(invoice.total)}</TotalValue>
     </Footer>
   </Container>
 );

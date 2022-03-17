@@ -1,10 +1,13 @@
 // Dependencies
 import styled from "@emotion/styled";
-import { useState } from "react";
 
 // Assets
 import lightThemeImage from "../../assets/icon-sun.svg";
 import darkThemeImage from "../../assets/icon-moon.svg";
+import { useContext } from "react";
+
+// Context
+import ThemeContext from "../../state/ThemeContext";
 
 // Styles
 const ThemeContainer = styled.div`
@@ -21,18 +24,17 @@ const ThemeImage = styled.img`
 `;
 
 const ThemeSwitch = () => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const { isLight, setIsLight } = useContext(ThemeContext);
 
   return (
     <ThemeContainer
       onClick={() => {
-        setDarkTheme(!darkTheme);
-        alert("-Cris: 🧶 🐈   I am working on this, stay tuned!   🧶 🐈 ");
+        setIsLight(!isLight);
       }}
       role="img"
     >
       <ThemeImage
-        src={darkTheme === true ? lightThemeImage : darkThemeImage}
+        src={isLight ? darkThemeImage : lightThemeImage}
         alt="Theme color switch."
       />
     </ThemeContainer>

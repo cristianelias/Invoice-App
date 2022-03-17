@@ -1,7 +1,9 @@
 /* eslint-disable import/default */
 // Dependencies
 import styled from "@emotion/styled";
-import accounting from "accounting-js";
+
+// Utils
+import priceFormatter from "../Form/utils/priceFormatter";
 
 // Styles
 const Table = styled.table`
@@ -128,8 +130,8 @@ const PricingTableLarge = ({ invoice }) => (
         <Row key={index}>
           <CellItemName>{item.name}</CellItemName>
           <CellItemQty>{item.quantity}</CellItemQty>
-          <CellItemPrice>£ {accounting.formatNumber(item.price)}</CellItemPrice>
-          <CellItemTotal>£ {accounting.formatNumber(item.total)}</CellItemTotal>
+          <CellItemPrice>£ {priceFormatter.format(item.price)}</CellItemPrice>
+          <CellItemTotal>£ {priceFormatter.format(item.total)}</CellItemTotal>
         </Row>
       ))}
     </tbody>
@@ -138,7 +140,7 @@ const PricingTableLarge = ({ invoice }) => (
       <Footer>
         <FooterHeadingTotal colSpan="3">Amount Due</FooterHeadingTotal>
         <FooterCellTotal>
-          <strong>£ {accounting.formatNumber(invoice.total)}</strong>
+          <strong>£ {priceFormatter.format(invoice.total)}</strong>
         </FooterCellTotal>
       </Footer>
     </tfoot>

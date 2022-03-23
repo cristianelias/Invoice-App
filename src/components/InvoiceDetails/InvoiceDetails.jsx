@@ -12,7 +12,7 @@ const Container = styled.section`
   width: 100%;
   margin-top: 24px;
   padding: 48px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.background.viewInvoice};
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
 

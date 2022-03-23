@@ -12,7 +12,7 @@ import Avatar from "./Avatar";
 
 // Styles
 const Container = styled.header`
-  background-color: #373b53;
+  background-color: ${({ theme }) => theme.colors.background.header};
   user-select: none;
   width: 103px;
   height: 100vh;
@@ -34,13 +34,13 @@ const Container = styled.header`
   }
 
   @media (max-width: 500px) {
-    height: 75px;
     min-width: 375px;
   }
 `;
 
 const StyledLink = styled(Link)`
   width: 100%;
+  margin-bottom: auto;
 `;
 
 const Nav = styled.nav`
@@ -48,7 +48,7 @@ const Nav = styled.nav`
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
 
   @media (max-width: 850px) {
@@ -59,16 +59,16 @@ const Nav = styled.nav`
 
 const Header = () => {
   return (
-    <Container>
-      <StyledLink to="/">
-        <Nav>
+    <Container onClick={(e) => e.stopPropagation()}>
+      <Nav>
+        <StyledLink to="/">
           <Logo />
+        </StyledLink>
 
-          {/* <ThemeSwitch /> */}
+        <ThemeSwitch />
 
-          <Avatar />
-        </Nav>
-      </StyledLink>
+        <Avatar />
+      </Nav>
     </Container>
   );
 };

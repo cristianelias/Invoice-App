@@ -17,6 +17,10 @@ const Label = styled.label`
   line-height: 15px;
   letter-spacing: -0.25px;
   cursor: pointer;
+
+  &:hover > span:before {
+    border: 1px solid #7c5dfa;
+  }
 `;
 
 const Checkbox = styled.input`
@@ -49,6 +53,7 @@ const Checkbox = styled.input`
 `;
 
 const Text = styled.span`
+  color: ${({ theme }) => theme.colors.text.primary};
   padding: 12px 60px 12px 0px;
   cursor: pointer;
 
@@ -60,7 +65,8 @@ const Text = styled.span`
     height: 16px;
     margin-right: 13px;
     vertical-align: -2px;
-    background-color: #dfe3fa;
+    background-color: ${({ theme }) =>
+      theme.colors.background.checkboxUnchecked};
   }
 `;
 

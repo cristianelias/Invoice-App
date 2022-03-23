@@ -6,7 +6,7 @@ const TextBlock = styled.div`
   line-height: 18px;
   text-align: right;
   letter-spacing: -0.229167px;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.viewInvoiceSecondary};
 `;
 
 const InvoiceAddress = ({ styles, street, city, postCode, country }) => (

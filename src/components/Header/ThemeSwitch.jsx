@@ -15,6 +15,10 @@ const ThemeContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 32px 42px 32px 41px;
+
+  @media (max-width: 850px) {
+    margin-left: auto;
+  }
 `;
 
 const ThemeImage = styled.img`
@@ -27,12 +31,7 @@ const ThemeSwitch = () => {
   const { isLight, setIsLight } = useContext(ThemeContext);
 
   return (
-    <ThemeContainer
-      onClick={() => {
-        setIsLight(!isLight);
-      }}
-      role="img"
-    >
+    <ThemeContainer onClick={() => setIsLight(!isLight)} role="img">
       <ThemeImage
         src={isLight ? darkThemeImage : lightThemeImage}
         alt="Theme color switch."

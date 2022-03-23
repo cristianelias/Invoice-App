@@ -6,7 +6,7 @@ const StyledInput = styled.input`
   height: 48px;
   margin-top: 10px;
   padding: 0 12px;
-  border: solid 1px #dfe3fa;
+  border: solid 1px ${({ theme }) => theme.colors.border.input};
   border-radius: 4px;
   outline: none;
   font-family: Spartan;
@@ -14,8 +14,8 @@ const StyledInput = styled.input`
   font-weight: bold;
   font-size: 12px;
   letter-spacing: -0.25px;
-  color: #0c0e16;
-
+  color: ${({ theme }) => theme.colors.text.primary};
+  background-color: ${({ theme }) => theme.colors.background.primary};
   &[type="date"] {
     padding: 0 0 0 20px;
   }

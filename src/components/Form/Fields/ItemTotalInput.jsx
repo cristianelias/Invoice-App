@@ -1,5 +1,12 @@
+// Dependencies
+import styled from "@emotion/styled";
+
 // Styles
 import StyledInput from "./Styled/StyledInput";
+
+const TotalInput = styled(StyledInput)`
+  background-color: inherit !important;
+`;
 
 const ItemTotalField = ({ name, fields }) => {
   const value = [fields.price, fields.qty]
@@ -8,7 +15,7 @@ const ItemTotalField = ({ name, fields }) => {
       return current * next;
     }, 1);
 
-  return <StyledInput name={name} value={value} readOnly="readOnly" />;
+  return <TotalInput name={name} value={value} readOnly="readOnly" />;
 };
 
 export default ItemTotalField;

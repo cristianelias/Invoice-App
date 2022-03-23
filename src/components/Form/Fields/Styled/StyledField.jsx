@@ -2,6 +2,12 @@
 import styled from "@emotion/styled";
 
 const StyledField = styled.div`
+  input {
+    background-color: ${({ theme }) => theme.colors.background.primary};
+    border-color: ${({ theme }) => theme.colors.border.input};
+    color: ${({ theme }) => theme.colors.text.primary};
+  }
+
   &[type="number"]::-webkit-inner-spin-button,
   &[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;

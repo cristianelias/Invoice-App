@@ -49,7 +49,7 @@ const Title = styled.h3`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.viewInvoiceSecondary};
   margin-bottom: 12px;
 `;
 
@@ -58,7 +58,7 @@ const Subtitle = styled.p`
   font-size: 15px;
   line-height: 20px;
   letter-spacing: -0.3125px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const BillingInfo = ({ invoice }) => (

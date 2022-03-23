@@ -114,6 +114,10 @@ class InvoiceBuilder {
     this.data.status = "pending";
   }
 
+  setDraftStatus() {
+    this.data.status = "draft";
+  }
+
   setTotal() {
     this.data.total = this.data.items.reduce(
       (acum, { total }) => (acum = acum + total),
@@ -139,6 +143,8 @@ class InvoiceBuilder {
 
   asDraft() {
     this.generateId();
+    this.setCreationAndPaymentDue();
+    this.setDraftStatus();
 
     return this.data;
   }

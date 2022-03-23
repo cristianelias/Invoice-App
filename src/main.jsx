@@ -6,10 +6,15 @@ import { HashRouter } from "react-router-dom";
 // Components
 import App from "./components/App";
 
+// Context Providers
+import InvoiceContextProvider from "./components/Providers/InvoiceContextProvider";
+
 render(
   <StrictMode>
     <HashRouter>
-      <App />
+      <InvoiceContextProvider>
+        <App />
+      </InvoiceContextProvider>
     </HashRouter>
   </StrictMode>,
   document.getElementById("root")

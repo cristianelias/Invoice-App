@@ -3,7 +3,7 @@
 import styled from "@emotion/styled";
 
 // Utils
-import priceFormatter from "../Form/utils/priceFormatter";
+import formatPrice from "../Form/utils/formatPrice";
 
 const Container = styled.div`
   display: none;
@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const ItemList = styled.ul`
   width: 100%;
-  background: #f9fafe;
+  background: ${({ theme }) => theme.colors.background.viewInvoiceTable};
   border-radius: 8px 8px 0px 0px;
   list-style: none;
   padding: 24px 24px 0px 24px;
@@ -33,7 +33,7 @@ const ItemTotal = styled.div`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
   text-align: left;
 `;
 
@@ -42,7 +42,7 @@ const ItemName = styled.p`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const QtyAndPrice = styled.div`
@@ -50,13 +50,13 @@ const QtyAndPrice = styled.div`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.viewInvoiceSecondary};
   padding-top: 8px;
 `;
 
 const Footer = styled.footer`
   height: 80px;
-  background: #373b53;
+  background: ${({ theme }) => theme.colors.background.viewInvoiceTableFooter};
   border-radius: 0px 0px 8px 8px;
   padding: 24px;
   display: flex;
@@ -88,18 +88,17 @@ const PricingTableSmall = ({ invoice }) => (
           <div>
             <ItemName>{item.name}</ItemName>
             <QtyAndPrice>
-              {priceFormatter.format(item.quantity)} x £{" "}
-              {priceFormatter.format(item.price)}
+              {formatPrice(item.quantity)} x £ {formatPrice(item.price)}
             </QtyAndPrice>
           </div>
-          <ItemTotal>£ {priceFormatter.format(item.total)}</ItemTotal>
+          <ItemTotal>£ {formatPrice(item.total)}</ItemTotal>
         </Item>
       ))}
     </ItemList>
 
     <Footer>
       <TotalHeading>Grand Total</TotalHeading>
-      <TotalValue>£ {priceFormatter.format(invoice.total)}</TotalValue>
+      <TotalValue>£ {formatPrice(invoice.total)}</TotalValue>
     </Footer>
   </Container>
 );

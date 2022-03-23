@@ -5,14 +5,17 @@ import styled from "@emotion/styled";
 import Button from "./Button";
 
 const StyledButton = styled(Button)`
-  background: #373b53;
-  color: #888eb0;
+  background: ${({ theme }) => theme.colors.buttons.secondary.backgroundColor};
+  color: ${({ theme }) => theme.colors.buttons.secondary.color};
 
   &:hover {
-    opacity: 0.9;
+    background: ${({ theme }) =>
+      theme.colors.buttons.secondary.backgroundHover};
   }
 `;
 
-const SecondaryButton = (props) => <StyledButton {...props} />;
+const SecondaryButton = (props) => (
+  <StyledButton className="secondary-button" {...props} />
+);
 
 export default SecondaryButton;

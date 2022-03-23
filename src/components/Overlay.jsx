@@ -20,7 +20,6 @@ const Overlay = () => {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       animate={{ opacity: 0.5 }}
-      className="overlay"
     />
   );
 };

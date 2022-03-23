@@ -5,11 +5,11 @@ import styled from "@emotion/styled";
 import Button from "./Button";
 
 const StyledButton = styled(Button)`
-  color: #7e88c3;
-  background: #f9fafe;
+  color: ${({ theme }) => theme.colors.buttons.tertiary.color};
+  background: ${({ theme }) => theme.colors.buttons.tertiary.backgroundColor};
 
   &:hover {
-    background-color: #dfe3fa;
+    background: ${({ theme }) => theme.colors.buttons.tertiary.backgroundHover};
   }
 `;
 

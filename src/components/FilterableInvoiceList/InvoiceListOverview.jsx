@@ -7,6 +7,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
+  color: ${({ theme }) => theme.colors.text.primary};
   margin: 0 0 4px 0;
   font-size: 20px;
   font-style: normal;
@@ -24,7 +25,7 @@ const InvoiceSummary = styled.h2`
   line-height: 15px;
   letter-spacing: -0.25px;
   text-align: left;
-  color: #888eb0;
+  color: ${({ theme }) => theme.colors.text.invoiceCount};
 `;
 
 const InvoiceListOverview = (props) => {

@@ -7,7 +7,7 @@ const InvoiceId = styled.span`
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.8px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const Hashtag = styled.span`
@@ -19,7 +19,7 @@ const ProjectDescription = styled.p`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.viewInvoiceSecondary};
   margin-top: 8px;
 `;
 

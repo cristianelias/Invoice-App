@@ -1,5 +1,5 @@
 // Dependencies
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 // Styles
@@ -29,51 +29,56 @@ const Text = styled.span`
   line-height: 1px;
 `;
 
-const modifiers = {
-  paid: css`
-    background-color: #33d6a017;
-    color: #33d69f;
-
-    p {
-      background-color: #33d69f;
-    }
-  `,
-  pending: css`
-    background-color: #ff910017;
-    color: #ff8f00;
-
-    p {
-      background-color: #ff8f00;
-    }
-  `,
-  draft: css`
-    background-color: #373b5317;
-    color: #373b53;
-
-    p {
-      background-color: #373b53;
-    }
-  `,
-};
-
 const fixedStyles = css`
   padding: 13px 17px 12px 18px;
 `;
 
-const PaymentStatusLabel = ({ status, fixedSize }) => {
-  const assembleModifiers = () => {
-    const styles = [modifiers[status]];
+const assembleModifiers = ({ theme, status, fixedSize }) => {
+  const modifiers = {
+    paid: css`
+      background-color: #33d6a017;
+      color: #33d69f;
 
-    if (fixedSize) {
-      styles.push(fixedStyles);
-    }
+      p {
+        background-color: #33d69f;
+      }
+    `,
+    pending: css`
+      background-color: #ff910017;
+      color: #ff8f00;
 
-    return styles;
+      p {
+        background-color: #ff8f00;
+      }
+    `,
+    draft: css`
+      background-color: #373b5317;
+      color: ${theme.colors.text.draftLabel};
+
+      p {
+        background-color: ${theme.colors.text.draftLabel};
+      }
+    `,
   };
+
+  const styles = [modifiers[status]];
+
+  if (fixedSize) {
+    styles.push(fixedStyles);
+  }
+
+  return styles;
+};
+
+const PaymentStatusLabel = ({ status, fixedSize }) => {
+  const theme = useTheme();
 
   return (
     <>
-      <Container css={assembleModifiers()} className="payment-status-label">
+      <Container
+        css={assembleModifiers({ theme, status, fixedSize })}
+        className="payment-status-label"
+      >
         <StatusIcon />
         <Text>{status}</Text>
       </Container>

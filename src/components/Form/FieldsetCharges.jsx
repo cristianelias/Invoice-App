@@ -4,12 +4,10 @@ import styled from "@emotion/styled";
 
 // Components
 import TertiaryButton from "../Button/TertiaryButton";
+import TrashIcon from "./TrashIcon";
 
 // Data
 import chargesValues from "./utils/chargesValues";
-
-// Assets
-import iconTrashCan from "../../assets/icon-delete.svg";
 
 // Styles
 const Container = styled.fieldset`
@@ -72,15 +70,15 @@ const DeleteFieldButton = styled.button`
   }
 `;
 
-const TrashIcon = styled.img`
-  @media (max-width: 650px) {
-    width: 15px;
-  }
-`;
-
 const AddChargesButton = styled(TertiaryButton)`
   width: 100%;
   margin: 18px 0 39px 0;
+
+  &:hover {
+    background-color: ${({ theme }) =>
+      theme.colors.background.addNewItemButtonHover};
+    opacity: ${({ theme }) => theme.opacity.addNewItemButtonHover};
+  }
 
   @media (max-width: 500px) {
     width: 100%;
@@ -123,10 +121,7 @@ const FieldsetCharges = ({ createField, values, errors, touched }) => (
                   remove(index);
                 }}
               >
-                <TrashIcon
-                  src={iconTrashCan}
-                  alt="Trash icon. Click to delete."
-                />
+                <TrashIcon />
               </DeleteFieldButton>
             </ChargesContainer>
           ))}
@@ -141,7 +136,7 @@ const FieldsetCharges = ({ createField, values, errors, touched }) => (
         </div>
       )}
     </FieldArray>
-    {errors && errors.charges && touched && touched.charges && (
+    {Object.keys(errors).length > 0 && (
       <ChargesValidation>- All fields must be added</ChargesValidation>
     )}
     {values.charges &&

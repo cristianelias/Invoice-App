@@ -35,6 +35,7 @@ const Trigger = styled.span`
   line-height: 15px;
   letter-spacing: -0.25px;
   margin-right: 12px;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const Content = styled(motion.fieldset)`
@@ -42,8 +43,8 @@ const Content = styled(motion.fieldset)`
   position: absolute;
   top: 53px;
   right: -18px;
-  background: #ffffff;
-  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  background: ${({ theme }) => theme.colors.background.popOver};
+  box-shadow: ${({ theme }) => theme.boxShadow.dropdownContent};
   border-radius: 8px;
   width: 192px;
   padding: 28px 0 28px 24px;
@@ -74,9 +75,8 @@ const animationVariants = {
 };
 
 const FilterDropdown = ({ showFullInfo, statusFilters }) => {
-  const { refComponent, refTrigger, isComponentVisible } = useComponentVisible(
-    false
-  );
+  const { refComponent, refTrigger, isComponentVisible } =
+    useComponentVisible(false);
   const arrowRotationDegree = isComponentVisible ? 180 : 0;
 
   return (

@@ -13,10 +13,10 @@ const Button = styled.button`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.buttons.navigation.color};
 
   &:hover {
-    color: #7e88c3;
+    color: ${({ theme }) => theme.colors.buttons.navigation.colorHover};
   }
 `;
 // Assets

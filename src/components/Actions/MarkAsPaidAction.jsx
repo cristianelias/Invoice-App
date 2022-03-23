@@ -11,7 +11,7 @@ import InvoiceContext from "../../state/InvoiceContext";
 const MarkAsPaidAction = ({ id, status }) => {
   const { setInvoices } = useContext(InvoiceContext);
 
-  if (status === "paid") {
+  if (status === "paid" || status === "draft") {
     return null;
   }
 

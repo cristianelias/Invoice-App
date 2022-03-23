@@ -47,7 +47,7 @@ const HeaderInnerWrapper = styled.article`
   width: 100%;
   height: 88px;
   padding: 0 32px 0 32px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.background.viewInvoice};
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
   display: flex;
@@ -66,7 +66,7 @@ const PaymentStatusContainer = styled.div`
 `;
 
 const PaymentStatusText = styled.p`
-  color: #858bb2;
+  color: ${({ theme }) => theme.colors.text.viewInvoiceStatus};
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
@@ -92,7 +92,7 @@ const InvoiceActionMobile = styled.div`
   min-width: 375px;
   height: 91px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.background.viewInvoice};
   position: fixed;
   bottom: 0;
   padding: 21px 24px 22px 24px;

@@ -13,7 +13,7 @@ import Date from "../Date";
 import iconArrowRight from "../../assets/icon-arrow-right.svg";
 
 // Utils
-import priceFormatter from "../Form/utils/priceFormatter";
+import formatPrice from "../Form/utils/formatPrice";
 
 // Styles
 const InnerContainer = styled(Link)`
@@ -67,7 +67,7 @@ const IdText = styled.span`
 `;
 
 const Hashtag = styled.span`
-  color: ${({ theme }) => theme.colors.text.tertiary};
+  color: #7e88c3;
 
   @media (max-width: 650px) {
     grid-column: 1/2;
@@ -78,7 +78,7 @@ const Hashtag = styled.span`
 const DueDate = styled.time`
   font-size: 12px;
   font-weight: 500;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.colors.text.secondary};
   line-height: 15px;
   letter-spacing: -0.25px;
   text-align: left;
@@ -92,7 +92,7 @@ const DueDate = styled.time`
 
 const ClientName = styled.span`
   font-size: 12px;
-  color: #858bb2;
+  color: ${({ theme }) => theme.colors.text.clientName};
   font-weight: 500;
   line-height: 15px;
   letter-spacing: -0.25px;
@@ -106,7 +106,7 @@ const ClientName = styled.span`
 `;
 
 const Amount = styled.span`
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
   font-weight: 700;
   font-size: 16px;
   text-align: right;
@@ -134,6 +134,10 @@ const Img = styled.img`
   width: 7px;
 `;
 
+const DueText = styled.span`
+  color: ${({ theme }) => theme.colors.text.dueDateText};
+`;
+
 const animation = {
   hidden: {
     opacity: 0,
@@ -156,10 +160,10 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => (
         <IdText>{id}</IdText>
       </Id>
       <DueDate>
-        Due <Date unformattedDate={paymentDue} />
+        <DueText>Due</DueText> <Date unformattedDate={paymentDue} />
       </DueDate>
       <ClientName>{clientName}</ClientName>
-      <Amount>£ {priceFormatter.format(total)}</Amount>
+      <Amount>£ {formatPrice(total)}</Amount>
       <PaymentStatusLabel status={status} />
       <ImgContainer>
         <Img src={iconArrowRight} alt="Arrow icon. Click to edit invoice." />

@@ -6,6 +6,7 @@ import BaseForm from "./BaseForm";
 
 // Components
 import PrimaryButton from "../Button/PrimaryButton";
+import SecondaryButton from "../Button/SecondaryButton";
 import TertiaryButton from "../Button/TertiaryButton";
 
 // Context
@@ -19,12 +20,10 @@ import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 import { addInvoice } from "../../clients/localStorageClient";
 
 // Utils
-import buildInvoice from "./utils/buildInvoice";
+import { buildInvoice, buildDraft } from "./utils/invoiceUtils";
 
 // Styles
 import FormTitle from "./Fields/Styled/FormTitle";
-
-const createInvoice = (values) => buildInvoice(values).asInvoice();
 
 // Styles
 const ActionsContainer = styled.div`
@@ -58,7 +57,7 @@ const CreateForm = () => {
 
   const submitHandler = async ({ values }) => {
     addInvoice({
-      payload: createInvoice(values),
+      payload: buildInvoice(values),
       onSuccess: (invoices) => {
         setInvoices(invoices);
         navigate(-1, { replace: true });
@@ -66,30 +65,37 @@ const CreateForm = () => {
     });
   };
 
-  const assembleActions = ({ isSubmitting }) => {
+  const saveAsDraftHandler = (values) => {
+    addInvoice({
+      payload: buildDraft(values),
+      onSuccess: (invoices) => {
+        setInvoices(invoices);
+        navigate(-1, { replace: true });
+      },
+    });
+  };
+
+  const assembleActions = ({ isSubmitting, values }) => {
     return (
       <ActionsContainer>
         <TertiaryButton
-          className="tertiary-button"
           disabled={isSubmitting}
           onClick={() => navigate(-1, { replace: true })}
           text="Discard"
         />
 
-        {/* <SecondaryButton
-          className="secondary-button"
+        <SecondaryButton
           disabled={isSubmitting}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
 
-            navigate(-1, { replace: true });
+            saveAsDraftHandler(values);
           }}
           text="Save as Draft"
-        /> */}
+        />
 
         <PrimaryButton
-          className="primary-button"
           disabled={isSubmitting}
           type="submit"
           text="Save & Send"

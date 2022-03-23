@@ -13,9 +13,10 @@ import { editInvoice } from "../../clients/localStorageClient";
 
 // Data
 import getInitialValues from "./utils/getInitialValues";
+import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 
 // Utils
-import buildInvoice from "./utils/buildInvoice";
+import { buildInvoice } from "./utils/invoiceUtils";
 
 // Styled
 import FormTitle from "./Fields/Styled/FormTitle";
@@ -139,6 +140,7 @@ const EditForm = () => {
   return (
     <BaseForm
       initialValues={mapInitialValuesFromInvoice(currentInvoice)}
+      validationSchema={invoiceFormValidationSchema}
       title={assembleTitle()}
       assembleActions={assembleActions}
       submitHandler={submitHandler}

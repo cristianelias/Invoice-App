@@ -20,7 +20,7 @@ const footerPlusHeader = `191px`;
 const FormContainer = styled(motion.div)`
   width: 719px;
   min-width: 375px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.colors.background.formBackground};
   border-radius: 0px 20px 20px 0px;
   position: fixed;
   left: 0;
@@ -76,7 +76,7 @@ const FormInnerWrapper = styled.div`
 
 const Footer = styled.footer`
   height: ${footerHeight};
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.background.formBackground};
   display: flex;
   justify-content: flex-end;
   z-index: 2;
@@ -187,7 +187,7 @@ const BaseForm = ({
                   touched={touched}
                 />
               </FormInnerWrapper>
-              <Footer>{assembleActions({ isSubmitting })}</Footer>
+              <Footer>{assembleActions({ isSubmitting, values })}</Footer>
             </Form>
           </FormContainer>
         </>

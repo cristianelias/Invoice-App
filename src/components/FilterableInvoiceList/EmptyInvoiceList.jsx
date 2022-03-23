@@ -24,11 +24,11 @@ const MainHeading = styled.h1`
   font-weight: 700;
   line-height: 22px;
   letter-spacing: -0.625px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const SecondaryHeading = styled.h5`
-  color: #888eb0;
+  color: ${({ theme }) => theme.colors.text.noInvoicesSecondary};
   font-size: 12px;
   font-weight: 500;
   line-height: 15px;
@@ -47,19 +47,15 @@ const Strong = styled.strong`
 
 const EmptyInvoiceList = () => {
   return (
-    <Section className="empty-invoice">
+    <Section>
       <Img
-        className="empty-invoice__image"
         src={emptyImage}
         alt="There are no invoices that match the current filters criteria."
       />
-      <MainHeading className="empty-invoice__main-heading">
-        There is nothing here
-      </MainHeading>
-      <SecondaryHeading className="empty-invoice__secondary-heading">
-        Create an invoice by clicking the{" "}
-        <Strong className="empty-invoice__strong-text">New Invoice</Strong>{" "}
-        button and get started
+      <MainHeading>There is nothing here</MainHeading>
+      <SecondaryHeading>
+        Create an invoice by clicking the <Strong>New Invoice</Strong> button
+        and get started
       </SecondaryHeading>
     </Section>
   );

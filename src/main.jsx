@@ -6,17 +6,14 @@ import { HashRouter } from "react-router-dom";
 // Components
 import App from "./components/App";
 
-// Contexts
+// Context Providers
 import InvoiceContextProvider from "./components/Providers/InvoiceContextProvider";
-import ThemeContextProvider from "./components/Providers/ThemeContextProvider";
 
 render(
   <StrictMode>
     <HashRouter>
       <InvoiceContextProvider>
-        <ThemeContextProvider>
-          <App />
-        </ThemeContextProvider>
+        <App />
       </InvoiceContextProvider>
     </HashRouter>
   </StrictMode>,

@@ -16,7 +16,7 @@ import getInitialValues from "./utils/getInitialValues";
 import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 
 // Utils
-import { buildInvoice } from "./utils/invoiceUtils";
+import { buildEditedInvoice } from "./utils/invoiceUtils";
 
 // Styled
 import FormTitle from "./Fields/Styled/FormTitle";
@@ -88,11 +88,8 @@ const EditForm = () => {
   const goBack = () =>
     navigate(`/view-invoice/${currentInvoiceId}`, { replace: true });
 
-  const createInvoice = (values) =>
-    buildInvoice(values).asEdited(currentInvoiceId);
-
   const submitHandler = ({ values }) => {
-    const invoiceMetadata = createInvoice(values);
+    const invoiceMetadata = buildEditedInvoice(values, currentInvoiceId);
     const currentId = invoiceMetadata.id;
 
     editInvoice({

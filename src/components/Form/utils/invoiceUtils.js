@@ -30,4 +30,10 @@ const buildDraft = ({ from, to, details, charges }) => {
     .asDraft();
 };
 
-export { buildInvoice, buildDraft };
+const buildEditedInvoice = ({ from, to, details, charges }, id) => {
+  return _buildBaseInvoiceStructure({ from, to, details, charges })
+    .items(charges)
+    .asEdited(id);
+};
+
+export { buildInvoice, buildDraft, buildEditedInvoice };

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 // Dependencies
 import { FieldArray } from "formik";
 import styled from "@emotion/styled";
@@ -77,7 +76,7 @@ const AddChargesButton = styled(TertiaryButton)`
 
   &:hover {
     background-color: ${({ theme }) =>
-      theme.colors.background.addNewItemButtonHover};
+    theme.colors.background.addNewItemButtonHover};
     opacity: ${({ theme }) => theme.opacity.addNewItemButtonHover};
   }
 
@@ -95,7 +94,7 @@ const ChargesValidation = styled.p`
   line-height: 1rem;
 `;
 
-const FieldsetCharges = ({ createField, values, errors, touched }) => (
+const FieldsetCharges = ({ createField, values, errors }) => (
   <Container>
     <ItemListHeading>Item List</ItemListHeading>
     <FieldArray name="charges">
@@ -143,8 +142,8 @@ const FieldsetCharges = ({ createField, values, errors, touched }) => (
     {values.charges &&
       Array.isArray(values.charges) &&
       values.charges.length === 0 && (
-        <ChargesValidation>- An item must be added</ChargesValidation>
-      )}
+      <ChargesValidation>- An item must be added</ChargesValidation>
+    )}
   </Container>
 );
 

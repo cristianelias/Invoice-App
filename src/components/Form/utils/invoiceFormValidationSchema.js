@@ -7,7 +7,7 @@ const assembleTypeInputValidation = (inputName, inputType) =>
   `${inputName} must be a ${inputType}.`;
 const STRING_MIN_LENGTH = 4;
 const STRING_MIN_MESASGE = `This field must be at least ${STRING_MIN_LENGTH} characters long.`;
-const STRING_MAX_LENGTH = 30;
+const STRING_MAX_LENGTH = 50;
 const STRING_MAX_MESASGE = `This field can not be longer than ${STRING_MAX_LENGTH} characters.`;
 
 const QTY_MIN_VALUE = 1;
@@ -21,7 +21,7 @@ const PRICE_MAX_VALUE = 1000000;
 const PRICE_MAX_MESSAGE = `The minimum price is ${PRICE_MAX_VALUE}.`;
 
 const commonSchemas = {
-  streetAddress: Yup.string()
+  street: Yup.string()
     .min(STRING_MIN_LENGTH, STRING_MIN_MESASGE)
     .max(STRING_MAX_LENGTH, STRING_MAX_MESASGE)
     .required(assembleRequiredInputValidation("Street address")),
@@ -41,13 +41,13 @@ const commonSchemas = {
 
 const invoiceFormValidationSchema = Yup.object().shape({
   from: Yup.object().shape({
-    streetAddress: commonSchemas.streetAddress,
+    street: commonSchemas.street,
     city: commonSchemas.city,
     postCode: commonSchemas.postCode,
     country: commonSchemas.country,
   }),
   to: Yup.object().shape({
-    streetAddress: commonSchemas.streetAddress,
+    street: commonSchemas.street,
     city: commonSchemas.city,
     postCode: commonSchemas.postCode,
     country: commonSchemas.country,

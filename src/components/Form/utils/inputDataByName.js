@@ -1,5 +1,5 @@
 const inputDataByName = {
-  streetAddress: {
+  street: {
     label: "Street Address",
   },
   city: {

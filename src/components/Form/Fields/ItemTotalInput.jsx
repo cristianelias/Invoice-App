@@ -1,6 +1,9 @@
 // Dependencies
 import styled from "@emotion/styled";
 
+// Utils
+import formatPrice from "../utils/formatPrice";
+
 // Styles
 import StyledInput from "./Styled/StyledInput";
 
@@ -15,7 +18,9 @@ const ItemTotalField = ({ name, fields }) => {
       return current * next;
     }, 1);
 
-  return <TotalInput name={name} value={value} readOnly="readOnly" />;
+  return (
+    <TotalInput name={name} value={formatPrice(value)} readOnly="readOnly" />
+  );
 };
 
 export default ItemTotalField;

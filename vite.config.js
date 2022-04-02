@@ -9,6 +9,7 @@ export default defineConfig({
       babel: {
         plugins: ["@emotion/babel-plugin"],
       },
+      include: "**/*.{ts,tsx}",
     }),
   ],
 });

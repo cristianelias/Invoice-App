@@ -3,7 +3,7 @@ import chargesValues from "./chargesValues";
 
 const getInitialValues = () => ({
   from: {
-    streetAddress: "",
+    street: "",
     city: "",
     postCode: "",
     country: "",
@@ -11,7 +11,7 @@ const getInitialValues = () => ({
   to: {
     clientName: "",
     clientEmail: "",
-    streetAddress: "",
+    street: "",
     city: "",
     postCode: "",
     country: "",

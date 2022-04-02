@@ -1,5 +1,5 @@
 // Dependencies
-import { useContext } from "react";
+import { ClassType, useContext } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import BaseForm from "./BaseForm";
@@ -19,11 +19,14 @@ import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 // Clients
 import { addInvoice } from "../../clients/localStorageClient";
 
-// Utils
-import { buildInvoice, buildDraft } from "./utils/invoiceUtils";
-
 // Styles
 import FormTitle from "./Fields/Styled/FormTitle";
+
+// Entities
+import InvoiceBuilder from "../../entities/invoice/InvoiceBuilder";
+import DraftInvoiceBuilder from "../../entities/invoice/DraftInvoiceBuilder";
+import InvoiceDirector from "../../entities/invoice/InvoiceDirector";
+import Invoice from "../../entities/invoice/Invoice";
 
 // Styles
 const ActionsContainer = styled.div`
@@ -55,19 +58,9 @@ const CreateForm = () => {
   const { setInvoices } = useContext(InvoiceContext);
   const navigate = useNavigate();
 
-  const submitHandler = async ({ values }) => {
+  const saveInvoiceHandler = (invoice: Invoice) => {
     addInvoice({
-      payload: buildInvoice(values),
-      onSuccess: (invoices) => {
-        setInvoices(invoices);
-        navigate(-1, { replace: true });
-      },
-    });
-  };
-
-  const saveAsDraftHandler = (values) => {
-    addInvoice({
-      payload: buildDraft(values),
+      payload: invoice,
       onSuccess: (invoices) => {
         setInvoices(invoices);
         navigate(-1, { replace: true });
@@ -90,7 +83,7 @@ const CreateForm = () => {
             e.preventDefault();
             e.stopPropagation();
 
-            saveAsDraftHandler(values);
+            saveInvoiceHandler(new InvoiceDirector().buildDraftInvoice(values));
           }}
           text="Save as Draft"
         />
@@ -104,14 +97,14 @@ const CreateForm = () => {
     );
   };
 
-  const assembleTitle = () => <FormTitle>New invoice</FormTitle>;
-
   return (
     <BaseForm
-      title={assembleTitle()}
+      title={<FormTitle>New invoice</FormTitle>}
       initialValues={getInitialValues()}
       validationSchema={invoiceFormValidationSchema}
-      submitHandler={submitHandler}
+      submitHandler={({ values }) => {
+        saveInvoiceHandler(new InvoiceDirector().buildNewInvoice(values));
+      }}
       assembleActions={assembleActions}
       onBlurAction={() => navigate(-1, { replace: true })}
     />

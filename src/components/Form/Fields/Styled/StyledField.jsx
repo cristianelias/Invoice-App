@@ -44,13 +44,13 @@ const StyledField = styled.div`
     }
   }
 
-  &.field-from-streetAddress {
+  &.field-from-street {
     grid-column: 1/4;
   }
 
   &.field-to-clientName,
   &.field-to-clientEmail,
-  &.field-to-streetAddress {
+  &.field-to-street {
     grid-column: 1/4;
   }
 
@@ -94,7 +94,7 @@ const StyledField = styled.div`
       padding: 0 10px;
     }
 
-    &.field-from-streetAddress {
+    &.field-from-street {
       grid-column: 1/3;
     }
 
@@ -112,7 +112,7 @@ const StyledField = styled.div`
 
     &.field-to-clientName,
     &.field-to-clientEmail,
-    &.field-to-streetAddress {
+    &.field-to-street {
       grid-column: 1/3;
     }
 

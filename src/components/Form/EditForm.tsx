@@ -15,12 +15,10 @@ import { editInvoice } from "../../clients/localStorageClient";
 import getInitialValues from "./utils/getInitialValues";
 import invoiceFormValidationSchema from "./utils/invoiceFormValidationSchema";
 
-// Utils
-import { buildEditedInvoice } from "./utils/invoiceUtils";
-
 // Styled
 import FormTitle from "./Fields/Styled/FormTitle";
 import InvoiceContext from "../../state/InvoiceContext";
+import InvoiceDirector from "../../entities/invoice/InvoiceDirector";
 
 // Styles
 const StyledHashtag = styled.span`
@@ -47,12 +45,12 @@ const FooterContainer = styled.div`
 const mapInitialValuesFromInvoice = (invoice) => {
   const editInitialValues = getInitialValues();
 
-  editInitialValues.from.streetAddress = invoice.senderAddress.street;
+  editInitialValues.from.street = invoice.senderAddress.street;
   editInitialValues.from.city = invoice.senderAddress.city;
   editInitialValues.from.postCode = invoice.senderAddress.postCode;
   editInitialValues.from.country = invoice.senderAddress.country;
 
-  editInitialValues.to.streetAddress = invoice.senderAddress.street;
+  editInitialValues.to.street = invoice.senderAddress.street;
   editInitialValues.to.city = invoice.senderAddress.city;
   editInitialValues.to.postCode = invoice.senderAddress.postCode;
   editInitialValues.to.country = invoice.senderAddress.country;
@@ -89,12 +87,13 @@ const EditForm = () => {
     navigate(`/view-invoice/${currentInvoiceId}`, { replace: true });
 
   const submitHandler = ({ values }) => {
-    const invoiceMetadata = buildEditedInvoice(values, currentInvoiceId);
-    const currentId = invoiceMetadata.id;
-
     editInvoice({
-      id: currentId,
-      payload: invoiceMetadata,
+      id: currentInvoiceId,
+      payload: new InvoiceDirector().buildEditedInvoice(
+        currentInvoiceId,
+        currentInvoice.status,
+        values
+      ),
       onSuccess: (invoices) => {
         setInvoices(invoices);
         goBack();

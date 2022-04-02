@@ -1,5 +1,5 @@
 // Dependencies
-import { ClassType, useContext } from "react";
+import { useContext } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import BaseForm from "./BaseForm";
@@ -23,10 +23,7 @@ import { addInvoice } from "../../clients/localStorageClient";
 import FormTitle from "./Fields/Styled/FormTitle";
 
 // Entities
-import InvoiceBuilder from "../../entities/invoice/InvoiceBuilder";
-import DraftInvoiceBuilder from "../../entities/invoice/DraftInvoiceBuilder";
 import InvoiceDirector from "../../entities/invoice/InvoiceDirector";
-import Invoice from "../../entities/invoice/Invoice";
 
 // Styles
 const ActionsContainer = styled.div`
@@ -58,7 +55,7 @@ const CreateForm = () => {
   const { setInvoices } = useContext(InvoiceContext);
   const navigate = useNavigate();
 
-  const saveInvoiceHandler = (invoice: Invoice) => {
+  const saveInvoiceHandler = (invoice) => {
     addInvoice({
       payload: invoice,
       onSuccess: (invoices) => {

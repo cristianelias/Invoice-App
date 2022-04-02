@@ -94,6 +94,7 @@ const EditForm = () => {
         currentInvoice.status,
         values
       ),
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       onSuccess: (invoices) => {
         setInvoices(invoices);
         goBack();

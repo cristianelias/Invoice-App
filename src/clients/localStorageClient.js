@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import initialState from "../mocks/data.json";
 
 const storage = window.localStorage;

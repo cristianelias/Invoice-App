@@ -13,8 +13,11 @@
   "license": "Apache-2.0",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": "eslint --fix src/**/*.{ts,js,jsx}"
   },
   "devDependencies": {
     "@types/react": "^17.0.43",

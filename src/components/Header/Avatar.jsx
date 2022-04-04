@@ -1,8 +1,12 @@
 // Dependencies
 import styled from "@emotion/styled";
+import { useContext } from "react";
 
 // Assets
 import avatarImage from "../../assets/image-avatar.jpeg";
+
+// Context
+import UIContext from "../../state/UIContext";
 
 // Styles
 const AvatarContainer = styled.div`
@@ -11,6 +15,8 @@ const AvatarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 
   @media (max-width: 850px) {
     border-top: none;
@@ -18,7 +24,7 @@ const AvatarContainer = styled.div`
   }
 `;
 
-const AvatarImage = styled.img`
+const Image = styled.img`
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -31,12 +37,11 @@ const AvatarImage = styled.img`
 `;
 
 const Avatar = () => {
+  const { setCreditsModalOpen } = useContext(UIContext);
+
   return (
-    <AvatarContainer>
-      <AvatarImage
-        src={avatarImage}
-        alt="User avatar, click to go to your profile."
-      />
+    <AvatarContainer onClick={() => setCreditsModalOpen(true)}>
+      <Image src={avatarImage} alt="User avatar" />
     </AvatarContainer>
   );
 };

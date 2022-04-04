@@ -54,6 +54,10 @@ const light = {
     dropdownContent: "0px 10px 20px rgba(72, 84, 159, 0.25)",
     datepicker: "0px 10px 20px rgba(72, 84, 159, 0.25)",
   },
+  externalLinks: {
+    color: "#d8d8d8",
+    colorHover: "white",
+  },
 };
 
 export default light;

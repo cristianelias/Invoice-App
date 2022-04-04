@@ -54,6 +54,10 @@ const dark = {
     dropdownContent: "none",
     datepicker: "none",
   },
+  externalLinks: {
+    color: "#7e88c3",
+    colorHover: "white",
+  },
 };
 
 export default dark;

@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged --no-verify"
     }
   },
   "lint-staged": {

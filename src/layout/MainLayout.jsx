@@ -8,6 +8,7 @@ import ThemeContextProvider from "../components/Providers/ThemeContextProvider";
 import "@fontsource/spartan/500.css";
 import "@fontsource/spartan/700.css";
 import GlobalStyles from "../components/GlobalStyles";
+import UIContextProvider from "../components/Providers/UIContextProvider";
 
 // Styles
 const StyledLayout = styled.div`
@@ -22,8 +23,10 @@ const StyledLayout = styled.div`
 
 const MainLayout = (props) => (
   <ThemeContextProvider>
-    <GlobalStyles />
-    <StyledLayout>{props.children}</StyledLayout>
+    <UIContextProvider>
+      <GlobalStyles />
+      <StyledLayout>{props.children}</StyledLayout>
+    </UIContextProvider>
   </ThemeContextProvider>
 );
 

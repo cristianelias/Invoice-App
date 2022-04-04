@@ -9,6 +9,7 @@ import styled from "@emotion/styled";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import Avatar from "./Avatar";
+import CreditsModal from "../Modal";
 
 // Styles
 const Container = styled.header`
@@ -59,17 +60,20 @@ const Nav = styled.nav`
 
 const Header = () => {
   return (
-    <Container onClick={(e) => e.stopPropagation()}>
-      <Nav>
-        <StyledLink to="/">
-          <Logo />
-        </StyledLink>
+    <>
+      <Container onClick={(e) => e.stopPropagation()}>
+        <Nav>
+          <StyledLink to="/">
+            <Logo />
+          </StyledLink>
 
-        <ThemeSwitch />
+          <ThemeSwitch />
 
-        <Avatar />
-      </Nav>
-    </Container>
+          <Avatar />
+        </Nav>
+      </Container>
+      <CreditsModal />
+    </>
   );
 };
 

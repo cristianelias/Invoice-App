@@ -25,6 +25,7 @@ const Container = styled.div`
   justify-content: center;
   flex-flow: column;
   padding: 0px 18px;
+  z-index: 1;
 `;
 
 const Trigger = styled.span`

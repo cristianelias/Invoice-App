@@ -15,6 +15,7 @@ const ThemeContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 32px 42px 32px 41px;
+  cursor: pointer;
 
   @media (max-width: 850px) {
     margin-left: auto;
@@ -22,7 +23,6 @@ const ThemeContainer = styled.div`
 `;
 
 const ThemeImage = styled.img`
-  cursor: pointer;
   height: 20px;
   width: 20px;
 `;

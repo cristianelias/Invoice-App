@@ -111,9 +111,17 @@ const CreditsModal = () => {
                 icon={<IconGitHub color={"white"} size={"24px"} />}
               />
 
-              <ExternalLink href={"#"} text={"Frontend Mentor solution"} />
+              <ExternalLink
+                href={
+                  "https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl/hub/react-emotioncss-vite-framer-motion-formikyup-localstorage-HkdP_gOQc"
+                }
+                text={"Frontend Mentor solution"}
+              />
 
-              <ExternalLink href={"#"} text={"Frontend Mentor profile"} />
+              <ExternalLink
+                href={"https://www.frontendmentor.io/profile/cristianelias"}
+                text={"Frontend Mentor profile"}
+              />
             </RightBlock>
           </Card>
         </Container>

@@ -7,8 +7,11 @@ import PricingTableLarge from "./PricingTableLarge";
 import PricingTableSmall from "./PricingTableSmall";
 
 // Styles
-const Container = styled.section`
+const Container = styled.div`
   grid-column: 2/3;
+`;
+
+const WhiteBackgroundContainer = styled.section`
   width: 100%;
   margin-top: 24px;
   padding: 48px;
@@ -24,11 +27,13 @@ const Container = styled.section`
 
 const InvoiceDetails = ({ invoice }) => (
   <Container>
-    <div>
-      <BillingInfo invoice={invoice} />
-      <PricingTableLarge invoice={invoice} />
-      <PricingTableSmall invoice={invoice} />
-    </div>
+    <WhiteBackgroundContainer>
+      <div>
+        <BillingInfo invoice={invoice} />
+        <PricingTableLarge invoice={invoice} />
+        <PricingTableSmall invoice={invoice} />
+      </div>
+    </WhiteBackgroundContainer>
   </Container>
 );
 

@@ -1,7 +1,7 @@
-const IconExternalLink = ({ color, size }) => (
+const IconExternalLink = ({ color }) => (
   <svg
-    width={size}
-    height={size}
+    width="24px"
+    height="24px"
     viewBox="0 0 24px 24px"
     fill={color}
     xmlns="http://www.w3.org/2000/svg"

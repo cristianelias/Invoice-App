@@ -1,6 +1,6 @@
 // Dependencies
 import styled from "@emotion/styled";
-import { useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 
 // Assets
 import creditsImage from "../assets/author.jpeg";
@@ -12,29 +12,37 @@ import UIContext from "../state/UIContext";
 import ExternalLink from "./ExternalLink";
 import IconLinkedIn from "./Icons/IconLinkedIn";
 import IconGitHub from "./Icons/IconGitHub";
+import IconClose from "./Icons/IconClose";
 
 const Container = styled.article`
-  min-width: 380px;
+  user-select: none;
+  overflow: auto;
   position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 800px;
+
+  padding: 52px 52px 52px 155px;
+
   display: flex;
-  height: 100vh;
-  width: 100vw;
   background-color: #0c0e1675;
   color: white;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(4px);
   z-index: 2;
-  position: fixed;
-  padding: 52px 52px 52px 155px;
 
   @media (max-width: 850px) {
-    padding: 52px;
+    padding-left: 52px;
+    top: 80px;
   }
 `;
 
 const Card = styled.div`
-  min-width: 380px;
+  position: relative;
+  min-width: 340px;
 
   display: flex;
   justify-content: space-between;
@@ -44,6 +52,24 @@ const Card = styled.div`
 
   @media (max-width: 720px) {
     flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (max-width: 400px) {
+    margin: 120px 0;
+  }
+`;
+
+const CloseIconContainer = styled.div`
+  cursor: pointer;
+  padding: 24px;
+  position: absolute;
+  display: none;
+
+  @media (max-width: 720px) {
+    display: block;
+    top: -18%;
+    right: -9%;
   }
 `;
 
@@ -55,18 +81,27 @@ const RightBlock = styled.div`
   flex-flow: column;
   max-width: 460px;
 
-  @media (max-width: 460px) {
-    padding: 0 32px;
+  @media (max-width: 720px) {
+    gap: 9px;
   }
 `;
 
 const H1 = styled.h1`
   font-size: 28px;
+
+  @media (max-width: 720px) {
+    font-size: 24px;
+  }
 `;
 
 const Paragraph = styled.p`
   line-height: 27px;
   font-size: 18px;
+
+  @media (max-width: 720px) {
+    line-height: 23px;
+    font-size: 14px;
+  }
 `;
 
 const Image = styled.img`
@@ -75,6 +110,10 @@ const Image = styled.img`
   box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px,
     rgb(0 0 0 / 30%) 0px 30px 60px -30px,
     rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+
+  @media (max-width: 720px) {
+    height: 260px;
+  }
 `;
 
 const CreditsModal = () => {
@@ -89,6 +128,9 @@ const CreditsModal = () => {
               e.stopPropagation();
             }}
           >
+            <CloseIconContainer onClick={() => setCreditsModalOpen(false)}>
+              <IconClose color={"white"} />
+            </CloseIconContainer>
             <LeftBlock>
               <Image src={creditsImage} alt="App's author face." />
             </LeftBlock>
@@ -102,13 +144,13 @@ const CreditsModal = () => {
               <ExternalLink
                 href={"https://www.linkedin.com/in/cristianelias/"}
                 text={"LinkedIn"}
-                icon={<IconLinkedIn color={"white"} size={"24px"} />}
+                icon={<IconLinkedIn color={"white"} />}
               />
 
               <ExternalLink
                 href={"https://github.com/cristianelias"}
                 text={"GitHub"}
-                icon={<IconGitHub color={"white"} size={"24px"} />}
+                icon={<IconGitHub color={"white"} />}
               />
 
               <ExternalLink

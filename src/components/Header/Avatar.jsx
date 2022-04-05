@@ -37,10 +37,10 @@ const Image = styled.img`
 `;
 
 const Avatar = () => {
-  const { setCreditsModalOpen } = useContext(UIContext);
+  const { creditsModalOpen, setCreditsModalOpen } = useContext(UIContext);
 
   return (
-    <AvatarContainer onClick={() => setCreditsModalOpen(true)}>
+    <AvatarContainer onClick={() => setCreditsModalOpen(!creditsModalOpen)}>
       <Image src={avatarImage} alt="User avatar" />
     </AvatarContainer>
   );

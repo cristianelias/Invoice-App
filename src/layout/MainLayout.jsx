@@ -1,17 +1,22 @@
 // Dependencies
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { useContext } from "react";
 
 // Contexts Providers
 import ThemeContextProvider from "../components/Providers/ThemeContextProvider";
+
+// Context
+import UIContext from "../state/UIContext";
 
 // Assets
 import "@fontsource/spartan/500.css";
 import "@fontsource/spartan/700.css";
 import GlobalStyles from "../components/GlobalStyles";
-import UIContextProvider from "../components/Providers/UIContextProvider";
 
 // Styles
 const StyledLayout = styled.div`
+  min-height: 100vh;
   min-width: 375px;
   display: grid;
   grid-template-columns: 103px auto;
@@ -21,13 +26,21 @@ const StyledLayout = styled.div`
   }
 `;
 
-const MainLayout = (props) => (
-  <ThemeContextProvider>
-    <UIContextProvider>
+const MainLayout = (props) => {
+  const { creditsModalOpen } = useContext(UIContext);
+
+  return (
+    <ThemeContextProvider>
       <GlobalStyles />
-      <StyledLayout>{props.children}</StyledLayout>
-    </UIContextProvider>
-  </ThemeContextProvider>
-);
+      <StyledLayout
+        css={css`
+          ${creditsModalOpen ? "overflow: hidden;" : ""}
+        `}
+      >
+        {props.children}
+      </StyledLayout>
+    </ThemeContextProvider>
+  );
+};
 
 export default MainLayout;

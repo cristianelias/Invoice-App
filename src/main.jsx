@@ -8,12 +8,15 @@ import App from "./components/App";
 
 // Context Providers
 import InvoiceContextProvider from "./components/Providers/InvoiceContextProvider";
+import UIContextProvider from "./components/Providers/UIContextProvider";
 
 render(
   <StrictMode>
     <HashRouter>
       <InvoiceContextProvider>
-        <App />
+        <UIContextProvider>
+          <App />
+        </UIContextProvider>
       </InvoiceContextProvider>
     </HashRouter>
   </StrictMode>,

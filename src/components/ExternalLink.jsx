@@ -24,6 +24,10 @@ const Link = styled.a`
   &:hover {
     color: ${({ theme }) => theme.externalLinks.colorHover};
   }
+
+  @media (max-width: 720px) {
+    font-size: 12px;
+  }
 `;
 
 // Animation variants
@@ -37,11 +41,11 @@ const ExternalLink = ({ href, text, icon }) => {
   const theme = useTheme();
   return (
     <LinkContainer variants={animation} whileHover={animation.hover}>
-      {icon ? icon : <IconLink size={"24px"} color={"white"} />}
+      {icon ? icon : <IconLink color={"white"} />}
       <Link href={href} target="_blank" rel="noreferrer">
         {text}
       </Link>
-      <IconExternalLink size={"24px"} color={theme.externalLinks.color} />
+      <IconExternalLink color={theme.externalLinks.color} />
     </LinkContainer>
   );
 };
